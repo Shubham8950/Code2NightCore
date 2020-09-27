@@ -1,0 +1,87 @@
+﻿@model Code2Night.DAL.Common.MyBlogs
+@{
+    ViewBag.Title = "Blogs | Code2Night.com";
+    ViewBag.MetaDescription = "Welcome To Code2night, check out lur latest programming blogs with detailed description to help you out";
+    ViewBag.MetaKeywords = "Code2Night,Blogs,Stripe,Slick,MVC,Exception Handling,Code,Programming,Tutotials,Slick Slider,IIS,Internet Information Services";
+    ViewBag.Canonical = "https://www.code2night.com/Blog/index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.OpenGraphUrl = "https://www.code2night.com/Blog/index";
+    ViewBag.OpenGraphDescription = "Welcome To Code2night, check out lur latest programming blogs with detailed description to help you out";
+    ViewBag.OpenGraphTitle = "Blogs | Code2Night.com";
+}
+<style>
+    .blogpost-body p span {
+        display: inline-block;
+        word-break: break-all;
+    }
+    .blogpost footer ul.links li a:nth-of-type(n+3){
+        display: none;
+    }
+       
+</style>
+<script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+    });
+</script>
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i><a href="@Url.Action("index","Users")">Home</a></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="main col-md-12" >
+                <div >
+                    <div id="lvCandidatestbl" class="masonry-grid row">
+                     <div id="blogslist">
+                         <partial name="_BlogsList" model="Model" />
+                     </div>   
+                     </div>
+                </div>              
+            </div>
+        </div>
+        <div class="row" style="text-align:center"><div class="container"> <div style="margin:auto auto" id="pagination"></div></div></div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        //paginationTable();
+       // LoadPartialView('@Url.Action("BindBlogs","Blog")', "blogslist", {});
+        //paginationTable();
+    });
+    function LoadPartialView(url, elem, postData) {
+        ShowLoader();
+        $.post(url, postData, function (result, status) {
+            $("#" + elem).html('');
+            $("#" + elem).html(result);
+            HideLoader();
+        });
+    }
+     function paginationTable() {
+        var items = $("#lvCandidatestbl #mydiv");
+        var numItems = items.length;
+        var perPage = 9;
+        items.slice(perPage).hide();
+        $("#pagination").pagination({
+            items: numItems,
+            itemsOnPage: perPage,
+            cssStyle: "light-theme",
+            onPageClick: function (pageNumber) {
+                var showFrom = perPage * (pageNumber - 1);
+                var showTo = showFrom + perPage;
+                items.hide().slice(showFrom, showTo).show();
+            }
+        });
+    }
+</script>

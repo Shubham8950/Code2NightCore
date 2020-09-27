@@ -1,0 +1,233 @@
+﻿@model Code2Night.DAL.Common.MyBlogs
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<string> List = new List<string>();
+    foreach (var item in Model.BlogsList.Where(x => x.Tags != null).Select(x => x.Tags.Split(',')).ToList())
+    {
+
+        foreach (var tag in item)
+        {
+            List.Add(tag.Trim());
+        }
+    }
+    ViewBag.Title = Model.MyBlog.Title+" | Code2night.com";
+    ViewBag.MetaDescription = Model.MyBlog.BlogIntroduction;
+    ViewBag.MetaKeywords = "Code2Night,Code,Programming,Tutorials," + string.Join(",", List);
+    ViewBag.Canonical = "https://www.code2night.com/Blog/MyBlog/" + Model.MyBlog.BlogUrl;
+
+    ViewBag.OpenGraphUrl = "https://www.code2night.com/Blog/MyBlog/" + Model.MyBlog.BlogUrl;
+    ViewBag.OpenGraphDescription = Model.MyBlog.BlogIntroduction;
+    ViewBag.OpenGraphTitle = Model.MyBlog.Title;
+
+
+}
+<script id="dsq-count-scr" src="//codetonight.disqus.com/count.js"></script>
+<script type="application/ld+json">
+    {
+    "@@context" : "http://schema.org",
+    "@@type" : "Article",
+    "name" : "@Model.MyBlog.Title",
+    "headline" : "@Model.MyBlog.Title",
+    "url" : "https://www.code2night.com/Blog/MyBlog/@(@Model.MyBlog.BlogUrl)",
+    "author" : {
+    "@@type" : "Person",
+    "name" : "@Model.MyBlog.AuthorName"
+    },
+    "datePublished" : "@Model.MyBlog.Date.ToString("yyyy-MM-dd")",
+    "articleSection" : "@Model.MyBlog.BlogIntroduction",
+    "articleBody" : "@Model.MyBlog.BlogIntroduction",
+    "publisher" : {
+    "@@type" : "Organization",
+    "name" : "Code2night"
+    }
+    }
+</script>
+
+<style>
+    pre {
+        padding: 10px 16px;
+        border-radius: 2px;
+    }
+
+        pre p {
+            display: block;
+            line-height: 1.5rem;
+            counter-increment: line;
+        }
+
+            pre p:before {
+                content: counter(line);
+                display: inline-block;
+                border-right: 1px solid #ddd;
+                padding: 0 .5em;
+                margin-right: .5em;
+                color: #888
+            }
+
+    #disqus_thread {
+        overflow: hidden;
+    }
+
+    iframe {
+        margin-bottom: -54px;
+    }
+</style>
+
+
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
+                    <li class="active">Blogpost</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-intro end -->
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="main col-md-8" itemscope itemtype="http://schema.org/Blog">
+
+                <h1 class="page-title" itemprop="headline">@Model.MyBlog.Title</h1>
+                <article class="clearfix blogpost full">
+
+                    <div class="blogpost-body">
+                        <div class="side">
+                            <div class="post-info" itemprop="datePublished">
+                                <span class="day">@Model.MyBlog.Date.ToString("dd")</span>
+                                <span class="month">@Model.MyBlog.Date.ToString("MMM")<br />@Model.MyBlog.Date.ToString("yyyy")</span>
+                            </div>
+                            <div id="affix">
+                                <span class="share">Share This</span><div id="share">
+                                    <div id="share" class="sharrre">
+                                        <ul class="social-links clearfix">
+                                            <li class="facebook"><a itemprop="url" href="http://www.facebook.com/sharer.php?u=https://code2night.com/Blog/MyBlog/@(Model.MyBlog.BlogUrl)" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                            <li class="twitter"><a itemprop="url" href="http://twitter.com/share?url=https://code2night.com/Blog/MyBlog/@(Model.MyBlog.BlogUrl)&text=@(Model.MyBlog.Title)&via=code2night" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                            <li class="twitter"><a itemprop="url" href="http://reddit.com/submit?url=https://code2night.com/Blog/MyBlog/@(Model.MyBlog.BlogUrl)&title=@(Model.MyBlog.Title)" target="_blank"><i class="fa fa-reddit-alien"></i></a></li>
+                                            <li class="twitter"><a itemprop="url" href="http://www.tumblr.com/share/link?url=https://code2night.com/Blog/MyBlog/@(Model.MyBlog.BlogUrl)" target="_blank"><i class="fa fa-tumblr"></i></a></li>
+                                            <li class="twitter"><a itemprop="url" href="http://www.linkedin.com/shareArticle?mini=true&url=https://code2night.com/Blog/MyBlog/@(Model.MyBlog.BlogUrl)&title=Code2Night" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blogpost-content" style="word-break:break-word">
+                            <header>
+                                <div class="submitted">
+                                    <i class="fa fa-user pr-5"></i> by <a itemprop="author" href="~/Portal/Blog/Author/@Model.MyBlog.AuthorId-@Model.MyBlog.AuthorName">@Model.MyBlog.AuthorName</a>
+                                    <a style="
+    color: black;
+    margin-left: 16px;
+"><i class="fa fa-eye"></i><p itemprop="interactionCount" style=" display: inline-block; margin-left: 6px;">@Model.MyBlog.TotalView</p></a>
+@if (!string.IsNullOrEmpty(Model.MyBlog.Document))
+{
+    <i class="fa fa-download pr-5" style="margin-left:10px"></i> <a download="" href="~/Uploads/BlogDocs/@Model.MyBlog.Document"> Download Attachments</a>
+}
+</div>
+</header>
+@if (Model.MyBlog.VideoEmbed != null)
+{
+    <div class="embed-responsive embed-responsive-16by9">
+        @Html.Raw(Model.MyBlog.VideoEmbed)
+    </div>
+}
+<div>
+    <p itemprop="articleBody">
+        @Html.Raw(Model.MyBlog.BlogBody)
+    </p>
+</div>
+</div>
+</div>
+
+<footer class="clearfix" style="margin-bottom:10px">
+    <ul class="links pull-left">
+        <li><i class="fa fa-comment-o pr-5"></i><a href="~/Blog/MyBlog/@Model.MyBlog.BlogUrl#disqus_thread"></a> |</li>
+        <li itemprop="keywords">
+            <i class="fa fa-tags pr-5"></i>
+            @if (Model.MyBlog.Tags != null)
+            {
+                foreach (var str in Model.MyBlog.Tags.Split(',').ToList())
+                {
+                    <a itemprop="url" href="~/Blog/Tags/@str">@str @(Model.MyBlog.Tags.Split(',').ToList().IndexOf(str).Equals(Model.MyBlog.Tags.Split(',').ToList().Count - 1) ? "" : ",")</a>
+                }
+            }
+        </li>
+    </ul>
+</footer>
+
+</article>
+
+<div id="mycmnt">
+    <h2 class="title">Comments</h2><div id="disqus_thread"></div>
+    <script>
+
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://codetonight.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript> <a href="https://disqus.com/?ref_noscript"></a></noscript>
+</div>
+</div>
+<!-- main end -->
+<!-- sidebar start -->
+<aside class="col-md-3 col-md-offset-1">
+    <div class="sidebar">
+        <div class="block clearfix">
+            <h3 class="title">Tags</h3>
+            <div class="separator"></div>
+            <div class="tags-cloud">
+                @foreach (var str in List.Distinct().ToList())
+                {
+                    <div class="tag" itemprop="keywords">
+                        <a href="~/Blog/Tags/@str">@str</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</aside>
+</div>
+</div>
+
+<script id="dsq-count-scr" src="//codetonight.disqus.com/count.js" async></script>
+<script>
+
+    //function wrapNode(node) {
+    //    $(node).replaceWith("<p>" + node.textContent + "</p>");
+    //}
+    //document.addEventListener('DOMContentLoaded', (event) => {
+
+    //    $('pre').each(function (index, elem) {
+    //        var d = $(this)[0];
+    //        for (var i = 0; i < d.childNodes.length; i++) {
+    //            if (d.childNodes[i].nodeType === 3 &&
+    //                d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")) {
+    //                wrapNode(d.childNodes[i]);
+    //            }
+    //        }
+
+    //       // var lines = $(this).text().split('\n');
+    //       // var paras = '';
+    //       // $.each(lines, function (i, line) {
+    //       //     // $(line).wrap('<p></p>');
+    //       //     if (line && line.indexOf('<input')==-1) {
+    //       //         paras += '<p>' + line + '</p>';
+    //       //     }
+    //       // });
+    //       // paras.replace(/[\r\n]+/g, '\n');
+    //       //// $(this).html('');
+    //       //// $(this).append(paras);
+    //       //$(this).html(paras);
+    //    });
+    //});
+</script>
+</section>

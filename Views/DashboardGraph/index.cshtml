@@ -1,0 +1,334 @@
+﻿@model Code2Night.DAL.Common.HomeViewModel
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    div#textboxbutton #Additemtextbox {
+        height: 38px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        border: 1px solid #f4f6f9;
+    }
+</style>
+<section class="content">
+    <div class="container-fluid" style="width:1060px">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-12 col-sm-12">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>@Model.DashBoardItem.TotalUsers</h3>
+
+                        <p>Total Users</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+
+                    </div>
+                    <a href='@Url.Action("Listing","Blog")' class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-12 col-sm-12">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>@Model.DashBoardItem.TotalBlogs</h3>
+                        <p>Total Blogs</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-clipboard"></i>
+
+                    </div>
+                    <a href='@Url.Action("Listing","Blog")' class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-12 col-sm-12">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@Model.DashBoardItem.LifeTimeViews</h3>
+                        <p>Life Time Views</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-12 col-sm-12">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>@Model.DashBoardItem.MonthlyViews</h3>
+                        <p>This Month</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <!-- Left col -->
+            <section class="col-lg-7 col-12 col-sm-12 connectedSortable">
+               <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ion ion-clipboard mr-1"></i>
+                            To Do List
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <ul class="todo-list" data-widget="todo-list" id="Todolist" style="height: 284px;">
+                            <partial name="_ToDo" model="Model"/>
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <div id="textboxbutton">
+                           @* style="display:flex"*@
+                            @*<button type="button" class="btn btn-info float-right" onclick="DivShow()"><i class="fas fa-plus"></i> Add item</button>*@
+                            <button type="button" class="btn btn-info float-right" onclick="Additembutton()"><i class="fas fa-plus"></i>  Add item</button>
+                            <input type="text" placeholder="Enter Item" id="Additemtextbox" />
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </section>
+            <!-- /.Left col -->
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            <section class="col-lg-5 col-12 col-sm-12 connectedSortable">
+
+                <!-- Map card -->
+                <!-- /.card -->
+                <!-- solid sales graph -->
+                <div class="card bg-gradient-info">
+                    <div class="card-header border-0">
+                        <h3 class="card-title">
+                            <i class="fas fa-th mr-1"></i>
+                            Weekly Users Visit Chart
+                        </h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer bg-transparent">
+                        <div class="row">
+
+                            <!-- ./col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+                <!-- Calendar -->
+                <!-- /.card -->
+            </section>
+            <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+
+@*<script src="~/dist/js/pages/dashboard.js"></script>*@
+@*<canvas id="revenues" height="300" style="height: 300px;"></canvas>
+
+    <script src="~/Scripts/canvasjs.min.js"></script>*@
+@*<script type="text/javascript">
+            window.onload = function () {
+                var data = [];
+
+                @foreach( var item in Model)
+                {
+                    @:data.push({ label:'@item.ViewDate.ToString("dd-MMM-yyyy")', y:@item.TotalView});
+                }
+
+                var chart = new CanvasJS.Chart("revenues", {
+                    title: {
+                    text: "Weekly Traffic Rate"
+                    },
+                    axisY: {
+                    title: "ViewCounts Day wise",
+                        includeZero: false
+                    },
+                    axisX: {
+                    interval: 1
+                    },
+                    data: [
+                     {
+                    type: "line", //try changing to column, area
+                         toolTipContent: "{label}: {y}",
+                            dataPoints: data
+                        },
+
+                    ],
+
+                });
+
+                chart.render();
+            }
+    </script>*@
+<script>
+    function LoadPartialView(url, elem, postData) {
+        ShowLoader();
+        $.post(url, postData, function (result, status) {
+            $("#" + elem).html('');
+            $("#" + elem).html(result);
+            HideLoader();
+
+        });
+
+    }
+    // Sales graph chart
+    debugger;
+
+    var Refresh = function()
+        {
+             LoadPartialView('@Url.Action("BindToDo","DashBoardGraph")', "Todolist", {});
+        }
+    window.onload = function () {
+        var salesGraphChartCanvas = $('#line-chart').get(0).getContext('2d')
+        // $('#revenue-chart').get(0).getContext('2d');
+        var labeldata = [];
+        var userdata = [];
+     @foreach( var item in Model.EmployeeDashboardList)
+                {
+                    @:labeldata.push('@item.ViewDate.ToString("dd-MMM-yyyy")');
+                       @:userdata.push('@item.TotalView');
+                }
+        var salesGraphChartData = {
+            labels: labeldata,
+            datasets: [
+                {
+                    label: 'Weekly Traffic Rate',
+                    fill: false,
+                    borderWidth: 2,
+                    lineTension: 0,
+                    spanGaps: true,
+                    borderColor: '#efefef',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    pointColor: '#efefef',
+                    pointBackgroundColor: '#efefef',
+                    data: userdata
+                }
+            ]
+        }
+
+        var salesGraphChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        fontColor: '#efefef'
+                    },
+                    gridLines: {
+                        display: false,
+                        color: '#efefef',
+                        drawBorder: false
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+
+                        fontColor: '#efefef'
+                    },
+                    gridLines: {
+                        display: true,
+                        color: '#efefef',
+                        drawBorder: false
+                    }
+                }]
+            }
+        }
+
+        // This will get the first returned node in the jQuery collection.
+        // eslint-disable-next-line no-unused-vars
+        var salesGraphChart = new Chart(salesGraphChartCanvas, {
+            type: 'line',
+            data: salesGraphChartData,
+            options: salesGraphChartOptions
+        })
+    }
+
+    //Additembutton, DivShow, Additemtextbox
+
+    var Additembutton = function () {
+        debugger;
+        var promises = GetAjaxDataPromise('@Url.Action("Additems", "DashboardGraph")', { TaskName: $("#Additemtextbox").val() });
+        promises.done(function (response) {
+            console.log(response);
+            console.log();
+            $("#Additemtextbox").val("");
+            if (response.data == 0) {
+            }
+            else {
+                Refresh();
+                Swal.fire({
+                    position: 'top-end',
+                    type: 'success',
+                    title: "Item Inserted Successfully",
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+            }
+        }).fail(function (response) {
+
+            console.log(response);
+        });
+    }
+
+    var SaveUpdateItem = function (elem,ids) {
+        debugger;
+        console.log($("#" + elem).is(":checked"));
+        console.log($(".checkboxgetset").prop("checked", true));
+        var promises = GetAjaxDataPromise('@Url.Action("SaveUpdateItem", "DashboardGraph")', { IsCompleted: $("#" + elem).is(":checked"), Id: ids});
+        promises.done(function (response) {
+            Refresh();
+            debugger;
+            if (response.data == 0) {
+            }
+            //else {
+            //    Swal.fire({
+            //        position: 'top-end',
+            //        type: 'success',
+            //        title: "Item Inserted Successfully",
+            //        showConfirmButton: false,
+            //        timer: 3000
+            //    });
+
+            //}
+        }).fail(function (response) {
+
+            console.log(response);
+        });
+
+
+    }
+</script>

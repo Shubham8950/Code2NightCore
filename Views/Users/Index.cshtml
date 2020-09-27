@@ -1,0 +1,212 @@
+﻿@model Code2Night.DAL.Common.HomeViewModel
+@*@using .Optimization*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@Html.Partial("~/Views/Shared/_MainSlider.cshtml", Model.SlidesList);*@
+
+<!-- banner end -->
+<!-- page-top start-->
+<!-- ================ -->
+<link href="/plugins/rs-plugin/css/settings.css" media="screen" rel="stylesheet">
+<link href="/plugins/rs-plugin/css/extralayers.css" media="screen" rel="stylesheet">
+<link href="/plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
+<link href="/css/animations.css" rel="stylesheet">
+<link href="/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+
+<!-- Code2night core CSS file -->
+<link href="/css/style.css" rel="stylesheet">
+
+<!-- Style Switcher Styles (Remove these two lines) -->
+@*<link href="#" data-style="styles" rel="stylesheet">
+    <link href="/Content/style-switcher/style-switcher.css" rel="stylesheet">*@
+
+<!-- Custom css -->
+<link href="/css/custom.css" rel="stylesheet">
+<div class="banner">
+
+    <!-- slideshow start -->
+    <!-- ================ -->
+    <div class="slideshow white-bg">
+
+        <!-- slider revolution start -->
+        <!-- ================ -->
+        <div class="slider-banner-container">
+            <div class="slider-banner-fullscreen">
+                <ul>
+                    <!-- slide 1 start -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on" data-title="Slide 1">
+
+                        <!-- main image -->
+                        <img src="~/Content/Images/slider-3-slide-1.jpg" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                        <!-- Translucent background -->
+                        <div class="tp-caption light-translucent-bg"
+                             data-x="center"
+                             data-y="bottom"
+                             data-speed="800"
+                             data-start="0"
+                             style="background-color:rgba(255,255,255,0.3);">
+                        </div>
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption very_large_text black sfl tp-resizeme"
+                             data-x="center"
+                             data-y="70"
+                             data-speed="600"
+                             data-start="0"
+                             data-end="10000"
+                             data-endspeed="600">
+                            Welcome To Code2Night
+                        </div>
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption sfr small_thin_dark text-center tp-resizeme"
+                             data-x="center"
+                             data-y="170"
+                             data-speed="600"
+                             data-start="0"
+                             data-end="10000"
+                             data-endspeed="600">
+                            Get Tutorials and Online Videos for tricks and problems related to programming in Asp.Net,SQl and MVC
+                        </div>
+
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption tp-resizeme sfl"
+                             data-x="center"
+                             data-y="350"
+                             data-speed="600"
+                             data-start="0"
+                             data-end="10000"
+                             data-endspeed="600">
+                            <a href="@Url.Action("ContactUs","Blog")" class="btn btn-dark btn-lg">Contact Us <i class="fa fa-angle-double-right pl-10"></i></a>
+                        </div>
+
+                    </li>
+                    <!-- slide 1 end -->
+                    <!-- slide 2 start -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on" data-title="Slide 2">
+
+                        <!-- main image -->
+                        <img src="~/Content/images/slider-3-slide-2.jpg" alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                        <!-- Translucent background -->
+                        <div class="tp-caption light-translucent-bg"
+                             data-x="center"
+                             data-y="bottom"
+                             data-speed="800"
+                             data-start="0"
+                             style="background-color:rgba(255,255,255,0.3);">
+                        </div>
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption very_large_text black sfl tp-resizeme"
+                             data-x="center"
+                             data-y="70"
+                             data-speed="600"
+                             data-start="0"
+                             data-end="10000"
+                             data-endspeed="600">
+                            Welcome To Code2Night
+                        </div>
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption sfr small_thin_dark text-center tp-resizeme"
+                             data-x="center"
+                             data-y="170"
+                             data-speed="600"
+                             data-start="0"
+                             data-end="10000"
+                             data-endspeed="600">
+                            Share and Write your own Blogs Embed you tube videos and share your tutorials.
+                        </div>
+
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption sfl tp-resizeme"
+                             data-x="center"
+                             data-y="300"
+                             data-speed="600"
+                             data-start="0"
+                             data-end="10000"
+                             data-endspeed="600">
+                            <a href="@Url.Action("Blogs","Blog")" class="btn btn-dark btn-lg">Blogs <i class="fa fa-angle-double-right pl-10"></i></a>
+                        </div>
+
+                    </li>
+                    <!-- slide 2 end -->
+
+                </ul>
+            </div>
+        </div>
+        <!-- slider revolution end -->
+
+    </div>
+    <!-- slideshow end -->
+
+</div>
+
+<!-- page-top end -->
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container default-bg">
+
+    <!-- main start -->
+    <!-- ================ -->
+    <div class="main">
+        <div class="container">
+            <div class="call-to-action">
+                <div class="row">
+                    <div class="col-md-12">
+                        <blockquote class="inline">
+                            <p class="margin-clear">Never study to be successful, study for self-efficiency. Don’t run behind success. Follow behind excellence, success will come all way behind you.</p>
+                            <footer style="color:white;font-size:20px;"><cite title="Source Title">3 Idiots </cite></footer>
+                        </blockquote>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main end -->
+
+</section>
+
+<div class="gray-bg text-muted footer-top clearfix">
+    <div class="container">
+        <div class="row">
+            @*<div class="col-md-6">
+                    <div class="owl-carousel clients">
+                        <div class="client">
+                            <a href="#"><img src="../Content/Images/client-1.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="../Content/Images/client-2.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="../Content/Images/client-3.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="../Content/Images/client-4.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="../Content/Images/client-5.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="../Content/Images/client-6.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="../Content/Images/client-7.png" alt=""></a>
+                        </div>
+                        <div class="client">
+                            <a href="#"><img src="../Content/Images/client-8.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>*@
+            
+        </div>
+    </div>
+</div>
+<!-- section end -->
+
+@*@.Optimization.Scripts.Render("~/bundles/LayoutHome")*@
