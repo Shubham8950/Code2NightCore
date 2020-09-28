@@ -228,7 +228,7 @@ namespace Code2Night.Controllers
             return PartialView("_Tags", blog);
         }
 
-        [AuthenticateUser]
+        
         public IActionResult Author(string id)
         {
             var blog = new MyBlogs

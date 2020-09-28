@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
 
 namespace Code2Night
@@ -48,7 +49,7 @@ namespace Code2Night
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => false;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
             });
 
             services.AddMvc().AddSessionStateTempDataProvider();
@@ -125,15 +126,22 @@ namespace Code2Night
                 app.UseStaticFiles(new StaticFileOptions
                 {
                     FileProvider = new PhysicalFileProvider(Path.Combine(CurrentDirectoryHelpers.GetServerPath(), "Uploads")),
-                    RequestPath = "/Uploads"
+                    RequestPath = "/Uploads",
+                    OnPrepareResponse = ctx =>
+                    {
+                        const int durationInSeconds = 60 * 60 * 24*365;
+                        ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                            "public,max-age=" + durationInSeconds;
+                    }
                 });
-                app.UseCookiePolicy();
+           
+            app.UseCookiePolicy();
                 ConnectionString = Configuration["ConnectionStrings:ConnectionString"];
                 app.UseMvc(routes =>
                 {
                     routes.MapRoute(
                         name: "default",
-                        template: "{controller=Users}/{action=Login}/{id?}");
+                        template: "{controller=Blog}/{action=index}/{id?}");
                 });
            
         }
