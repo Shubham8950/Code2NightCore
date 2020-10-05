@@ -19,6 +19,17 @@ namespace Code2Night.DAL.Repository
             return blog.ToList();
         }
 
+        public List<Blog> GetFilterBlog(int? pageNumber=1, int pageSize=3,string search="", bool IsFilter=false)
+        {
+            var DynamicParameter = new DynamicParameters();
+            DynamicParameter.Add("@pageSize", pageSize);
+            DynamicParameter.Add("@IsFilter", IsFilter);
+            DynamicParameter.Add("@pageNumber", pageNumber);
+            DynamicParameter.Add("@search", search);
+            var blog = GetList("sprBlogFilter", DynamicParameter);
+            return blog.ToList();
+        }
+
         public Blog GetBlogsById(int Id)
         {
             return GetTableById("sprBlogs", "BlogsById", Id).DataTableToList<Blog>().FirstOrDefault();

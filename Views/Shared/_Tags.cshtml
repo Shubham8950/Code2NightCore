@@ -5,7 +5,7 @@
         foreach (var item in Model.Tags.Take(20))
         {
         <div class="tag">
-            <a href="~/Blog/Tags/@item">@item</a>
+            <a href="~/Blog/Tags/@item">@item.Replace("-", " ")</a>
         </div>
 
         }

@@ -68,7 +68,6 @@ F:\Code2NightCore\Code2Night\Code2NightCore\bin\Debug\netcoreapp2.1\Code2Night.d
 F:\Code2NightCore\Code2Night\Code2NightCore\bin\Debug\netcoreapp2.1\Code2Night.pdb
 F:\Code2NightCore\Code2Night\Code2NightCore\bin\Debug\netcoreapp2.1\Code2Night.Views.dll
 F:\Code2NightCore\Code2Night\Code2NightCore\bin\Debug\netcoreapp2.1\Code2Night.Views.pdb
-F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.csprojAssemblyReference.cache
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.AssemblyInfoInputs.cache
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.AssemblyInfo.cs
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.csproj.CoreCompileInputs.cache
@@ -117,3 +116,4 @@ F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.d
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.pdb
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.genruntimeconfig.cache
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.csproj.CopyComplete
+F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.csprojAssemblyReference.cache

@@ -79,7 +79,26 @@
 <script>
     var Login=function()
     {
-
+        if ($("#UserName").val() == "") {
+            Swal.fire({
+                position: 'top-center',
+                type: 'info',
+                title: "Please Enter UserName !",
+                showConfirmButton: true,
+                timer: 3000
+            });
+            return false;
+        }
+        if ($("#Password").val() == "") {
+            Swal.fire({
+                position: 'top-center',
+                type: 'info',
+                title: "Please Enter Password !",
+                showConfirmButton: true,
+                timer: 3000
+            });
+            return false;
+        }
         var promises = GetAjaxDataPromise('@Url.Action("Login", "Users")', { UserName: $("#UserName").val(), Password: $("#Password").val(), Remember: $("#Remember").is("checked") });
         promises.done(function (response) {
             console.log(response);

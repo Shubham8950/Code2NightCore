@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114851264-8"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-114851264-8');
-    </script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-114851264-8');
+        </script>
     <title>@ViewBag.Title</title>
 
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.MetaDescription)))
@@ -69,138 +69,63 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Content/images/favicon.ico">
-    <script asp-append-version="true" src="~/plugins/sweetalert2/sweetalert2.min.js"></script>
-    <link rel="stylesheet" asp-append-version="true" href="/css/boootstrap.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/plugins/magnific-popup/magnific-popup.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/css/animate.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/css/animations.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/fonts/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/plugins/owl-carousel/owl.carousel.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/fonts/fontello/css/fontello.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/Tags/bootstrap-tokenfield.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/css/style.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/css/custom.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/css/JqueryUI.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/plugins/summernote/summernote.min.css" />
-    <link rel="stylesheet" asp-append-version="true" href="/plugins/sweetalert2/sweetalert2.min.css" />
 
-    <script asp-append-version="true" src="/plugins/jquery.min.js"></script>
-    <script asp-append-version="true" src="/js/summernote.js"></script>
-
-    <style>
-
-        .object-non-visible {
-            opacity: 1 !important;
-            filter: alpha(opacity=0);
-        }
-
-        #logo {
-            font-size: 29px;
-            background: -webkit-linear-gradient(#e84c3d, #e84c3d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-top: 10px;
-        }
-
-        .masonry-grid .blogpost h1.title {
-            font-size: 24px;
-            font-weight: 500;
-        }
-
-        .loader {
-            border: 16px solid #f3f3f3; /* Light grey */
-            border-top: 16px solid #3498db; /* Blue */
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-        }
-
-        .loadersmallbg {
-            background: rgba(0, 0, 0, .2);
-            height: auto;
-            width: 100%;
-            position: fixed;
-            left: 0px;
-            right: 0px;
-            top: 0px;
-            bottom: 0px;
-            z-index: 100;
-        }
-
-        .loadersmall {
-            border: 5px solid #f3f3f3;
-            -webkit-animation: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-            border-top: 5px solid #555;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            z-index: 999;
-            position: fixed;
-            left: 0px;
-            right: 0;
-            margin: auto;
-            top: 250px;
-        }
-
-        .bg-gr {
-            background: rgba(191,191,191,0.6);
-            width: 100%;
-            padding: 0px;
-            position: fixed;
-            z-index: 777;
-            height: 100%;
-            left: 0px;
-            right: 0;
-            top: 0;
-        }
-
-        @@keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-    <script>
-        var ShowLoader = function () {
-            $("#DivLoader_SMS").show();
-        }
-        var HideLoader = function () {
-            $("#DivLoader_SMS").hide();
-        }
-    </script>
-
-
-    @*<environment include="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-                  crossorigin="anonymous"
-                  integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
-        </environment>
-        <link rel="stylesheet" href="~/css/site.css" />*@
+    <link href="~/css/layouthome.min.css" asp-append-version="true" rel="stylesheet" />
+    <script asp-append-version="true" src="~/layoutTop.js"></script>
 </head>
 <body>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2  col-sm-6">
+                    <div class="header-top-first clearfix">
+                        <ul class="social-links clearfix hidden-xs">
+                            <li class="twitter"><a target="_blank" href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li class="skype"><a target="_blank" href="http://www.skype.com/"><i class="fa fa-skype"></i></a></li>
+                            <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                            <li class="googleplus"><a target="_blank" href="http://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="youtube"><a target="_blank" href="http://www.youtube.com/"><i class="fa fa-youtube-play"></i></a></li>
+                            <li class="flickr"><a target="_blank" href="http://www.flickr.com/"><i class="fa fa-flickr"></i></a></li>
+                            <li class="facebook"><a target="_blank" href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                        <div class="social-links hidden-lg hidden-md hidden-sm">
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
+                                <ul class="dropdown-menu dropdown-animation">
+                                    <li class="twitter"><a target="_blank" href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="skype"><a target="_blank" href="http://www.skype.com/"><i class="fa fa-skype"></i></a></li>
+                                    <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                                    <li class="googleplus"><a target="_blank" href="http://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
+                                    <li class="youtube"><a target="_blank" href="http://www.youtube.com/"><i class="fa fa-youtube-play"></i></a></li>
+                                    <li class="flickr"><a target="_blank" href="http://www.flickr.com/"><i class="fa fa-flickr"></i></a></li>
+                                    <li class="facebook"><a target="_blank" href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-10 col-sm-6">
+                    <div id="header-top-second" class="clearfix" style="padding-top:5px">
+                        <div class="header-top-dropdown" style="margin:5px">
+                            <div class="btn-group dropdown">
+                                <div class="g-ytsubscribe" data-channelid="UCqQGuoVKuPacXpkoAFuZvew" data-layout="default" data-count="default"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="loadersmallbg" style="display: none"></div>
     <div class="bg-gr" id="DivLoader_SMS" clientidmode="Static" style="display: none">
         <div class="loadersmall"></div>
     </div>
-
     <header class="header fixed header-small clearfix">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-
-                    <!-- header-left start -->
-                    <!-- ================ -->
                     <div class="header-left clearfix">
                         <div class="logo">
                             <a href='@Url.Action("index","Blog")'><img id="logo" src="/Content/images/logo_2.png" title="Code2night" alt="Code2night"></a>
@@ -212,9 +137,9 @@
                 <div class="col-md-9">
                     <div class="header-right clearfix">
                         <div class="main-navigation animated">
-                             <nav class="navbar navbar-default" role="navigation">
+                            <nav class="navbar navbar-default" role="navigation">
                                 <div class="container-fluid">
-                                        <div class="navbar-header">
+                                    <div class="navbar-header">
                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
                                             <span class="sr-only">Toggle navigation</span>
                                             <span class="icon-bar"></span>
@@ -234,34 +159,34 @@
                                             <li>
                                                 @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
                                                 {
-                                                    <a href="@Url.Action("Login","Users")"> Post Blog </a>
+                                                <a href="@Url.Action("Login","Users")"> Post Blog </a>
                                                 }
                                                 else
                                                 {
-                                                    <a href="/Blog/AddBlog"> Post Blog </a>
+                                                <a href="/Blog/AddBlog"> Post Blog </a>
                                                 }
                                             </li>
                                             @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
                                             {
-                                                <li>
-                                                    <a href="@Url.Action("Register", "Users")">Register</a>
-                                                </li>
+                                            <li>
+                                                <a href="@Url.Action("Register", "Users")">Register</a>
+                                            </li>
                                             }
 
                                             @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
                                             {
-                                                <li>
-                                                    <a href="@Url.Action("Login", "Users")">Login</a>
-                                                </li>
+                                            <li>
+                                                <a href="@Url.Action("Login", "Users")">Login</a>
+                                            </li>
                                             }
                                             else
                                             {
-                                                <li>
-                                                    <a href="@Url.Action("MyBlogs", "Blog")">My Blogs</a>
-                                                </li>
-                                                <li>
-                                                    <a href="@Url.Action("Logout", "Blog")">Logout</a>
-                                                </li>
+                                            <li>
+                                                <a href="@Url.Action("MyBlogs", "Blog")">My Blogs</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Logout", "Blog")">Logout</a>
+                                            </li>
                                             }
 
                                             <li>
@@ -280,8 +205,6 @@
     <div class="">
         @RenderBody()
         <footer id="footer">
-            <!-- .footer start -->
-            <!-- ================ -->
             <div class="footer">
                 <div class="container" style="margin-bottom:1%">
                     <div class="row">
@@ -294,17 +217,31 @@
                                     <div class="col-sm-6">
                                         <p>Welcome To Code2night, A common place for sharing your programming knowledge,Blogs and Videos</p>
                                         <ul class="social-links circle">
-                                            <li class="facebook"><a target="_blank" href="http://www.facebook.com/sharer.php?u=https://code2night.com"><i class="fa fa-facebook"></i></a></li>
-                                            <li class="twitter"><a target="_blank" href="http://twitter.com/share?url=https://code2night.com"><i class="fa fa-twitter"></i></a></li>
-                                            <li class="reddit"><a target="_blank" href="http://reddit.com/submit?url=https://code2night.com&title=Code2Night"><i class="fa fa-reddit"></i></a></li>
-                                            <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=https://code2night.com"><i class="fa fa-linkedin"></i></a></li>
-                                            <li class="tumblr"><a target="_blank" href="http://www.tumblr.com/share/link?url=https://code2night.com&title=Code2Night"><i class="fa fa-tumblr"></i></a></li>
+                                            <li class="facebook">
+                                                <a target="_blank" href="http://www.facebook.com/sharer.php?u=https://code2night.com"><i class="fa fa-facebook"></i></a>
+                                            </li>
+                                            <li class="twitter">
+                                                <a target="_blank" href="http://twitter.com/share?url=https://code2night.com"><i class="fa fa-twitter"></i></a>
+                                            </li>
+                                            <li class="reddit">
+                                                <a target="_blank" href="http://reddit.com/submit?url=https://code2night.com&title=Code2Night"><i class="fa fa-reddit"></i></a>
+                                            </li>
+                                            <li class="linkedin">
+                                                <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=https://code2night.com"><i class="fa fa-linkedin"></i></a>
+                                            </li>
+                                            <li class="tumblr">
+                                                <a target="_blank" href="http://www.tumblr.com/share/link?url=https://code2night.com&title=Code2Night"><i class="fa fa-tumblr"></i></a>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
                                         <ul class="list-icons">
-                                            <li><i class="fa fa-map-marker pr-10"></i> Kurukshetra</li>
-                                            <li><i class="fa fa-envelope-o pr-10"></i> info@Code2night.com</li>
+                                            <li>
+                                                <i class="fa fa-map-marker pr-10"></i> Kurukshetra
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-envelope-o pr-10"></i> info@Code2night.com
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -316,11 +253,21 @@
                                 <h2>Links</h2>
                                 <nav>
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="@Url.Action("index","Users")">Home</a></li>
-                                        <li class="active"><a href="@Url.Action("index","Blog")">Blog</a></li>
-                                        <li><a href="@Url.Action("Login","Users")">Login</a></li>
-                                        <li><a href="@Url.Action("Register","Users")">SignUp</a></li>
-                                        <li><a href="@Url.Action("ContactUs","Users")">Contact</a></li>
+                                        <li>
+                                            <a href="@Url.Action("index","Users")">Home</a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="@Url.Action("index","Blog")">Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Login","Users")">Login</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Register","Users")">SignUp</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ContactUs","Users")">Contact</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -328,25 +275,23 @@
                         <div class="col-sm-6 col-md-3 col-md-offset-1 mb-1">
                             <div class="footer-content" style="max-height:227px;overflow:hidden">
                                 <h2>Popular Tags</h2>
-                                <div id="tagslist"></div>
-                                @*@Html.Action("TagsList", "Blog")*@
+                                <div id="tagsList"></div>
                             </div>
                         </div>
                         <div class="space-bottom hidden-lg hidden-xs"></div>
                     </div>
                 </div>
-                <!-- .footer end -->
-                <!-- .subfooter start -->
-                <!-- ================ -->
                 <div class="subfooter">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6">
-                                <p>Copyright © @DateTime.Now.Year  by <a>Code2night</a>. All Rights Reserved</p>
+                                <p>
+                                    Copyright © @DateTime.Now.Year  by
+                                    <a>Code2night</a>. All Rights Reserved
+                                </p>
                             </div>
                             <div class="col-md-6">
                                 <nav class="navbar navbar-default" role="navigation">
-                                    <!-- Toggle get grouped for better mobile display -->
                                     <div class="navbar-header">
                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-2">
                                             <span class="sr-only">Toggle navigation</span>
@@ -357,11 +302,21 @@
                                     </div>
                                     <div class="collapse navbar-collapse" id="navbar-collapse-2">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="@Url.Action("index","Users")">Home</a></li>
-                                            <li><a href="@Url.Action("index","Blog")">Blog</a></li>
-                                            <li><a href="@Url.Action("Login","Users")">Login</a></li>
-                                            <li><a href="@Url.Action("Register","Users")">SignUp</a></li>
-                                            <li><a href="@Url.Action("ContactUs","Users")">Contact</a></li>
+                                            <li>
+                                                <a href="@Url.Action("index","Users")">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("index","Blog")">Blog</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Login","Users")">Login</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Register","Users")">SignUp</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("ContactUs","Users")">Contact</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -372,36 +327,13 @@
             </div>
         </footer>
     </div>
-
-    <script asp-append-version="true" src="/bootstrap/js/bootstrap.min.js"></script>
-    <script asp-append-version="true" src="/plugins/modernizr.js"></script>
+    <script asp-append-version="true" src="~/js/code.min.js"></script>
+    <script asp-append-version="true" src="/js/custom.js"></script>
+    <script asp-append-version="true" src="~/LayoutFinal.min.js"></script>
     <script asp-append-version="true" src="/plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script asp-append-version="true" src="/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-    <script asp-append-version="true" src="/plugins/isotope/isotope.pkgd.min.js"></script>
-    <script asp-append-version="true" src="/plugins/owl-carousel/owl.carousel.js"></script>
-    <script asp-append-version="true" src="/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script asp-append-version="true" src="/plugins/jquery.appear.js"></script>
-    <script asp-append-version="true" src="/plugins/jquery.countTo.js"></script>
-    <script asp-append-version="true" src="/plugins/jquery.parallax-1.1.3.js"></script>
-    <script asp-append-version="true" src="/plugins/jquery.browser.js"></script>
-    <script asp-append-version="true" src="/plugins/SmoothScroll.js"></script>
-    <script asp-append-version="true" src="/js/custom.js"></script>
     <script asp-append-version="true" src="/js/template.js"></script>
-
-    <script asp-append-version="true" src="/Sharee.js"></script>
-    <script>
-function LoadPartialView(url, elem, postData) {
-
-            $.post(url, postData, function (result, status) {
-                $("#" + elem).html('');
-                $("#" + elem).html(result);
-
-            });
-        }
-        $(document).ready(function () {
-           LoadPartialView('@Url.Action("TagsList", "Blog")', "tagslist", {});
-        })
-    </script>
-    @RenderSection("Scripts", required: false)
+    <script asp-append-version="true" src="~/js/BlogIndex.min.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

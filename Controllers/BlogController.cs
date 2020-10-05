@@ -28,9 +28,8 @@ namespace Code2Night.Controllers
         {
             var blog = new MyBlogs
             {
-                BlogsList = _blogrepo.GetBlogs().ToList()
+                BlogsList = _blogrepo.GetFilterBlog(1, 3, "", false).ToList()
             };
-            //CreateSiteMaps();
             return View("index", blog);
         }
 
@@ -38,9 +37,19 @@ namespace Code2Night.Controllers
         {
             var blog = new MyBlogs
             {
-                BlogsList = _blogrepo.GetBlogs().ToList()
+                BlogsList = _blogrepo.GetFilterBlog(1,3,"",false).ToList()
             };
             return PartialView("_BlogsList", blog);
+        }
+
+        [HttpPost]
+        public ActionResult FilterBlog(int? pageNumber,string search,bool IsFilter)
+        {
+            var model = new MyBlogs
+            {
+                BlogsList = _blogrepo.GetFilterBlog(pageNumber , 3, search,true).ToList()
+            };
+            return PartialView("_BlogsList", model);
         }
 
         [AuthenticateUser]
@@ -88,7 +97,7 @@ namespace Code2Night.Controllers
                 var NewListItems = new List<string>();
                 foreach (var item in items)
                 {
-                    NewListItems.Add(item.Trim().Replace(".", ""));
+                    NewListItems.Add(item.Trim().Replace(".", "").Replace(" ","-"));
                 }
                 blog.Tags = string.Join(",", NewListItems);
             }
@@ -174,10 +183,14 @@ namespace Code2Night.Controllers
             foreach (var blog in myblogs)
             {
                 var body = "";
-                using (StreamReader reader = new StreamReader(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + blog.Id + ".txt"))
+                if(System.IO.File.Exists(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + blog.Id + ".txt"))
                 {
-                    body = reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + blog.Id + ".txt"))
+                    {
+                        body = reader.ReadToEnd();
+                    }
                 }
+                
                 blog.BlogBody = body;
             }
             return View(myblogs);

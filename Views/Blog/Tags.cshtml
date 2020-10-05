@@ -35,7 +35,7 @@
                 <h3 class="page-title">Blog results for 
                 @if (!string.IsNullOrEmpty(Model.Tag))
                 {
-                   @: Tags - <span style="background-color:#e84c3d;padding:4px;color: white;font-size: 18px;">#@Model.Tag </span> </h3>
+                   @: Tags - <span style="background-color:#e84c3d;padding:4px;color: white;font-size: 18px;">#@Model.Tag.Replace("-"," ") </span> </h3>
                 }
                 else
                 {
@@ -69,7 +69,7 @@
                                                 <h2 class="title"><a href="~/Blog/MyBlog/@blog.BlogUrl">@blog.Title</a></h2>
                                                 <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="~/Blog/Author/@blog.AuthorId-@blog.AuthorName">@blog.AuthorName</a></div>
                                             </header>
-                                            <p>@Html.Raw(blog.BlogBody)</p>
+                                            <p>@Html.Raw(blog.BlogIntroduction)</p>
                                         </div>
                                     </div>
                                     <footer class="clearfix">
@@ -78,7 +78,7 @@
                                             <li><i class="fa fa-tags pr-5"></i>
                                             @foreach (var str in blog.Tags.Split(',').ToList())
                                             { 
-                                                <a href="~/Blog/Tags/@str">@str @(blog.Tags.Split(',').ToList().IndexOf(str).Equals(blog.Tags.Split(',').ToList().Count-1)?"":",")</a>
+                                                <a href="~/Blog/Tags/@str">@str.Replace("-", " ") @(blog.Tags.Split(',').ToList().IndexOf(str).Equals(blog.Tags.Split(',').ToList().Count-1)?"":",")</a>
                                             }
                                             </li>
                                         </ul>

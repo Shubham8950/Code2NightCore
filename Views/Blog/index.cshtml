@@ -15,10 +15,10 @@
         display: inline-block;
         word-break: break-all;
     }
-    .blogpost footer ul.links li a:nth-of-type(n+3){
+
+    .blogpost footer ul.links li a:nth-of-type(n+3) {
         display: none;
     }
-       
 </style>
 <script>
     $(document).ready(function () {
@@ -38,52 +38,38 @@
     </div>
 </div>
 <section class="main-container">
-    <div class="container">
+    <div class="container" id="container">
         <div class="row">
+
             <div class="main col-md-12">
-                <h1 class="page-title">Latest Blogs</h1>
-                <div class="separator-2"></div>
-                <div>
-                    <div id="lvCandidatestbl" class="masonry-grid row">
-                        <div id="blogslist">
-                            <partial name="_BlogsList" model="Model" />
+                <div class="row" style="margin-bottom: 55px;">
+                    <div class="col-md-9 col-sm-12 mt-1">
+                        <h1 class="page-title">Latest Blogs</h1>  <input type="hidden" id="hdnIsFilter" />
+                        <input type="hidden" id="hdnTotalRecords" value="@(Model.BlogsList.Any()?Model.BlogsList.FirstOrDefault().TotalRecords:0)" />
+                        <input type="hidden" id="pagenumber" value="1" />
+                        <div class="separator-2"></div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 mt-1 d-flex" style="display: flex;margin-top: 20px;max-width: 368px;
+">
+                        <div class="form-group" style="width: 93%">
+                            <input type="text" id="txtsearchblog" class="form-control" style="float:right;position:absolute" onblur="SearchBlogs()" placeholder="Search">
+                            <i class="fa fa-search form-control-feedback"></i>
                         </div>
                     </div>
                 </div>
+                <div>
+                    <div id="blogslist" class="masonry-grid row">
+                          <partial name="_BlogsList" model="Model" />
+                    </div>
+                    <div class="col-md-12 text-center" id="loader" style="display:none">
+                        <button class="buttonload btn btn-primary">
+                            <i class="fa fa-spinner fa-spin"></i>  Loading
+                        </button>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
         <div class="row" style="text-align:center"><div class="container"> <div style="margin:auto auto" id="pagination"></div></div></div>
     </div>
 </section>
 
-<script>
-    $(document).ready(function () {
-        //paginationTable();
-       // LoadPartialView('@Url.Action("BindBlogs","Blog")', "blogslist", {});
-        //paginationTable();
-    });
-    function LoadPartialView(url, elem, postData) {
-        ShowLoader();
-        $.post(url, postData, function (result, status) {
-            $("#" + elem).html('');
-            $("#" + elem).html(result);
-            HideLoader();
-        });
-    }
-     function paginationTable() {
-        var items = $("#lvCandidatestbl #mydiv");
-        var numItems = items.length;
-        var perPage = 9;
-        items.slice(perPage).hide();
-        $("#pagination").pagination({
-            items: numItems,
-            itemsOnPage: perPage,
-            cssStyle: "light-theme",
-            onPageClick: function (pageNumber) {
-                var showFrom = perPage * (pageNumber - 1);
-                var showTo = showFrom + perPage;
-                items.hide().slice(showFrom, showTo).show();
-            }
-        });
-    }
-</script>

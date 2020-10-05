@@ -154,7 +154,7 @@
             {
                 foreach (var str in Model.MyBlog.Tags.Split(',').ToList())
                 {
-                    <a itemprop="url" href="~/Blog/Tags/@str">@str @(Model.MyBlog.Tags.Split(',').ToList().IndexOf(str).Equals(Model.MyBlog.Tags.Split(',').ToList().Count - 1) ? "" : ",")</a>
+                    <a itemprop="url" href="~/Blog/Tags/@str">@str.Replace("-", " ") @(Model.MyBlog.Tags.Split(',').ToList().IndexOf(str).Equals(Model.MyBlog.Tags.Split(',').ToList().Count - 1) ? "" : ",")</a>
                 }
             }
         </li>
@@ -188,7 +188,7 @@
                 @foreach (var str in List.Distinct().ToList())
                 {
                     <div class="tag" itemprop="keywords">
-                        <a href="~/Blog/Tags/@str">@str</a>
+                        <a href="~/Blog/Tags/@str">@str.Replace("-", " ")</a>
                     </div>
                 }
             </div>

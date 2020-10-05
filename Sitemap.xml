@@ -2,265 +2,283 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://www.code2night.com/blog/myblog/how-to-set-date-and-time-format-in-iis-manager</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/myblog/exception-handling-aspnet-core</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/myblog/exception-handling-and-creating-exception-logs-in-aspnet-mvc</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/myblog/stopping-browser-reload-on-saving-file-in-visual-studio-aspnet</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/myblog/mvc-crud-operation-with-interfaces-and-repository-pattern-with-adonet</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
+    <changefreq>always</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.code2night.com/blog/myblog/jquery-full-calender-integrated-with-aspnet</loc>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/myblog/slick-slider</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/myblog/mvc-crud-operation-with-entity-framework</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/myblog/a-non-fatal-error-occured-during-cluster-initialisation-in-postgre-sql</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/myblog/implement-stripe-payment-gateway-in-aspnet</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/how to set date and time format in iis manager</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/iis manager</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/iis</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/internet information services (iis) manager</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/internet information services (iis)</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/internet information services</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/error handling in aspnet core</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/exception handling asp net core</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/exception handling</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/exception handling asp net</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/aspnet</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/creating log files in mvc</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/error handling in mvc</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/exception handling in aspnet</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/handling exceptions and creating error logs in asp net mvc using base controller</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/net</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/aspnet</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/code2tonight</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/stopping browser reload on save</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/repository pattern with adonet in mvc</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/repository pattern with aspnet mvc and adonet</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/mvc crud operation</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.code2night.com/blog/tags/slick slider</loc>
-    <lastmod>2020-09-27</lastmod>
+    <loc>https://www.code2night.com/blog/tags/jquery full calender integrated with aspnet</loc>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.code2night.com/blog/tags/slick slider example</loc>
-    <lastmod>2020-09-27</lastmod>
+    <loc>https://www.code2night.com/blog/tags/slick-slider</loc>
+    <lastmod>2020-10-03</lastmod>
+    <changefreq>always</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.code2night.com/blog/tags/slick-slider-example</loc>
+    <lastmod>2020-10-03</lastmod>
+    <changefreq>always</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.code2night.com/blog/tags/responsive-carousels</loc>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/entity framework</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/mvc</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/postgre</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/pgadmin4</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/postgresql</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/a non-fatal error occured during cluster initialisation in postgre sql</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/implement stripe payment gateway in aspnet</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/using checkout in an aspnet web forms application</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/stripe payment</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/stripe payment integration</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.code2night.com/blog/tags/stripe integeration</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-10-03</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>

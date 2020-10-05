@@ -12,7 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
     <Content Remove="Views\Shared\View.cshtml" />
+    <Content Remove="wwwroot\js\LayoutTop.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\LayoutTop.js" />
   </ItemGroup>
 
 
@@ -40,6 +46,7 @@
 
 
   <ItemGroup>
+    <None Include="bundleconfig.json" />
     <None Include="wwwroot\adminplugins\bootstrap\js\bootstrap.bundle.js" />
     <None Include="wwwroot\adminplugins\bootstrap\js\bootstrap.bundle.js.map" />
     <None Include="wwwroot\adminplugins\bootstrap\js\bootstrap.bundle.min.js" />
@@ -186,6 +193,7 @@
     <None Include="wwwroot\build\scss\_toasts.scss" />
     <None Include="wwwroot\build\scss\_users-list.scss" />
     <None Include="wwwroot\build\scss\_variables.scss" />
+    <None Include="wwwroot\js\LayoutTop.js" />
     <None Include="wwwroot\plugins\summernote\font\summernote.eot" />
     <None Include="wwwroot\plugins\summernote\font\summernote.ttf" />
     <None Include="wwwroot\plugins\summernote\font\summernote.woff" />

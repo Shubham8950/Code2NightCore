@@ -23,6 +23,7 @@ namespace Code2Night.DAL.Common
         public int TotalView { get; set; }
         public string BlogIntroduction { get; set; }
         public string Document { get; set; }
+        public int TotalRecords { get; set; }
     }
 
     public class Tag
