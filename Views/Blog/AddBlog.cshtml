@@ -199,6 +199,25 @@
                                         <input type="file" name="documents" />
                                         @Html.HiddenFor(x => x.Document)
                                     </li>
+                                    <li style="margin-top:10px;">
+                                        <label for="Visibility">Visibility</label>
+                                        <div class="col-md-12 col-sm-12" style="display:flex">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="Visibility" id="Visibility" value="Private">
+                                                    Private
+                                                </label>
+
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="Visibility" id="Visibility" value="Publiic">
+                                                    Publiic
+                                                </label>
+                                                </div>
+
+                                            </div>
+</li>
                                     <li>
 
                                         <button id="submit" value="Submit Blog" class="btn btn-success">Submit Blog</button>
