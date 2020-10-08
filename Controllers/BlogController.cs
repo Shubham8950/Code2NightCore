@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Code2Night.Controllers
 {
@@ -17,39 +18,42 @@ namespace Code2Night.Controllers
         private  IUserRepo _userrepo;
         IHttpContextAccessor httpContextAccessor;
 
-        public BlogController(IBlog blogrepo, IUserRepo userRepo,IHttpContextAccessor context):base(new UserRepo(),new BlogRepo())
+        public BlogController(IBlog blogrepo, IUserRepo userRepo,IHttpContextAccessor context):base(new BlogRepo())
         {
             _blogrepo = blogrepo;
             _userrepo = userRepo;
             httpContextAccessor = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var list = await _blogrepo.GetFilterBlog(1, 3, "", false);
             var blog = new MyBlogs
             {
-                BlogsList = _blogrepo.GetFilterBlog(1, 3, "", false).ToList()
+                BlogsList = list.ToList()
             };
             return View("index", blog);
         }
 
-        public Microsoft.AspNetCore.Mvc.ActionResult BindBlogs()
+        public async Task<IActionResult> BindBlogs()
         {
+            var list = await _blogrepo.GetFilterBlog(1, 3, "", false);
             var blog = new MyBlogs
             {
-                BlogsList = _blogrepo.GetFilterBlog(1,3,"",false).ToList()
+                BlogsList = list.ToList()
             };
             return PartialView("_BlogsList", blog);
         }
 
         [HttpPost]
-        public ActionResult FilterBlog(int? pageNumber,string search,bool IsFilter)
+        public async Task<IActionResult> FilterBlog(int? pageNumber,string search,bool IsFilter)
         {
-            var model = new MyBlogs
+            var list = await _blogrepo.GetFilterBlog(1, 3, "", true);
+            var blog = new MyBlogs
             {
-                BlogsList = _blogrepo.GetFilterBlog(pageNumber , 3, search,true).ToList()
+                BlogsList = list.ToList()
             };
-            return PartialView("_BlogsList", model);
+            return PartialView("_BlogsList", blog);
         }
 
         [AuthenticateUser]
@@ -169,9 +173,10 @@ namespace Code2Night.Controllers
             }
             return Json(Convert.ToString(vReturnImagePath));
         }
+
         public IActionResult Logout()
         {
-             Encrypt.CloseUserSession(httpContextAccessor.HttpContext);
+            Encrypt.CloseUserSession(httpContextAccessor.HttpContext);
             return RedirectToAction("Login", "Users");
         }
 
@@ -180,19 +185,6 @@ namespace Code2Night.Controllers
         {
             var user = _userrepo.GetUserByUserId(Convert.ToInt32(this.GetUserIdCookieValue()));
             var myblogs = _blogrepo.GetMyBlogs(user);
-            foreach (var blog in myblogs)
-            {
-                var body = "";
-                if(System.IO.File.Exists(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + blog.Id + ".txt"))
-                {
-                    using (StreamReader reader = new StreamReader(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + blog.Id + ".txt"))
-                    {
-                        body = reader.ReadToEnd();
-                    }
-                }
-                
-                blog.BlogBody = body;
-            }
             return View(myblogs);
         }
 
@@ -209,7 +201,6 @@ namespace Code2Night.Controllers
                 body = reader.ReadToEnd();
             }
             blog.MyBlog.BlogBody = body;
-
             return View("BlogDetail", blog);
         }
 
@@ -217,18 +208,9 @@ namespace Code2Night.Controllers
         {
             var blog = new MyBlogs
             {
-                BlogsList = _blogrepo.GetBlogs().Where(x => x.Tags!=null && x.Tags.Contains(id, StringComparison.OrdinalIgnoreCase)).ToList(),
+                BlogsList = _blogrepo.GetBlogs().Where(x => x.Tags?.Contains(id, StringComparison.OrdinalIgnoreCase) == true).ToList(),
                 Tag = Sanitizer.GetSafeHtmlFragment(id)
             };
-            foreach (var blogDetail in blog.BlogsList)
-            {
-                string body = "";
-                using (StreamReader reader = new StreamReader(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + blogDetail.Id + ".txt"))
-                {
-                    body = reader.ReadToEnd();
-                }
-                blogDetail.BlogBody = body;
-            }
             return View("Tags", blog);
         }
 
@@ -241,23 +223,13 @@ namespace Code2Night.Controllers
             return PartialView("_Tags", blog);
         }
 
-        
         public IActionResult Author(string id)
         {
             var blog = new MyBlogs
             {
-                BlogsList = _blogrepo.GetBlogs().Where(x => x.AuthorId.Contains(id.Split('-').First())).ToList(),
+                BlogsList = _blogrepo.GetBlogs().Where(x => x.AuthorId.Contains(id.Split('-')[0])).ToList(),
                 Author = id.Split('-').Last()
             };
-            foreach (var blogDetail in blog.BlogsList)
-            {
-                string body = "";
-                using (StreamReader reader = new StreamReader(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + blogDetail.Id + ".txt"))
-                {
-                    body = reader.ReadToEnd();
-                }
-                blogDetail.BlogBody = body;
-            }
             return View("Tags", blog);
         }
 
@@ -265,15 +237,6 @@ namespace Code2Night.Controllers
         public IActionResult Listing()
         {
             var GetBlogs = _blogrepo.GetBlogs();
-            foreach (var blogDetail in GetBlogs)
-            {
-                string body = "";
-                using (StreamReader reader = new StreamReader(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + blogDetail.Id + ".txt"))
-                {
-                    body = reader.ReadToEnd();
-                }
-                blogDetail.BlogBody = body;
-            }
             return View(GetBlogs);
         }
 

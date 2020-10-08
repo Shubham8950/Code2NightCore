@@ -6,6 +6,7 @@ using Code2Night.DAL.Common;
 using Dapper;
 using System.Data.SqlClient;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace Code2Night.DAL.Repository
 {
@@ -19,15 +20,14 @@ namespace Code2Night.DAL.Repository
             return blog.ToList();
         }
 
-        public List<Blog> GetFilterBlog(int? pageNumber=1, int pageSize=3,string search="", bool IsFilter=false)
+        public async Task<IEnumerable<Blog>> GetFilterBlog(int? pageNumber=1, int pageSize=3,string search="", bool IsFilter=false)
         {
             var DynamicParameter = new DynamicParameters();
             DynamicParameter.Add("@pageSize", pageSize);
             DynamicParameter.Add("@IsFilter", IsFilter);
             DynamicParameter.Add("@pageNumber", pageNumber);
             DynamicParameter.Add("@search", search);
-            var blog = GetList("sprBlogFilter", DynamicParameter);
-            return blog.ToList();
+            return await GetListAsync("sprBlogFilter", DynamicParameter);
         }
 
         public Blog GetBlogsById(int Id)

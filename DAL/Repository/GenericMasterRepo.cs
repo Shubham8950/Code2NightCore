@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Code2Night.DAL.Repository
 {
@@ -54,6 +55,14 @@ namespace Code2Night.DAL.Repository
             {
                 DapperCon.Open();
                 return db.Query<T>(spname, param, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public async Task<IEnumerable<T>> GetListAsync(string spname, DynamicParameters param)
+        {
+            using (IDbConnection db = DapperCon)
+            {
+                DapperCon.Open();
+                return await db.QueryAsync<T>(spname, param, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
             }
         }
 

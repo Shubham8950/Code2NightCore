@@ -50,7 +50,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>@Model.DashBoardItem.LifeTimeViews</h3>
+                        <h3>@(Model.DashBoardItem.LifeTimeViews>1000? ((decimal)Model.DashBoardItem.LifeTimeViews/1000).ToString("0.0")+"k": Model.DashBoardItem.LifeTimeViews.ToString())</h3>
                         <p>Life Time Views</p>
                     </div>
                     <div class="icon">
@@ -64,7 +64,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>@Model.DashBoardItem.MonthlyViews</h3>
+                        <h3>@(Model.DashBoardItem.MonthlyViews>1000? ((decimal)Model.DashBoardItem.MonthlyViews/1000).ToString("0.0")+"k": Model.DashBoardItem.MonthlyViews.ToString())</h3>
                         <p>This Month</p>
                     </div>
                     <div class="icon">

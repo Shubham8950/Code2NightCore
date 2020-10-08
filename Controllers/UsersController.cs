@@ -12,7 +12,7 @@ namespace Code2Night.Controllers
         private IUserRepo _userrepo;
         HomeViewModel home = new HomeViewModel();
 
-        public UsersController(IUserRepo userrepo):base(new UserRepo(),new BlogRepo())
+        public UsersController(IUserRepo userrepo):base(new BlogRepo())
         {
             _userrepo = userrepo;
         }
@@ -53,8 +53,6 @@ namespace Code2Night.Controllers
                 };
                 Response.Cookies.Append("UserId", "", option);
             }
-
-           // HttpContext.Session.Clear();
         }
         public ActionResult SqlServerTutorial()
         {

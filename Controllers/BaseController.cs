@@ -18,14 +18,13 @@ namespace Code2Night.Controllers
     {
         public const string Urls = "https://www.code2night.com/Blog/MyBlog/";
         public const string TagUrl = "https://www.code2night.com/Blog/Tags/";
-        private IUserRepo _userrepo;
         private IBlog _blogrepo;
 
-        public BaseController(IUserRepo userrepo, IBlog blogrepo)
+        public BaseController(IBlog blogrepo)
         {
-            _userrepo = userrepo;
-            _blogrepo = blogrepo;
+           _blogrepo = blogrepo;
         }
+
         public void SaveCookie(string key, string value)
         {
             CookieOptions option = new CookieOptions
@@ -34,15 +33,11 @@ namespace Code2Night.Controllers
             };
             Response.Cookies.Append(key, value, option);
         }
-        public string GetUserCookieValue(string Keyname)
+
+        public string GetUserCookieValue(string keyName)
         {
-            var cookies = Request.Cookies[Keyname];
-            if (cookies == null)
-            {
-                return "0";
-            }
-            else
-                return Convert.ToString(cookies);
+            var cookies = Request.Cookies[keyName];
+            return cookies == null ? "0" : Convert.ToString(cookies);
         }
 
         public void ErrorLog(string msg)
@@ -81,18 +76,22 @@ namespace Code2Night.Controllers
                 ErrorLog(ex.Message);
             }
         }
+
         public string GetUserIdCookieValue()
         {
             return GetUserCookieValue("UserId");
         }
+
         public string GetUserEmailCookieValue()
         {
             return GetUserCookieValue("Email");
         }
+
         public string GetUserRoleCookieValue()
         {
             return GetUserCookieValue("Role");
         }
+
         public void SaveUserCookies(Users user)
         {
             SaveCookie("Email", user.Email);
@@ -119,18 +118,8 @@ namespace Code2Night.Controllers
 
         public bool ISValidLogin(ActionExecutingContext context)
         {
-            string value = default;
             var cookies = context.HttpContext.Request.Cookies["UserId"];
-            if (cookies == null)
-            {
-                value = "0";
-                return false;
-            }
-            else
-            {
-                value = Convert.ToString(cookies);
-                return true;
-            }
+            return cookies != null;
         }
     }
 
@@ -185,7 +174,7 @@ namespace Code2Night.Controllers
             if (Convert.ToString(filterContext.HttpContext.Request.Query["q"]) != "")
             {
                 string encryptedQueryString = Convert.ToString(filterContext.HttpContext.Request.Query["q"]);
-                string decrptedString = Decrypt(encryptedQueryString.ToString());
+                string decrptedString = Decrypt(encryptedQueryString);
                 string[] paramsArrs = decrptedString.Split('?');
 
                 for (int i = 0; i < paramsArrs.Length; i++)
@@ -200,21 +189,13 @@ namespace Code2Night.Controllers
             }
             base.OnActionExecuting(filterContext);
         }
+
         public bool ISValidLogin(ActionExecutingContext context)
         {
-            string value = default;
             var cookies = context.HttpContext.Request.Cookies["UserId"];
-            if (cookies == null)
-            {
-                value = "0";
-                return false;
-            }
-            else
-            {
-                value = Convert.ToString(cookies);
-                return true;
-            }
+            return cookies != null;
         }
+
         private string Decrypt(string cipherText)
         {
             string EncryptionKey = "JUDHAAUMAKV2SPBNI99212";

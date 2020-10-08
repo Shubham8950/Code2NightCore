@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Code2Night.DAL.Common;
 
 namespace Code2Night.DAL.Interfaces
@@ -6,7 +7,7 @@ namespace Code2Night.DAL.Interfaces
     public interface IBlog
     {
         List<Blog> GetBlogs();
-        List<Blog> GetFilterBlog(int? pageNumber, int pageSize, string search,bool IsFilter);
+        Task<IEnumerable<Blog>> GetFilterBlog(int? pageNumber, int pageSize, string search,bool IsFilter);
         string AddBlog(Blog blog);
         List<Blog> GetMyBlogs(Users user);
         List<Tag> Tag();

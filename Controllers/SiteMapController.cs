@@ -12,7 +12,7 @@ namespace Code2Night.Controllers
     {
         private IBlog _blogrepo;
 
-        public SiteMapController(IBlog blogrepo) : base(new UserRepo(), new BlogRepo())
+        public SiteMapController(IBlog blogrepo) : base( new BlogRepo())
         {
             _blogrepo = blogrepo;
         }
