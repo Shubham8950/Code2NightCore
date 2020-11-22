@@ -7,10 +7,11 @@ using Code2Night.DAL.Common;
 
 namespace Code2Night.DAL.Interfaces
 {
-   public  interface ITutorial
+    public interface ITutorial
     {
-        void AddTutorials(Tutorial blog);
-        List<Tutorial> ListTutorial(string technology);
-        List<Tutorial> gettutorials();
+        List<Tutorial> TutorialsList();
+        List<Article> ArticleList(string blogUrl);
+        Article Article(int blogUrl);
+
     }
 }

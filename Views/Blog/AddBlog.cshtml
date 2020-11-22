@@ -199,27 +199,24 @@
                                         <input type="file" name="documents" />
                                         @Html.HiddenFor(x => x.Document)
                                     </li>
-                                    <li style="margin-top:10px;">
+                                    <li style="margin-top:10px;height:100px">
                                         <label for="Visibility">Visibility</label>
-                                        <div class="col-md-12 col-sm-12" style="display:flex">
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="Visibility" id="Visibility" value="Private">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="radio" style="float:left">
+                                                <label for="Visibility2" >
+                                                    <input type="radio" name="Visibility" @(Model.IsPrivate?"checked":"") id="Visibility2" value="Private">
                                                     Private
                                                 </label>
-
                                             </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="Visibility" id="Visibility" value="Publiic">
-                                                    Publiic
+                                            <div class="radio" style=" float: left; margin-top: 9px; margin-left: 10px; ">
+                                                <label for="Visibility1">
+                                                    <input type="radio" name="Visibility" @(!Model.IsPrivate?"checked":"") id="Visibility1" value="Public">
+                                                    Public
                                                 </label>
-                                                </div>
-
                                             </div>
-</li>
+                                        </div>
+                                    </li>
                                     <li>
-
                                         <button id="submit" value="Submit Blog" class="btn btn-success">Submit Blog</button>
                                     </li>
                                 </ul>

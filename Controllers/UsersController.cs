@@ -9,18 +9,20 @@ namespace Code2Night.Controllers
 {
     public class UsersController : BaseController
     {
+
         private IUserRepo _userrepo;
         HomeViewModel home = new HomeViewModel();
-
-        public UsersController(IUserRepo userrepo):base(new BlogRepo())
+        private readonly IBlog _blogrepo;
+        public UsersController(IUserRepo userrepo, IBlog blog) : base(new BlogRepo())
         {
             _userrepo = userrepo;
+            _blogrepo = blog;
         }
-
         public IActionResult Index()
         {
             var list = _userrepo.GetUsers();
-            return View(home);
+            var GetBlogs = _blogrepo.GetBlogs();
+            return View(GetBlogs);
         }
 
         public IActionResult Login()

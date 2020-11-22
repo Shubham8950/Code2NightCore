@@ -39,6 +39,26 @@ namespace Code2Night.DAL.Repository
         {
             Connection.Delete(Id, "sprBlogs", "Delete", "Id");
         }
+        public List<Blog> ApprovedGetBlogs()
+        {
+            var DynamicParameter = new DynamicParameters();
+            DynamicParameter.Add("@Activity", "ApprovedListBlogFile");
+            var blog = GetList("sprBlogs", DynamicParameter);
+            return blog.ToList();
+        }
+        public string BlogIsApprovedUpdates(int Blogid)
+        {
+            bool IsApproved = false;
+            if (Blogid != 0)
+            {
+                IsApproved = true;
+            }
+            var com = new SqlCommand("BlogIsApprovedUpdate");
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@Id", Blogid);
+            com.Parameters.AddWithValue("@IsApproved", IsApproved);
+            return Connection.ExecuteNonQuery(com);
+        }
 
         public List<Blog> GetMyBlogs(Users user)
         {
@@ -78,6 +98,7 @@ namespace Code2Night.DAL.Repository
             adp.SelectCommand.Parameters.AddWithValue("@BlogIntroduction", blog.BlogIntroduction);
             adp.SelectCommand.Parameters.AddWithValue("@Document", blog.Document);
             adp.SelectCommand.Parameters.AddWithValue("@VideoEmbed", blog.VideoEmbed);
+            adp.SelectCommand.Parameters.AddWithValue("@IsPrivate", blog.IsPrivate);
             adp.SelectCommand.Parameters.AddWithValue("@Id", blog.Id);
             DataTable dt = new DataTable();
             adp.Fill(dt);

@@ -4,48 +4,33 @@ using System.Linq;
 
 using Code2Night.DAL.Interfaces;
 using Code2Night.DAL.Common;
+using Dapper;
 
 namespace Code2Night.DAL.Repository
 {
-    public class TutorialRepo//:ITutorial
+    public class TutorialRepo : GenericMasterRepo<Article>, ITutorial
     {
-        //private DataContexxt _context;
-        //MongoClient client = new MongoClient("mongodb://localhost:27017");
-        //IMongoDatabase data;
-        //public TutorialRepo(DataContexxt datacontext)
-        //{
-        //    data = client.GetDatabase("DbTestingMongo");
-        //    this._context = datacontext;
-        //}
+        public List<Tutorial> TutorialsList()
+        {
+            var DynamicParameter = new DynamicParameters();
+            var getAllCategoryList = GetTableById("GetAllCategoryList", "").DataTableToList<Tutorial>();
+            return getAllCategoryList.ToList();
+        }
 
-        //public void AddTutorials(Tutorial Topics)
-        //{
+        public List<Article> ArticleList(string blogUrl)
+        {
+            var DynamicParameter = new DynamicParameters();
+            DynamicParameter.Add("@topicUrl", blogUrl);
+            var blog = GetList("GetTutorialbyid", DynamicParameter);
+            return blog.ToList();
+        }
 
-        //    IMongoCollection<Tutorial> Topic = data.GetCollection<Tutorial>("TutorialTopic");
-        //    Topic.InsertOne(Topics);
-
-        //}
-
-        //public List<Tutorial> DisplyTopic(Users user)
-        //{
-        //    IMongoCollection<Tutorial> DisplayTopic = data.GetCollection<Tutorial>("TutorialTopic");
-        //    var myTopic = DisplayTopic.Find(new BsonDocument()).ToList().Where(x => x.user.Id.ToString() == user.Id.ToString()).ToList();
-        //    return myTopic;
-        //}
-        //public List<Tutorial> ListTutorial(string technology)
-        //{
-        //    IMongoCollection<Tutorial> DisplayTopic = data.GetCollection<Tutorial>("TutorialTopic");
-        //    var myTopic = DisplayTopic.Find(new BsonDocument()).ToList().Where(x => x.Technology.ToString() == technology).ToList();
-        //    return myTopic;
-
-        //}
-
-        //public List<Tutorial> gettutorials()
-        //{
-        //    IMongoCollection<Tutorial> topic = data.GetCollection<Tutorial>("TutorialTopic");
-        //    var topics = topic.Find(new BsonDocument()).ToList();
-        //    return topics;
-        //}
-
+        public Article Article(int id)
+        {
+            var DynamicParameter = new DynamicParameters();
+            DynamicParameter.Add("@id", id);
+            var blog = GetList("GetArticle", DynamicParameter);
+            return blog.ToList().FirstOrDefault();
+        }
     }
 }

@@ -19,5 +19,7 @@ namespace Code2Night.DAL.Interfaces
         string SaveUpdateItem(TodoItem todoItem);
         List<TodoItem> GetToDo();
         Blog GetBlogsById(int Id);
+        List<Blog> ApprovedGetBlogs();
+        string BlogIsApprovedUpdates(int Blogid);
     }
 }

@@ -84,7 +84,7 @@ namespace Code2Night.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddBlog(Blog blog, IFormFile documents)
+        public JsonResult AddBlog(Blog blog, IFormFile documents,string Visibility)
         {
             var file = "";
             if (documents?.Length > 0 && documents.FileName != "")
@@ -118,7 +118,8 @@ namespace Code2Night.Controllers
                 AuthorId = Convert.ToString(user.UserID),
                 BlogIntroduction = blog.BlogIntroduction,
                 Id=blog.Id,
-                Document = file
+                Document = file,
+                IsPrivate= Visibility=="Private"
             };
             var id = _blogrepo.AddBlog(myblog);
             if (blog.Id>0)
@@ -245,6 +246,24 @@ namespace Code2Night.Controllers
         {
             _blogrepo.BlogDelete(Blogid);
             return RedirectToAction("Listing");
+        }
+        [HttpGet]
+        public IActionResult BlogIsApprovedDelete(int Blogid)
+        {
+            _blogrepo.BlogDelete(Blogid);
+            return RedirectToAction("ApprovedBlogs");
+        }
+
+        public IActionResult BlogIsApprovedUpdate(int Blogid)
+        {
+            _blogrepo.BlogIsApprovedUpdates(Blogid);
+            return RedirectToAction("ApprovedBlogs");
+        }
+        [AdminAuthenticateUser]
+         public IActionResult ApprovedBlogs()
+        {
+            var GetBlogs = _blogrepo.ApprovedGetBlogs();
+            return View(GetBlogs);
         }
     }
 }

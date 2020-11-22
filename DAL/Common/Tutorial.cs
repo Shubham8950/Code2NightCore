@@ -6,12 +6,12 @@ namespace Code2Night.DAL.Common
 {
     public class Tutorial
     {
-        public object Id { get; set; }
+        public int topicid { get; set; }
 
-        public string TopicName { get; set; }
-        public string Technology { get; set; }
-        public Users user { get; set; }
+        public int categoryid { get; set; }
+        public string title { get; set; }
+        public string Image { get; set; }
 
-        public DateTime Topicdate { get; set; }
+        public string topicurl { get; set; }
     }
 }

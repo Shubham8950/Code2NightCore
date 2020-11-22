@@ -29,7 +29,7 @@ namespace Code2Night
         public Startup()
         {
         }
-
+       
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -50,6 +50,18 @@ namespace Code2Night
             services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<IFeedback, FeedbackRepo>();
             services.AddScoped<ISitemapGenerator, SitemapGenerator>();
+            services.AddScoped<ITutorial, TutorialRepo>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -101,7 +113,7 @@ namespace Code2Night
                 {
                     routes.MapRoute(
                         name: "default",
-                        template: "{controller=Blog}/{action=index}/{id?}");
+                        template: "{controller=Users}/{action=index}/{id?}");
                 });        
         }
     }

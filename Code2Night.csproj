@@ -9,49 +9,25 @@
 
   <ItemGroup>
     <Compile Remove="Scripts\**" />
-    <Compile Remove="wwwroot\bootstrap\**" />
     <Compile Remove="wwwroot\lib\**" />
-    <Compile Remove="wwwroot\plugins\jasny-bootstrap\**" />
-    <Compile Remove="wwwroot\plugins\jquery.countdown\**" />
-    <Compile Remove="wwwroot\plugins\magnific-popup\**" />
     <Compile Remove="wwwroot\plugins\morphext\**" />
-    <Compile Remove="wwwroot\plugins\owl-carousel\**" />
     <Compile Remove="wwwroot\plugins\rs-plugin-5\**" />
     <Compile Remove="wwwroot\plugins\summernote\lang\**" />
-    <Compile Remove="wwwroot\plugins\vide\**" />
     <Content Remove="Scripts\**" />
-    <Content Remove="wwwroot\bootstrap\**" />
     <Content Remove="wwwroot\lib\**" />
-    <Content Remove="wwwroot\plugins\jasny-bootstrap\**" />
-    <Content Remove="wwwroot\plugins\jquery.countdown\**" />
-    <Content Remove="wwwroot\plugins\magnific-popup\**" />
     <Content Remove="wwwroot\plugins\morphext\**" />
-    <Content Remove="wwwroot\plugins\owl-carousel\**" />
     <Content Remove="wwwroot\plugins\rs-plugin-5\**" />
     <Content Remove="wwwroot\plugins\summernote\lang\**" />
-    <Content Remove="wwwroot\plugins\vide\**" />
     <EmbeddedResource Remove="Scripts\**" />
-    <EmbeddedResource Remove="wwwroot\bootstrap\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
-    <EmbeddedResource Remove="wwwroot\plugins\jasny-bootstrap\**" />
-    <EmbeddedResource Remove="wwwroot\plugins\jquery.countdown\**" />
-    <EmbeddedResource Remove="wwwroot\plugins\magnific-popup\**" />
     <EmbeddedResource Remove="wwwroot\plugins\morphext\**" />
-    <EmbeddedResource Remove="wwwroot\plugins\owl-carousel\**" />
     <EmbeddedResource Remove="wwwroot\plugins\rs-plugin-5\**" />
     <EmbeddedResource Remove="wwwroot\plugins\summernote\lang\**" />
-    <EmbeddedResource Remove="wwwroot\plugins\vide\**" />
     <None Remove="Scripts\**" />
-    <None Remove="wwwroot\bootstrap\**" />
     <None Remove="wwwroot\lib\**" />
-    <None Remove="wwwroot\plugins\jasny-bootstrap\**" />
-    <None Remove="wwwroot\plugins\jquery.countdown\**" />
-    <None Remove="wwwroot\plugins\magnific-popup\**" />
     <None Remove="wwwroot\plugins\morphext\**" />
-    <None Remove="wwwroot\plugins\owl-carousel\**" />
     <None Remove="wwwroot\plugins\rs-plugin-5\**" />
     <None Remove="wwwroot\plugins\summernote\lang\**" />
-    <None Remove="wwwroot\plugins\vide\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -96,18 +72,6 @@
     <Content Remove="wwwroot\LayoutFinal.js" />
     <Content Remove="wwwroot\layouttopfixed.js" />
     <Content Remove="wwwroot\layouttopfixed.min.js" />
-    <Content Remove="wwwroot\plugins\jquery.appear.js" />
-    <Content Remove="wwwroot\plugins\jquery.browser.js" />
-    <Content Remove="wwwroot\plugins\jquery.countTo.js" />
-    <Content Remove="wwwroot\plugins\jquery.js" />
-    <Content Remove="wwwroot\plugins\jquery.knob.min.js" />
-    <Content Remove="wwwroot\plugins\jquery.parallax-1.1.3.js" />
-    <Content Remove="wwwroot\plugins\jquery.sharrre.min.js" />
-    <Content Remove="wwwroot\plugins\jquery.validate.js" />
-    <Content Remove="wwwroot\plugins\LayoutAfterTemplate.js" />
-    <Content Remove="wwwroot\plugins\LayoutAfterTemplate.min.js" />
-    <Content Remove="wwwroot\plugins\modernizr.js" />
-    <Content Remove="wwwroot\plugins\SmoothScroll.js" />
     <Content Remove="wwwroot\plugins\summernote\summernote-bs4.css" />
     <Content Remove="wwwroot\plugins\summernote\summernote-bs4.js" />
     <Content Remove="wwwroot\plugins\summernote\summernote-bs4.js.map" />
@@ -209,6 +173,8 @@
     <None Include="wwwroot\adminplugins\jquery\jquery.slim.js" />
     <None Include="wwwroot\adminplugins\jquery\jquery.slim.min.js" />
     <None Include="wwwroot\adminplugins\jquery\jquery.slim.min.map" />
+    <None Include="wwwroot\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\bootstrap\js\bootstrap.min.js" />
     <None Include="wwwroot\build\config\postcss.config.js" />
     <None Include="wwwroot\build\config\rollup.config.js" />
     <None Include="wwwroot\build\js\AdminLTE.js" />
@@ -307,6 +273,11 @@
     <None Include="wwwroot\build\scss\_toasts.scss" />
     <None Include="wwwroot\build\scss\_users-list.scss" />
     <None Include="wwwroot\build\scss\_variables.scss" />
+    <None Include="wwwroot\plugins\jasny-bootstrap\js\jasny-bootstrap.js" />
+    <None Include="wwwroot\plugins\jquery.countdown\jquery.countdown.js" />
+    <None Include="wwwroot\plugins\jquery.countdown\jquery.plugin.js" />
+    <None Include="wwwroot\plugins\magnific-popup\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\plugins\owl-carousel\owl.carousel.js" />
     <None Include="wwwroot\plugins\summernote\font\summernote.eot" />
     <None Include="wwwroot\plugins\summernote\font\summernote.ttf" />
     <None Include="wwwroot\plugins\summernote\font\summernote.woff" />
@@ -323,6 +294,7 @@
     <None Include="wwwroot\plugins\sweetalert2\sweetalert2.js" />
     <None Include="wwwroot\plugins\sweetalert2\sweetalert2.min.css" />
     <None Include="wwwroot\plugins\sweetalert2\sweetalert2.min.js" />
+    <None Include="wwwroot\plugins\vide\jquery.vide.js" />
   </ItemGroup>
 
 </Project>
