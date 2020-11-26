@@ -32,5 +32,14 @@ namespace Code2Night.DAL.Repository
             var blog = GetList("GetArticle", DynamicParameter);
             return blog.ToList().FirstOrDefault();
         }
+
+        public string InsertCategory(Category category)
+        {
+            var DynamicParameter = new DynamicParameters();
+            DynamicParameter.Add("@categoryname", category.categoryname);
+            string existsornot = Insert("insertcategory", DynamicParameter);
+            return existsornot;
+
+        }
     }
 }

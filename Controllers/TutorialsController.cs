@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Code2Night.DAL.Common;
+﻿using Code2Night.DAL.Common;
 using Code2Night.DAL.Interfaces;
+using Code2Night.DAL.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IO;
 
 namespace Code2Night.Controllers
 {
@@ -40,6 +38,16 @@ namespace Code2Night.Controllers
                 getArticle.ArticleBody = reader.ReadToEnd();
             }
             return PartialView("_Article", getArticle);
+        }
+        public IActionResult InsertCategory()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult InsertCategory(Category category)
+        {
+            var insertCate = _tutorial.InsertCategory(category);
+            return Json(insertCate);
         }
     }
 }

@@ -71,7 +71,7 @@
                                 <header>
                                     <h2 class="title"><a target="_blank" href="~/Blog/MyBlog/@item.BlogUrl">@item.Title</a></h2>
                                     <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">@item.AuthorName</a><a style="color: black;margin-left: 16px;"><i class="fa fa-eye"></i>@item.TotalView</a></div>
-                                   
+
                                 </header>
                                 <p>@item.BlogIntroduction</p>
                             </div>
@@ -87,7 +87,12 @@
                     <div class="block clearfix">
                         <h3 class="title">Top Trending</h3>
                         <div class="separator"></div>
-                        @foreach (var item in Model.OrderByDescending(x=> x.TotalView))
+                        <div class="block clearfix" style="padding-bottom:0px !important ">
+                            <script async src="https://cse.google.com/cse.js?cx=54fa958b97e2934d7"></script>
+                            <div class="gcse-search"></div>
+
+                        </div>
+                        @foreach (var item in Model.OrderByDescending(x => x.TotalView))
                         {
                             <ul class="tweets">
                                 <li>
@@ -116,86 +121,102 @@
                     </div>
                 </div>
             </aside>
-           
+
 
         </div>
     </div>
 </section>
+<section>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Code2night Home -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2622840091485569"
+         data-ad-slot="8043938560"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+<section class="main-container" style="padding: 0px 0px">
 
-<<div class="row" >
-    <div class="col-md-12">
-        <h1 class="text-center title">Core Features</h1>
-        <div class="separator"></div>
-        <p class="text-center"></p>
-        <div class="row grid-space-20">
-            <div class="col-sm-6">
-                <div class="box-style-3 right object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
-                    <div class="icon-container default-bg">
-                        <i class="fa fa-code"></i>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center title">Core Features</h1>
+                <div class="separator"></div>
+                <p class="text-center"></p>
+                <div class="row grid-space-20">
+                    <div class="col-sm-6">
+                        <div class="box-style-3 right object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
+                            <div class="icon-container default-bg">
+                                <i class="fa fa-code"></i>
+                            </div>
+                            <div class="body">
+                                <h2>Code2night Tutorials</h2>
+                                <p>Code2night Tutorials contains references to programming solutions</p>
+                                @* <a href="page-services.html" class="link"><span>Read More</span></a>*@
+                            </div>
+                        </div>
+                        <div class="box-style-3 right object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                            <div class="icon-container default-bg">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="body">
+                                <h2>Technologies We Provide's</h2>
+                                <p>ASP .NET CORE ,JQUERY, ASP.NET MVC , SQL SERVER</p>
+                                @* <a href="page-services.html" class="link"><span>Read More</span></a>*@
+                            </div>
+                        </div>
+                        <div class="box-style-3 right object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="400">
+                            <div class="icon-container default-bg">
+                                <i class="fa fa-book"></i>
+                            </div>
+                            <div class="body">
+                                <h2>Blog</h2>
+                                <p>Welcome to the Blog section of Code2night...</p>
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="body">
-                        <h2>Code2night Tutorials</h2>
-                        <p>Code2night Tutorials page contains references to programming solutions</p>
-                       @* <a href="page-services.html" class="link"><span>Read More</span></a>*@
-                 </div>
-                </div>
-                <div class="box-style-3 right object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                    <div class="icon-container default-bg">
-                        <i class="fa fa-check"></i>
+                    <div class="col-sm-6">
+                        <div class="box-style-3 object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
+                            <div class="icon-container default-bg">
+                                <i class="fa fa-leaf"></i>
+                            </div>
+                            <div class="body">
+                                <h2>Tutorials</h2>
+                                <p>Learn C# ,SQL, Angularjs , Asp.net ...</p>
+                                @* <a href="page-services.html" class="link"><span>Read More</span></a>*@
+                            </div>
+                        </div>
+                        <div class="box-style-3 object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                            <div class="icon-container default-bg">
+                                <i class="fa fa-lightbulb-o"></i>
+                            </div>
+                            <div class="body">
+                                <h2>Forum</h2>
+                                <p>C# Forum, C# Forums, Forums, ASP.NET Forum, VB.NET, WPF ...</p>
+                                @*  <a href="page-services.html" class="link"><span>Read More</span></a>*@
+                            </div>
+                        </div>
+                        <div class="box-style-3 object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="400">
+                            <div class="icon-container default-bg">
+                                <i class="fa fa-code"></i>
+                            </div>
+                            <div class="body">
+                                <h2>Latest Technologies</h2>
+                                <p>C# ,Asp.Net core</p>
+                                @*<a href="page-services.html" class="link"><span>Read More</span></a>*@
+                            </div>
+                        </div>
                     </div>
-                    <div class="body">
-                        <h2>Technologies We Provide's</h2>
-                        <p>ASP .NET CORE ,JQUERY, ANGLURJS , ASP.NET MVC , ADO.NET, SQL SERVER</p> 
-                       @* <a href="page-services.html" class="link"><span>Read More</span></a>*@
-                  </div>
-                </div>
-                <div class="box-style-3 right object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="400">
-                    <div class="icon-container default-bg">
-                        <i class="fa fa-book"></i>
-                    </div>
-                    <div class="body">
-                        <h2>Blog</h2>
-                        <p>Welcome to the Blog section of Code2night...</p>
-                       @* <a href="page-services.html" class="link"><span>Read More</span></a>*@
-            </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="box-style-3 object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
-                    <div class="icon-container default-bg">
-                        <i class="fa fa-leaf"></i>
-                    </div>
-                    <div class="body">
-                        <h2>Tutorials</h2>
-                        <p>Learn C# ,SQL, Angularjs , Asp.net ...</p>
-                       @* <a href="page-services.html" class="link"><span>Read More</span></a>*@
-          </div>
-                </div>
-                <div class="box-style-3 object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                    <div class="icon-container default-bg">
-                        <i class="fa fa-lightbulb-o"></i>
-                    </div>
-                    <div class="body">
-                        <h2>Forum</h2>
-                        <p>C# Forum, C# Forums, Forums, ASP.NET Forum, VB.NET, WPF ...</p>
-                      @*  <a href="page-services.html" class="link"><span>Read More</span></a>*@
-         </div>
-                </div>
-                <div class="box-style-3 object-non-visible animated object-visible fadeInUpSmall" data-animation-effect="fadeInUpSmall" data-effect-delay="400">
-                    <div class="icon-container default-bg">
-                        <i class="fa fa-code"></i>
-                    </div>
-                    <div class="body">
-                        <h2>Latest Technologies</h2>
-                        <p>C# ,Asp.Net core</p>
-                        @*<a href="page-services.html" class="link"><span>Read More</span></a>*@
-      </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+</section>
 <section class="main-container default-bg">
 
     <!-- main start -->

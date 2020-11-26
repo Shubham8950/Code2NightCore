@@ -4,65 +4,69 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114851264-8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-114851264-8');
-    </script>
+    <script data-ad-client="ca-pub-2622840091485569" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script async custom-element="amp-auto-ads"
+                src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114851264-8"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-114851264-8');
+        </script>
     <title>@ViewBag.Title</title>
-  
+
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.MetaDescription)))
     {
-    <meta name="description" content="@ViewBag.MetaDescription" />
+        <meta name="description" content="@ViewBag.MetaDescription" />
     }
     else
     {
-    <meta name="description" content="Welcome To Code2night, check out lur latest programming blogs with detailed description to help you out" />
+        <meta name="description" content="Welcome To Code2night, check out lur latest programming blogs with detailed description to help you out" />
     }
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.MetaKeywords)))
     {
-    <meta name="keywords" content="@ViewBag.MetaKeywords" />
+        <meta name="keywords" content="@ViewBag.MetaKeywords" />
     }
     else
     {
-    <meta name="keywords" content="Code2Night,Blogs,Stripe,Slick,MVC,Exception Handling,Code,Programming,Tutotials,Slick Slider,IIS,Internet Information Services" />
+        <meta name="keywords" content="Code2Night,Blogs,Stripe,Slick,MVC,Exception Handling,Code,Programming,Tutotials,Slick Slider,IIS,Internet Information Services" />
     }
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.Canonical)))
     {
-    <link rel="canonical" href="@ViewBag.Canonical" />
+        <link rel="canonical" href="@ViewBag.Canonical" />
     }
     else
     {
-    <link rel="canonical" href="https://www.code2night.com/Blog/Index" />
+        <link rel="canonical" href="https://www.code2night.com/Blog/Index" />
     }
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.OpenGraphTitle)))
     {
-    <meta property="og:title" content="@ViewBag.OpenGraphTitle">
+        <meta property="og:title" content="@ViewBag.OpenGraphTitle">
 
     }
     else
     {
-    <meta property="og:title" content="Code2night">
+        <meta property="og:title" content="Code2night">
 
     }
     <meta property="og:site_name" content="Code2night">
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.OpenGraphUrl)))
     {
-    <meta property="og:url" content="@ViewBag.OpenGraphUrl">
+        <meta property="og:url" content="@ViewBag.OpenGraphUrl">
     }
     else
     {
-    <meta property="og:url" content="https://www.code2night.com/">
+        <meta property="og:url" content="https://www.code2night.com/">
     }
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.OpenGraphDescription)))
     {
-    <meta property="og:description" content="@ViewBag.OpenGraphDescription">
+        <meta property="og:description" content="@ViewBag.OpenGraphDescription">
     }
     else
     {
-    <meta property="og:description" content="Welcome To Code2night, A common place for sharing your programming knowledge,Blogs and Videos">
+        <meta property="og:description" content="Welcome To Code2night, A common place for sharing your programming knowledge,Blogs and Videos">
     }
     <meta property="og:type" content="article">
     <meta property="og:image" content="https://www.code2night.com/Content/images/logo_2.png">
@@ -74,6 +78,9 @@
     <script asp-append-version="true" src="~/layoutTop.js"></script>
 </head>
 <body>
+    <amp-auto-ads type="adsense"
+                  data-ad-client="ca-pub-2622840091485569">
+    </amp-auto-ads>
     <div class="header-top">
         <div class="container">
             <div class="row">
@@ -106,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-xs-10 col-sm-6">
                     <div id="header-top-second" class="clearfix" style="padding-top:5px">
                         <div class="header-top-dropdown" style="margin:5px">
@@ -194,8 +201,8 @@
                                             }
 
                                             @*<li>
-                                                <a href="@Url.Action("ContactUs","Users")">Contact Us</a>
-                                            </li>*@
+                                                    <a href="@Url.Action("ContactUs","Users")">Contact Us</a>
+                                                </li>*@
                                         </ul>
                                     </div>
                                 </div>
@@ -240,15 +247,15 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <!-- StuffGate widget -->
-                                       
+
                                         <ul class="list-icons">
-            <li>
-                <i class="fa fa-map-marker pr-10"></i> Kurukshetra
-            </li>
-            <li>
-                <i class="fa fa-envelope-o pr-10"></i> info@Code2night.com
-            </li>
-        </ul>
+                                            <li>
+                                                <i class="fa fa-map-marker pr-10"></i> Kurukshetra
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-envelope-o pr-10"></i> info@Code2night.com
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -340,22 +347,22 @@
     <script asp-append-version="true" src="/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
     <script asp-append-version="true" src="/js/template.js"></script>
     <script asp-append-version="true" src="~/js/BlogIndex.min.js"></script>
-   @*<script>
-       $(document).ready(function () {
-           $.ajax({
-               url: "http://data.alexa.com/data?cli=10&url=www.code2night.com",
-               dataType: 'json', /* CORS Method */
-               contentType: "application/json; charset=utf-8;",
-               cache: false,
-               success: function (data) {
-                   console.log(data);
-               },
-               error: function (xhr, status, errorThrown) {
-                   console.log(xhr);
-               }
-           });
-       }) 
-   </script>*@
+    @*<script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: "http://data.alexa.com/data?cli=10&url=www.code2night.com",
+                    dataType: 'json', /* CORS Method */
+                    contentType: "application/json; charset=utf-8;",
+                    cache: false,
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log(xhr);
+                    }
+                });
+            })
+        </script>*@
     @RenderSection("scripts", required: false)
 </body>
 </html>
