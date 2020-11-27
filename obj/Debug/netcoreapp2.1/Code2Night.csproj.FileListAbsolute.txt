@@ -119,3 +119,5 @@ F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.d
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.pdb
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.genruntimeconfig.cache
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.csproj.CopyComplete
+F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Razor\Views\Tutorials\InsertCategory.cshtml.g.cs
+F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.csprojAssemblyReference.cache

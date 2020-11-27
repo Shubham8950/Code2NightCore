@@ -5,6 +5,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @*@Html.Partial("~/Views/Shared/_MainSlider.cshtml", Model.SlidesList);*@
 
 <!-- banner end -->
@@ -101,7 +102,6 @@
                                     <p class="title"><a style="color: black;" target="_blank" href="~/Blog/MyBlog/@item.BlogUrl">@item.Title</a></p>
 
                                 </li>
-
                             </ul>
                         }
                     </div>
@@ -127,17 +127,23 @@
     </div>
 </section>
 <section>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Code2night Home -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-2622840091485569"
-         data-ad-slot="8043938560"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <div class="container" style="overflow-x:hidden">
+        <div class="row">
+            <div class="col-md-12">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Code2night Home -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2622840091485569"
+                     data-ad-slot="8043938560"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </div>
 </section>
 <section class="main-container" style="padding: 0px 0px">
 

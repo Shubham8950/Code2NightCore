@@ -8,13 +8,13 @@
         <script async custom-element="amp-auto-ads"
                 src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
         </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114851264-8"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'UA-114851264-8');
-        </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114851264-8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-114851264-8');
+    </script>
     <title>@ViewBag.Title</title>
 
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.MetaDescription)))
@@ -78,9 +78,9 @@
     <script asp-append-version="true" src="~/layoutTop.js"></script>
 </head>
 <body>
-    <amp-auto-ads type="adsense"
+    @*<amp-auto-ads type="adsense"
                   data-ad-client="ca-pub-2622840091485569">
-    </amp-auto-ads>
+    </amp-auto-ads>*@
     <div class="header-top">
         <div class="container">
             <div class="row">
