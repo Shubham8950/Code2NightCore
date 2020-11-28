@@ -14,7 +14,6 @@ namespace Code2Night.Controllers
     {
         private ITutorial _tutorial;
 
-
         public CategoryController(ITutorial tutorial)
         {
             _tutorial = tutorial;
@@ -68,5 +67,6 @@ namespace Code2Night.Controllers
             };
             return View(model);
         }
-    }
+
+    } 
 }
