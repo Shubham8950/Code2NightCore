@@ -39,15 +39,6 @@ namespace Code2Night.Controllers
             }
             return PartialView("_Article", getArticle);
         }
-        public IActionResult InsertCategory()
-        {
-            return View();
-        }
-        [HttpPost]
-        public JsonResult InsertCategory(Category category)
-        {
-            var insertCate = _tutorial.InsertCategory(category);
-            return Json(insertCate);
-        }
+      
     }
 }

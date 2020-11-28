@@ -13,5 +13,8 @@ namespace Code2Night.DAL.Interfaces
         List<Article> ArticleList(string blogUrl);
         Article Article(int blogUrl);
        string InsertCategory(Category category);
+        string InsertTopic(Topics topic);
+        List<Category> GetCategories();
+        List<Topics> GetTopics();
     }
 }

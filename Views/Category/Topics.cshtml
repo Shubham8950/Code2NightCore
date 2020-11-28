@@ -1,0 +1,104 @@
+﻿@model Code2Night.Models.AritcleViewModel
+@{
+    ViewData["Title"] = "Topics";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script type="text/javascript" src="/plugins/jquery.min.js"></script>
+<section class="main-container" style="        margin-top: 0px;
+        width: 100%
+">
+
+    <div class="container">
+        <div class="row">
+            <div class="" style="width:100%">
+                <h2 class="title">Topics</h2>
+                <hr>
+                <div class="form-horizontal">
+                    @using (Html.BeginForm("SaveTopic", "Category", FormMethod.Post,new { @enctype = "multipart/form-data" }))
+                    {
+                    <div class="col-md-12" style="display:flex">
+                        <div class="col-md-4">
+                            <label for="categoryid" class="col-sm-3 control-label">Category<span class="text-danger small">*</span></label>
+                            @Html.DropDownListFor(x => x.TopicDetail.categoryid, new SelectList(Model.GetCategories, "categoryid", "categoryname"), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="categoryid" class="col-sm-3 control-label">Title<span class="text-danger small">*</span></label>
+                            @Html.TextBoxFor(x => x.TopicDetail.title, new {@class="form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            <label for="categoryid" class="col-sm-3 control-label">Topic Url<span class="text-danger small">*</span></label>
+                            @Html.TextBoxFor(x => x.TopicDetail.topicurl, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback" style="display:flex">
+
+                        <div class="col-md-8 col-sm-12">
+                            <label for="inputName" class="col-sm-3 control-label">Image<span class="text-danger small">*</span></label>
+                            <div class="col-sm-12 col-md-12">
+                                <input type="file" name="documents" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="col-md-12 col-sm-12"> <input type="submit" style="margin-top:31px;" name="buttonsubmit" id="InsertCategory" onclick="InsertCategory()" class="btn btn-primary" value="Save"></div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <!-- main end -->
+
+        </div>
+    </div>
+</section>
+<div class="card-body p-0">
+    <table class="table table-striped projects">
+        <thead>
+            <tr>
+                <th style="width: 1%">
+                    #
+                </th>
+                <th style="width: 15%">
+                    Title
+                </th>
+                <th style="width: 15%">
+                    Topic Url
+                </th>
+                <th style="width: 15%">
+                   Category
+                </th>
+
+                <th style="width: 20%">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.GetTopics)
+            {
+            <tr>
+                <td>
+                    @item.categoryid
+                </td>
+                <td>
+                    @item.title
+                </td>
+                <td>
+                    @item.topicurl
+                </td>
+                <td>
+                    @item.Category
+                </td>
+                <td class="project-actions text-right">
+                    <a class="btn btn-danger btn-sm" href='@Url.Action("DeleteTopic", "Category", new { id = item.topicid })'>
+                        <i class="fas fa-trash">
+                        </i>
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

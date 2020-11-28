@@ -39,7 +39,27 @@ namespace Code2Night.DAL.Repository
             DynamicParameter.Add("@categoryname", category.categoryname);
             string existsornot = Insert("insertcategory", DynamicParameter);
             return existsornot;
+        }
+        public string InsertTopic(Topics topic)
+        {
+            var DynamicParameter = new DynamicParameters();
+            DynamicParameter.Add("@categoryid", topic.categoryid);
+            DynamicParameter.Add("@title", topic.title);
+            DynamicParameter.Add("@Image", topic.Image);
+            DynamicParameter.Add("@topicurl", topic.topicurl);
+            DynamicParameter.Add("@Activity", "Add");
+            string existsornot = Insert("sprTopic", DynamicParameter);
+            return existsornot;
+        }
 
+        public List<Category> GetCategories()
+        {
+            return GetTableById("sprCategory", "List").DataTableToList<Category>();
+        }
+
+        public List<Topics> GetTopics()
+        {
+            return GetTableById("sprTopic", "List").DataTableToList<Topics>();
         }
     }
 }
