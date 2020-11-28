@@ -12,4 +12,11 @@ namespace Code2Night.Models
         public List<Topics> GetTopics { get; set; }
         public Topics TopicDetail { get; set; }
     }
+    public class AritclesModel
+    {
+        public List<Topics> GetTopicsTitle { get; set; }
+        public Article ArticleDetails { get; set; }
+        public List<Article> GetArticles { get; set; }
+
+    }
 }

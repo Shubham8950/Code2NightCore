@@ -122,3 +122,4 @@ F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.c
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Razor\Views\Category\index.cshtml.g.cs
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Razor\Views\Category\Topics.cshtml.g.cs
 F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Code2Night.csprojAssemblyReference.cache
+F:\Code2NightCore\Code2Night\Code2NightCore\obj\Debug\netcoreapp2.1\Razor\Views\Category\Articles.cshtml.g.cs

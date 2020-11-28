@@ -61,5 +61,23 @@ namespace Code2Night.DAL.Repository
         {
             return GetTableById("sprTopic", "List").DataTableToList<Topics>();
         }
+
+        public string InsertArticle(Article article)
+        {
+            var DynamicParameter = new DynamicParameters();
+            DynamicParameter.Add("@articletitle", article.articletitle);
+            DynamicParameter.Add("@topicArticleIntroduction", article.topicArticleIntroduction);
+            DynamicParameter.Add("@ArticleBody", article.ArticleBody);
+            DynamicParameter.Add("@articleurl", article.articleurl);
+            DynamicParameter.Add("@topicid", article.topicid);
+            DynamicParameter.Add("@Activity", "Add");
+            string existsornot = Insert("sprTopicArticle", DynamicParameter);
+            return existsornot;
+        }
+
+        public List<Article> GetArticles()
+        {
+            return GetTableById("sprTopicArticle", "List").DataTableToList<Article>();
+        }
     }
 }

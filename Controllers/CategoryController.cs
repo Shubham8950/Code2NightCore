@@ -14,6 +14,7 @@ namespace Code2Night.Controllers
     {
         private ITutorial _tutorial;
 
+
         public CategoryController(ITutorial tutorial)
         {
             _tutorial = tutorial;
@@ -40,13 +41,13 @@ namespace Code2Night.Controllers
                 model.TopicDetail.Image = FileUploads.SaveFile(documents, CurrentDirectoryHelpers.GetServerPath() + "/Uploads/Topic");
             }
 
-           _tutorial.InsertTopic(model.TopicDetail);
+            _tutorial.InsertTopic(model.TopicDetail);
             return RedirectToAction("Topics");
         }
 
         public ActionResult Delete(int id)
         {
-            Connection.Delete(id,"sprCategory","Delete");
+            Connection.Delete(id, "sprCategory", "Delete");
             return RedirectToAction("Index");
         }
 
@@ -61,12 +62,32 @@ namespace Code2Night.Controllers
             var list = _tutorial.GetCategories();
             var model = new AritcleViewModel
             {
-                GetCategories=list,
-                GetTopics=_tutorial.GetTopics(),
-                TopicDetail=new Topics()
+                GetCategories = list,
+                GetTopics = _tutorial.GetTopics(),
+                TopicDetail = new Topics()
+            };
+            return View(model);
+        }
+        public IActionResult Articles()
+        {
+            var listTopics = _tutorial.GetTopics();
+            var model = new AritclesModel
+            {
+                GetTopicsTitle = listTopics,
+                GetArticles = _tutorial.GetArticles()
             };
             return View(model);
         }
 
-    } 
+        public ActionResult SaveArticle(AritclesModel model)
+        {
+            _tutorial.InsertArticle(model.ArticleDetails);
+            return RedirectToAction("Articles");
+        }
+        public ActionResult DeleteArticle(int id)
+        {
+            Connection.Delete(id, "sprTopicArticle", "DELETE", "articleid");
+            return RedirectToAction("Articles");
+        }
+    }
 }

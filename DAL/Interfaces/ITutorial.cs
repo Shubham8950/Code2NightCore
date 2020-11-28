@@ -12,9 +12,11 @@ namespace Code2Night.DAL.Interfaces
         List<Tutorial> TutorialsList();
         List<Article> ArticleList(string blogUrl);
         Article Article(int blogUrl);
-       string InsertCategory(Category category);
+        string InsertCategory(Category category);
         string InsertTopic(Topics topic);
         List<Category> GetCategories();
         List<Topics> GetTopics();
+        string InsertArticle(Article article);
+        List<Article> GetArticles();
     }
 }
