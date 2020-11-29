@@ -85,7 +85,7 @@
                                      @item.ContactNo 
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-danger btn-sm" href='@Url.Action("Delete", "Users", new { Id = item.UserID })'>
+                                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", "Users", new { Id = item.UserID })" onclick="return confirm('Are you sure you want to Delete this user?')">
                                         <i class="fas fa-trash">
                                         </i>
                                         Delete

@@ -61,7 +61,7 @@
                         @item.categoryname
                     </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-danger btn-sm" href='@Url.Action("Delete", "Category", new { id = item.categoryid })'>
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", "Category", new { id = item.categoryid })" onclick="return confirm('Are you sure you want to Delete this category?')">
                             <i class="fas fa-trash">
                             </i>
                             Delete
@@ -77,21 +77,27 @@
 
     $(function () {
         $("#InsertCategory").click(function () {
-            $.ajax({
-                type: "POST",
-                url: "/Category/InsertCategory",
-                data: { "categoryname": $("#CategoryName").val() },
-                success: function (response) {
-                    window.location.reload();
+            if ($("#CategoryName").val().trim() == "") {
+                alert("Please insert category name.");
+                return false;
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/Category/InsertCategory",
+                    data: { "categoryname": $("#CategoryName").val() },
+                    success: function (response) {
+                        window.location.reload();
 
-                },
-                failure: function (response) {
-                    alert(response.responseText);
-                },
-                error: function (response) {
-                    alert(response.responseText);
-                }
-            });
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }
         });
     });
 

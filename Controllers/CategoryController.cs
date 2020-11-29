@@ -89,5 +89,6 @@ namespace Code2Night.Controllers
             Connection.Delete(id, "sprTopicArticle", "DELETE", "articleid");
             return RedirectToAction("Articles");
         }
+
     }
 }

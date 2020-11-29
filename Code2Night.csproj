@@ -8,22 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Scripts\**" />
     <Compile Remove="wwwroot\lib\**" />
     <Compile Remove="wwwroot\plugins\morphext\**" />
     <Compile Remove="wwwroot\plugins\rs-plugin-5\**" />
     <Compile Remove="wwwroot\plugins\summernote\lang\**" />
-    <Content Remove="Scripts\**" />
     <Content Remove="wwwroot\lib\**" />
     <Content Remove="wwwroot\plugins\morphext\**" />
     <Content Remove="wwwroot\plugins\rs-plugin-5\**" />
     <Content Remove="wwwroot\plugins\summernote\lang\**" />
-    <EmbeddedResource Remove="Scripts\**" />
     <EmbeddedResource Remove="wwwroot\lib\**" />
     <EmbeddedResource Remove="wwwroot\plugins\morphext\**" />
     <EmbeddedResource Remove="wwwroot\plugins\rs-plugin-5\**" />
     <EmbeddedResource Remove="wwwroot\plugins\summernote\lang\**" />
-    <None Remove="Scripts\**" />
     <None Remove="wwwroot\lib\**" />
     <None Remove="wwwroot\plugins\morphext\**" />
     <None Remove="wwwroot\plugins\rs-plugin-5\**" />
@@ -97,6 +93,10 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\LayoutTop.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_offline.html" />
   </ItemGroup>
 
 
