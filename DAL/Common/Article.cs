@@ -27,6 +27,7 @@ namespace Code2Night.DAL.Common
         [Required]
         public string ArticleBody { get; set; }
         public string Topictitle { get; set; }
+        public string topicurl { get; set; }
 
     }
 }

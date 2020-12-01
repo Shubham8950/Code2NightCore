@@ -69,9 +69,14 @@ namespace Code2Night.Controllers
                 Urls + x.BlogUrl, lastModified: DateTime.Now, changeFrequency: SitemapChangeFrequency.Always, priority: 1.0)).ToList();
 
                 var topis = _tutorialRepo.GetTopics();
-                
+                var articles = _tutorialRepo.GetArticles();
+
                 sitemapItems.AddRange(topis.Select(x => new SitemapItem(
                 TopicUrl + x.topicurl, lastModified: DateTime.Now, changeFrequency: SitemapChangeFrequency.Always, priority: 1.0)).ToList());
+
+                sitemapItems.AddRange(articles.Select(x => new SitemapItem(
+               TopicUrl + x.topicurl+"/"+x.articleurl, lastModified: DateTime.Now, changeFrequency: SitemapChangeFrequency.Always, priority: 1.0)).ToList());
+
                 sitemapItems.AddRange(tagslist.Select(x => new SitemapItem(
                 TagUrl + x, lastModified: DateTime.Now, changeFrequency: SitemapChangeFrequency.Always, priority: 1.0)).ToList());
                 SitemapGenerator sg = new SitemapGenerator();

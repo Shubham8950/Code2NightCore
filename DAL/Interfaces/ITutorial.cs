@@ -18,7 +18,9 @@ namespace Code2Night.DAL.Interfaces
         string InsertTopic(Topics topic);
         List<Category> GetCategories();
         List<Topics> GetTopics();
+        Topics GetTopicsById(int id);
         string InsertArticle(Article article);
         List<Article> GetArticles();
+        Article GetArticlesById(int id);
     }
 }

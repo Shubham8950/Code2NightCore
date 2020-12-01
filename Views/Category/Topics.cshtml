@@ -34,6 +34,7 @@
                                 <label for="categoryid" class="col-sm-3 control-label">Topic Url<span class="text-danger small">*</span></label>
                                 @Html.TextBoxFor(x => x.TopicDetail.topicurl, new { @Value = @Model.TopicDetail.topicurl, @required = "required", @class = "form-control" })
                                 @Html.ValidationMessageFor(x => x.TopicDetail.topicurl)
+                                @Html.HiddenFor(x=>x.TopicDetail.topicid)
                             </div>
                         </div>
                         <div class="form-group has-feedback" style="display:flex">
@@ -96,6 +97,11 @@
                         @item.Category
                     </td>
                     <td class="project-actions text-right">
+                        <a class="btn btn-primary btn-sm" href="@Url.Action("EditTopic", "Category", new { id = item.topicid })" >
+                            <i class="fas fa-pen-square">
+                            </i>
+                            Edit
+                        </a>
                         <a class="btn btn-danger btn-sm" href="@Url.Action("DeleteTopic", "Category", new { id = item.topicid })" onclick="return confirm('Are you sure you want to Delete this topic?')">
                             <i class="fas fa-trash">
                             </i>

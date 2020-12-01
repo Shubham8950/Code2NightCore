@@ -58,7 +58,8 @@ namespace Code2Night.DAL.Repository
             DynamicParameter.Add("@title", topic.title);
             DynamicParameter.Add("@Image", topic.Image);
             DynamicParameter.Add("@topicurl", topic.topicurl);
-            DynamicParameter.Add("@Activity", "Add");
+            DynamicParameter.Add("@topicid", topic.topicid);
+            DynamicParameter.Add("@Activity", topic.topicid!="" && topic.topicid != "0" ?"Edit":"Add");
             string existsornot = Insert("sprTopic", DynamicParameter);
             return existsornot;
         }
@@ -73,6 +74,11 @@ namespace Code2Night.DAL.Repository
             return GetTableById("sprTopic", "List").DataTableToList<Topics>();
         }
 
+        public Topics GetTopicsById(int id)
+        {
+            return GetTableById("sprTopic", "Find", id).DataTableToList<Topics>().FirstOrDefault();
+        }
+
         public string InsertArticle(Article article)
         {
             var DynamicParameter = new DynamicParameters();
@@ -81,7 +87,8 @@ namespace Code2Night.DAL.Repository
             DynamicParameter.Add("@ArticleBody", article.ArticleBody);
             DynamicParameter.Add("@articleurl", article.articleurl);
             DynamicParameter.Add("@topicid", article.topicid);
-            DynamicParameter.Add("@Activity", "Add");
+            DynamicParameter.Add("@articleid", article.articleid);
+            DynamicParameter.Add("@Activity", article.articleid>0?"Edit": "Add");
             string existsornot = Insert("sprTopicArticle", DynamicParameter);
             return existsornot;
         }
@@ -89,6 +96,11 @@ namespace Code2Night.DAL.Repository
         public List<Article> GetArticles()
         {
             return GetTableById("sprTopicArticle", "List").DataTableToList<Article>();
+        }
+
+        public Article GetArticlesById(int id)
+        {
+            return GetTableById("sprTopicArticle", "Find", id).DataTableToList<Article>().FirstOrDefault();
         }
     }
 }
