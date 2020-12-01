@@ -5,6 +5,8 @@ using System.Linq;
 using Code2Night.DAL.Interfaces;
 using Code2Night.DAL.Common;
 using Dapper;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Code2Night.DAL.Repository
 {
@@ -31,6 +33,15 @@ namespace Code2Night.DAL.Repository
             DynamicParameter.Add("@id", id);
             var blog = GetList("GetArticle", DynamicParameter);
             return blog.ToList().FirstOrDefault();
+        }
+        public DataSet ArticleByUrl(string topicUrl, string articleUrl)
+        {
+            List<SqlParameter> listParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@topicUrl",topicUrl),
+                 new SqlParameter("@articleUrl",articleUrl)
+             };
+            return GetDataSetByCustomParameters("GetArticleByUrl", listParameters);
         }
 
         public string InsertCategory(Category category)

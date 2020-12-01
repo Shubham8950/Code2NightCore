@@ -57,6 +57,68 @@ namespace Code2Night.DAL.Repository
                 return db.Query<T>(spname, param, commandType: CommandType.StoredProcedure);
             }
         }
+        public DataTable GetTableByCustomParameters(string spname, List<SqlParameter> Parameters = null)
+        {
+            Connection conn = new Connection();
+            SqlConnection con = new SqlConnection(Connection.sqlConStr);
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            else
+            {
+                con.Open();
+            }
+            SqlDataAdapter adp = new SqlDataAdapter(spname, con);
+            adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adp.SelectCommand.Parameters.AddRange(Parameters.ToArray());
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            adp.Dispose();
+            con.Close();
+            return dt;
+        }
+
+        public string SaveData(string spname, List<SqlParameter> Parameters = null)
+        {
+            Connection conn = new Connection();
+            SqlConnection con = new SqlConnection(Connection.sqlConStr);
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            else
+            {
+                con.Open();
+            }
+            SqlCommand cmd = new SqlCommand(spname, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddRange(Parameters.ToArray());
+            return Connection.ExecuteNonQuery(cmd);
+        }
+
+        public DataSet GetDataSetByCustomParameters(string spname, List<SqlParameter> Parameters = null)
+        {
+            Connection conn = new Connection();
+            SqlConnection con = new SqlConnection(Connection.sqlConStr);
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            else
+            {
+                con.Open();
+            }
+            SqlDataAdapter adp = new SqlDataAdapter(spname, con);
+            adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adp.SelectCommand.Parameters.AddRange(Parameters.ToArray());
+            DataSet ds = new DataSet();
+            adp.Fill(ds);
+            adp.Dispose();
+            con.Close();
+            return ds;
+        }
+
         public async Task<IEnumerable<T>> GetListAsync(string spname, DynamicParameters param)
         {
             using (IDbConnection db = DapperCon)

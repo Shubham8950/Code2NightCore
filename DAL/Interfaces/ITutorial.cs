@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Code2Night.DAL.Interfaces
         List<Tutorial> TutorialsList();
         List<Article> ArticleList(string blogUrl);
         Article Article(int blogUrl);
+        DataSet ArticleByUrl(string topicUrl,string articleUrl);
         string InsertCategory(Category category);
         string InsertTopic(Topics topic);
         List<Category> GetCategories();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Dapper;
+using System.Data.SqlClient;
 
 namespace Code2Night.DAL.Interfaces
 {
@@ -22,7 +23,9 @@ namespace Code2Night.DAL.Interfaces
         string Insert(string spname, DynamicParameters param);
 
         int ExecuteScalar(string spname, DynamicParameters param);
-
+        DataTable GetTableByCustomParameters(string spname, List<SqlParameter> Parameters = null);
+        string SaveData(string spname, List<SqlParameter> Parameters = null);
+        DataSet GetDataSetByCustomParameters(string spname, List<SqlParameter> Parameters = null);
 
     }
 }

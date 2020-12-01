@@ -1,29 +1,46 @@
-﻿@model IEnumerable<Code2Night.DAL.Common.Article>
+﻿@model Code2Night.Models.AritclesModel
 @{
     ViewData["Title"] = "Article";
 
 }
-
-
+<style>
+    .articleactive
+    {
+        background-color:#efefef !important;
+    }
+</style>
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i><a href="@Url.Action("index","User")">Home</a></li>
+                    <li><a href="@Url.Action("index","Tutorials")">Tutorials</a></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 <section class="main-container" style="margin-top: 0px;">
 
     <div class="container">
         <div class="row">
 
             <!-- sidebar start -->
-            @if (Model.Count() > 0)
+            @if (Model.GetArticles.Count() > 0)
             {
             <aside class="col-md-3">
                 <div class="sidebar">
                     <div class="block clearfix">
                         
-                        <h3 class="title">@Model.FirstOrDefault()?.Topictitle</h3>
+                        <h3 class="title">@Model.GetArticles.FirstOrDefault()?.Topictitle</h3>
                         <div class="separator"></div>
                         <nav>
                             <ul class="nav nav-pills nav-stacked">
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.GetArticles)
                                 {
-                                    <li ><a class="article" onclick="fetchArticle(@item.articleid)">@item.articletitle</a></li>
+                                    <li ><a class='article @(Model.ArticleDetails?.articleurl==item.articleurl?"articleactive":"")' onclick="fetchArticle(@item.articleid)">@item.articletitle</a></li>
                                 }
                             </ul>
                         </nav>
@@ -39,7 +56,10 @@
             <!-- main start -->
             <!-- ================ -->
             <div class="main col-md-8 col-md-offset-1" id="Articlespartialid">
-    
+                @if (Model.ArticleDetails.articleid != 0)
+                {
+                    Html.RenderPartial("_Article", Model.ArticleDetails);
+                }
             </div>
             <!-- main end -->
 
@@ -48,9 +68,12 @@
 </section>
 <script>
     $(document).ready(function () {
-        $('.article').first().click();
-
-    })
+          @if (Model.ArticleDetails.articleid == 0)
+              {
+        @: $('.article').first().click();
+        @: $('.article').first().addClass('articleactive');
+              }
+          })
     var fetchArticle = function (id) {
           LoadPartialView('@Url.Action("ArticleDetail", "Tutorials")', "Articlespartialid", {id:id});
     }

@@ -4,18 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Code2Night.DAL.Common;
 using Code2Night.DAL.Interfaces;
+using Code2Night.DAL.Repository;
 using Code2Night.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Code2Night.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private ITutorial _tutorial;
 
-
-        public CategoryController(ITutorial tutorial)
+        public CategoryController(ITutorial tutorial) : base(new BlogRepo(), new TutorialRepo())
         {
             _tutorial = tutorial;
         }
@@ -68,6 +68,7 @@ namespace Code2Night.Controllers
             };
             return View(model);
         }
+
         public IActionResult Articles()
         {
             var listTopics = _tutorial.GetTopics();
@@ -84,6 +85,7 @@ namespace Code2Night.Controllers
             _tutorial.InsertArticle(model.ArticleDetails);
             return RedirectToAction("Articles");
         }
+
         public ActionResult DeleteArticle(int id)
         {
             Connection.Delete(id, "sprTopicArticle", "DELETE", "articleid");

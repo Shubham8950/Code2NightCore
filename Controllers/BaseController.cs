@@ -18,11 +18,14 @@ namespace Code2Night.Controllers
     {
         public const string Urls = "https://www.code2night.com/Blog/MyBlog/";
         public const string TagUrl = "https://www.code2night.com/Blog/Tags/";
+        public const string TopicUrl = "https://www.code2night.com/Tutorials/Article/";
         private IBlog _blogrepo;
+        private ITutorial _tutorialRepo;
 
-        public BaseController(IBlog blogrepo)
+        public BaseController(IBlog blogrepo,ITutorial tutorialRepo)
         {
            _blogrepo = blogrepo;
+           _tutorialRepo = tutorialRepo;
         }
 
         public void SaveCookie(string key, string value)
@@ -64,6 +67,11 @@ namespace Code2Night.Controllers
                 var tagslist = string.Join(",", _blogrepo.Tag().Select(x => x.Tags.TrimEnd(','))).TrimEnd(',').Split(',').ToList<string>();
                 var sitemapItems = list.Select(x => new SitemapItem(
                 Urls + x.BlogUrl, lastModified: DateTime.Now, changeFrequency: SitemapChangeFrequency.Always, priority: 1.0)).ToList();
+
+                var topis = _tutorialRepo.GetTopics();
+                
+                sitemapItems.AddRange(topis.Select(x => new SitemapItem(
+                TopicUrl + x.topicurl, lastModified: DateTime.Now, changeFrequency: SitemapChangeFrequency.Always, priority: 1.0)).ToList());
                 sitemapItems.AddRange(tagslist.Select(x => new SitemapItem(
                 TagUrl + x, lastModified: DateTime.Now, changeFrequency: SitemapChangeFrequency.Always, priority: 1.0)).ToList());
                 SitemapGenerator sg = new SitemapGenerator();

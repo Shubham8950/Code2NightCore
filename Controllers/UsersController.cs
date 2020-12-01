@@ -13,7 +13,7 @@ namespace Code2Night.Controllers
         private IUserRepo _userrepo;
         HomeViewModel home = new HomeViewModel();
         private readonly IBlog _blogrepo;
-        public UsersController(IUserRepo userrepo, IBlog blog) : base(new BlogRepo())
+        public UsersController(IUserRepo userrepo, IBlog blog) : base(new BlogRepo(), new TutorialRepo())
         {
             _userrepo = userrepo;
             _blogrepo = blog;

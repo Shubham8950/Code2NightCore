@@ -18,7 +18,7 @@ namespace Code2Night.Controllers
         private  IUserRepo _userrepo;
         IHttpContextAccessor httpContextAccessor;
 
-        public BlogController(IBlog blogrepo, IUserRepo userRepo,IHttpContextAccessor context):base(new BlogRepo())
+        public BlogController(IBlog blogrepo, IUserRepo userRepo,IHttpContextAccessor context):base(new BlogRepo(),new TutorialRepo())
         {
             _blogrepo = blogrepo;
             _userrepo = userRepo;

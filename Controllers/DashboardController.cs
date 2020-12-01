@@ -10,7 +10,7 @@ namespace Code2Night.Areas.Admin.Controllers
     [AdminAuthenticateUser]
     public class DashboardController : BaseController
     {
-        public DashboardController() : base(new BlogRepo())
+        public DashboardController() : base(new BlogRepo(), new TutorialRepo())
         {
         }
         public IActionResult Home()

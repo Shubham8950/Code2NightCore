@@ -11,7 +11,7 @@ namespace Code2Night.Controllers
         private IBlog _blogrepo;
         HomeViewModel home = new HomeViewModel();
 
-        public DashboardGraphController(IBlog blogrepo) : base( new BlogRepo())
+        public DashboardGraphController(IBlog blogrepo) : base( new BlogRepo(), new TutorialRepo())
         {
             _blogrepo = blogrepo;
         }

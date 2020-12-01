@@ -16,7 +16,7 @@ namespace Code2Night.Controllers
 {
     public class CalendarController : BaseController
     {
-        public CalendarController() : base( new BlogRepo())
+        public CalendarController() : base( new BlogRepo(), new TutorialRepo())
         {
         }
         static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
