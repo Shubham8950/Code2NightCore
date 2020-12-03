@@ -4,10 +4,29 @@
 
 }
 <style>
-    .articleactive
-    {
-        background-color:#efefef !important;
+    .articleactive {
+        background-color: #efefef !important;
     }
+
+    pre {
+        padding: 10px 16px;
+        border-radius: 2px;
+    }
+
+        pre p {
+            display: block;
+            line-height: 1.5rem;
+            counter-increment: line;
+        }
+
+            pre p:before {
+                content: counter(line);
+                display: inline-block;
+                border-right: 1px solid #ddd;
+                padding: 0 .5em;
+                margin-right: .5em;
+                color: #888
+            }
 </style>
 <div class="page-intro">
     <div class="container">
@@ -30,23 +49,23 @@
             <!-- sidebar start -->
             @if (Model.GetArticles.Count() > 0)
             {
-            <aside class="col-md-3">
-                <div class="sidebar">
-                    <div class="block clearfix">
-                        
-                        <h3 class="title">@Model.GetArticles.FirstOrDefault()?.Topictitle</h3>
-                        <div class="separator"></div>
-                        <nav>
-                            <ul class="nav nav-pills nav-stacked">
-                                @foreach (var item in Model.GetArticles)
-                                {
-                                    <li ><a class='article @(Model.ArticleDetails?.articleurl==item.articleurl?"articleactive":"")' onclick="fetchArticle(@item.articleid)">@item.articletitle</a></li>
-                                }
-                            </ul>
-                        </nav>
+                <aside class="col-md-3">
+                    <div class="sidebar">
+                        <div class="block clearfix">
+
+                            <h3 class="title">@Model.GetArticles.FirstOrDefault()?.Topictitle</h3>
+                            <div class="separator"></div>
+                            <nav>
+                                <ul class="nav nav-pills nav-stacked">
+                                    @foreach (var item in Model.GetArticles)
+                                    {
+                                        <li><a class='article @(Model.ArticleDetails?.articleurl==item.articleurl?"articleactive":"")' onclick="fetchArticle(@item.articleid,this)">@item.articletitle</a></li>
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-                </div>
-            </aside>
+                </aside>
             }
             else
             {
@@ -71,11 +90,53 @@
           @if (Model.ArticleDetails.articleid == 0)
               {
         @: $('.article').first().click();
-        @: $('.article').first().addClass('articleactive');
+        @: $('.article:first').addClass('articleactive');
               }
-          })
-    var fetchArticle = function (id) {
-          LoadPartialView('@Url.Action("ArticleDetail", "Tutorials")', "Articlespartialid", {id:id});
+    })
+    function LoadPartialViewPromise(url, elem, postData) {
+        ShowLoader();
+        var promise = $.post(url, postData, function (result, status) {
+
+            $("#" + elem).html('');
+            $("#" + elem).html(result);
+            HideLoader();
+
+        });
+        return promise;
+    }
+    var fetchArticle = function (id, elem) {
+        $('.articleactive').removeClass('articleactive');
+        $(elem).addClass('articleactive');
+        var promise = LoadPartialViewPromise('@Url.Action("ArticleDetail", "Tutorials")', "Articlespartialid", { id: id });
+        promise.done(function (data) { 
+            $('#Articlespartialid').html(data);
+        $('pre').each(function (index, elem) {
+            debugger;
+            var d = $(this)[0];
+            for (var i = 0; i < d.childNodes.length; i++) {
+                if (d.childNodes[i].nodeType === 3 &&
+                    d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")) {
+                    wrapNode(d.childNodes[i]);
+                }
+            }
+
+            var lines = $(this).text().split('\n');
+            var paras = '';
+            $.each(lines, function (i, line) {
+                // $(line).wrap('<p></p>');
+                if (line && line.indexOf('<input') == -1) {
+                    paras += '<p>' + line + '</p>';
+                }
+            });
+            paras.replace(/[\r\n]+/g, '\n');
+            // $(this).html('');
+            // $(this).append(paras);
+            $(this).html(paras);
+        });
+        })
+    }
+    function wrapNode(node) {
+        $(node).replaceWith("<p>" + node.textContent + "</p>");
     }
 
 
