@@ -229,9 +229,10 @@ namespace Code2Night.Controllers
             var blog = new MyBlogs
             {
                 BlogsList = _blogrepo.GetBlogs().Where(x => x.AuthorId.Contains(id.Split('-')[0])).ToList(),
-                Author = id.Split('-').Last()
+                Author = id.Split('-').Last(),
+                AuthorDetail = _userrepo.GetUserByUserId(Convert.ToInt32(id.Split('-')[0]))
             };
-            return View("Tags", blog);
+            return View("Author", blog);
         }
 
         [AdminAuthenticateUser]

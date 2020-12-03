@@ -9,6 +9,7 @@ namespace Code2Night.DAL.Common
         public string Tag { get; set; }
         public string Author { get; set; }
         public List<string> Tags { get; set; }
+        public Users AuthorDetail { get; set; }
     }
 }
 

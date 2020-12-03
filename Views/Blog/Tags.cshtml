@@ -75,11 +75,15 @@
                                     <footer class="clearfix">
                                         <ul class="links pull-left">
 
-                                            <li><i class="fa fa-tags pr-5"></i>
-                                            @foreach (var str in blog.Tags.Split(',').ToList())
-                                            { 
-                                                <a href="~/Blog/Tags/@str">@str.Replace("-", " ") @(blog.Tags.Split(',').ToList().IndexOf(str).Equals(blog.Tags.Split(',').ToList().Count-1)?"":",")</a>
-                                            }
+                                            <li>
+                                                <i class="fa fa-tags pr-5"></i>
+                                                @if (blog.Tags != null)
+                                                {
+                                                    foreach (var str in blog.Tags.Split(',').ToList())
+                                                    {
+                                                <a href="~/Blog/Tags/@str">@str.Replace("-", " ") @(blog.Tags.Split(',').ToList().IndexOf(str).Equals(blog.Tags.Split(',').ToList().Count - 1) ? "" : ",")</a>
+                                                    }
+                                                }
                                             </li>
                                         </ul>
                                         <a class="pull-right link" href="~/Blog/MyBlog/@blog.BlogUrl"><span>Read more</span></a>
