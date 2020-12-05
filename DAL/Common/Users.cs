@@ -18,5 +18,7 @@ namespace Code2Night.DAL.Common
         public string ContactNo { get; set; }
         public Guid ActivationCode { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string ProfileDescription { get; set; }
+        public string Skills { get; set; }
     }
 }

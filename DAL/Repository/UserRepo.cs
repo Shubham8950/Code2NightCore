@@ -9,6 +9,7 @@ using System.Text;
 using System.IO;
 using Code2Night.DAL.Common;
 using Dapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Code2Night.DAL.Repository
 {
@@ -22,6 +23,10 @@ namespace Code2Night.DAL.Repository
         public List<string> GetExistingUserNames()
         {
             return GetAll("sprUsers", "List").Select(x => x.Username).ToList();
+        }
+        public List<SelectListItem> GetSkills()
+        {
+            return GetTableById("sprSkills", "").DataTableToList<SelectListItem>();
         }
 
         public Users UserLogin(string UserName, string Password)
@@ -98,6 +103,8 @@ namespace Code2Night.DAL.Repository
             DynamicParameter.Add("@Activity", "Add");
             DynamicParameter.Add("@UserRole", user.UserRole);
             DynamicParameter.Add("@IsActive", user.IsActive);
+            DynamicParameter.Add("@ProfileDescription", user.ProfileDescription);
+            DynamicParameter.Add("@Skills", user.Skills);
             if (exists < 1)
             {
                 SendVerificationLinkEmail(user.Email, activationcode);

@@ -65,7 +65,8 @@ namespace Code2Night.Controllers
         public ActionResult Register()
         {
             var list = _userrepo.GetExistingUserNames();
-            return View(list);
+            var skills = _userrepo.GetSkills();
+            return View(skills);
         }
 
         public ActionResult ContactUs()
@@ -121,7 +122,7 @@ namespace Code2Night.Controllers
         }
 
         [HttpPost]
-        public JsonResult Registerations(string Name, string Email, string Contact, string Username, string Password)
+        public JsonResult Registerations(string Name, string Email, string Contact, string Username, string Password,string ProfileDescription,string Skills)
         {
             Users user = new Users()
             {
@@ -131,7 +132,9 @@ namespace Code2Night.Controllers
                 Password = Password,
                 Name = Name,
                 UserRole = "Author",
-                IsActive = false
+                IsActive = false,
+                ProfileDescription= ProfileDescription,
+                Skills=Skills
             };
             int i = _userrepo.AddNewAccount(user);
             return Json(i);
