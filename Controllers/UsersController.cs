@@ -122,8 +122,13 @@ namespace Code2Night.Controllers
         }
 
         [HttpPost]
-        public JsonResult Registerations(string Name, string Email, string Contact, string Username, string Password,string ProfileDescription,string Skills)
+        public JsonResult Registerations(string Name, string Email, string Contact, string Username, string Password,string ProfileDescription,string Skills,IFormFile profileimage)
         {
+            var file = "";
+            if (profileimage?.Length > 0 && profileimage.FileName != "")
+            {
+                file = FileUploads.SaveFile(profileimage, CurrentDirectoryHelpers.GetServerPath() + "/Uploads/Pics");
+            }
             Users user = new Users()
             {
                 Username = Username,
@@ -134,7 +139,8 @@ namespace Code2Night.Controllers
                 UserRole = "Author",
                 IsActive = false,
                 ProfileDescription= ProfileDescription,
-                Skills=Skills
+                Skills=Skills,
+                ProfileImage=file
             };
             int i = _userrepo.AddNewAccount(user);
             return Json(i);

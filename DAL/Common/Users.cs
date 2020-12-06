@@ -20,5 +20,6 @@ namespace Code2Night.DAL.Common
         public DateTime CreatedDate { get; set; }
         public string ProfileDescription { get; set; }
         public string Skills { get; set; }
+        public string ProfileImage { get; set; }
     }
 }

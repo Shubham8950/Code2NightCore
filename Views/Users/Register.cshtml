@@ -34,81 +34,89 @@
                     <div class="form-block center-block" style="width:auto !important">
                         <h2 class="title">Sign Up</h2>
                         <hr>
-                        <div class="form-horizontal">
+                        <form asp-action="Registerations" asp-controller="Users" enctype="multipart/form-data" data-ajax="true" data-ajax-method="POST" novalidate data-ajax-success="OnAddUserSuccess" data-ajax-begin="return Validate()" id="frmBlog">
+                            <div class="form-horizontal">
 
-                            <div class="form-group has-feedback">
-                                <label for="inputUserName" class="col-sm-3 control-label">Username <span class="text-danger small">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="UserName" placeholder="User Name" required="true">
-                                    <i class="fa fa-user form-control-feedback"></i>
-                                    <h6 style="color:#9b8888" id="UserStatus"></h6>
+                                <div class="form-group has-feedback">
+                                    <label for="inputUserName" class="col-sm-3 control-label">Username <span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="User Name" required="true">
+                                        <i class="fa fa-user form-control-feedback"></i>
+                                        <h6 style="color:#9b8888" id="UserStatus"></h6>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group has-feedback">
-                                <label for="inputEmail" class="col-sm-3 control-label">Email <span class="text-danger small">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="Email" placeholder="Email">
-                                    <i class="fa fa-envelope form-control-feedback"></i>
+                                <div class="form-group has-feedback">
+                                    <label for="inputEmail" class="col-sm-3 control-label">Email <span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="Email" name="Email" placeholder="Email">
+                                        <i class="fa fa-envelope form-control-feedback"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="inputPassword" class="col-sm-3 control-label">Password <span class="text-danger small">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="Password" placeholder="Password">
-                                    <i class="fa fa-lock form-control-feedback"></i>
+                                <div class="form-group has-feedback">
+                                    <label for="inputPassword" class="col-sm-3 control-label">Password <span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+                                        <i class="fa fa-lock form-control-feedback"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="inputPassword" class="col-sm-3 control-label">Confirm Password <span class="text-danger small">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="ConfirmPassword" placeholder="Retype Password">
-                                    <i class="fa fa-lock form-control-feedback"></i>
+                                <div class="form-group has-feedback">
+                                    <label for="inputPassword" class="col-sm-3 control-label">Confirm Password <span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="ConfirmPassword" placeholder="Retype Password">
+                                        <i class="fa fa-lock form-control-feedback"></i>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="inputName" class="col-sm-3 control-label">Full Name <span class="text-danger small">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="FullName" placeholder="Full Name">
-                                    <i class="fa fa-pencil form-control-feedback"></i>
+                                <div class="form-group has-feedback">
+                                    <label for="inputName" class="col-sm-3 control-label">Full Name <span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="FullName" name="FullName" placeholder="Full Name">
+                                        <i class="fa fa-pencil form-control-feedback"></i>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="inputLastName" class="col-sm-3 control-label"> Contact No. <span class="text-danger small">*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="tel" class="form-control" id="Contact" maxlength="10">
-                                    <i class="fa fa-pencil form-control-feedback"></i>
+                                <div class="form-group has-feedback">
+                                    <label for="inputLastName" class="col-sm-3 control-label"> Contact No. <span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="tel" class="form-control" name="Contact" id="Contact" maxlength="10">
+                                        <i class="fa fa-pencil form-control-feedback"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="Skills" class="col-sm-3 control-label">Skills<span class="text-danger small">*</span></label>
-                                <div class="col-sm-8">
-                                    @Html.DropDownList("Skills", Model, new { @class = "form-control", @multiple = "multiple", @id = "skills" })
+                                <div class="form-group has-feedback">
+                                    <label for="Skills" class="col-sm-3 control-label">Skills<span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                        @Html.DropDownList("Skills", Model, new { @class = "form-control", @multiple = "multiple", @id = "skills", @placeholder = "Choose your skills" })
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="summernote" class="col-sm-3 control-label">About Self<span class="text-danger small">*</span></label>
-                                <div class="col-sm-8">
-                                    @Html.TextArea("ProfileDescription", new { @class = "form-control", @id = "summernote" })
+                                <div class="form-group has-feedback">
+                                    <label for="summernote" class="col-sm-3 control-label">About Self<span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                        @Html.TextArea("ProfileDescription", new { @class = "form-control", @id = "summernote",@placeholder="Write about yourself..." })
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-8">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" required> Accept our <a href="#">privacy policy</a> and <a href="#">customer agreement</a>
-                                        </label>
+                                <div class="form-group has-feedback">
+                                    <label for="profileimage" class="col-sm-3 control-label">Profile Image<span class="text-danger small">*</span></label>
+                                    <div class="col-sm-8">
+                                       <input type="file" name="profileimage" onchange="return validateFileType()" id="profileimage">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-8">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" required> Accept our <a href="#">privacy policy</a> and <a href="#">customer agreement</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-8">
+                                        <input type="submit" name="buttonsubmit" @*onclick="SignUp()"*@ class="btn btn-default" style="background-color:#a81919" value="Register Now">
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-8">
-                                    <input type="submit" name="buttonsubmit" onclick="SignUp()" class="btn btn-default" style="background-color:#a81919" value="Register Now">
-                                </div>
-                            </div>
-                        </div>
+                            </form>
                     </div>
                 </div>
             </div>
@@ -136,7 +144,84 @@
         });
         $('#skills').select2();
     });
-   
+    function validateFileType() {
+        var fileName = document.getElementById("profileimage").value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+            return true;
+        } else {
+            $('#profileimage').val('');
+            alert("Only jpg/jpeg and png files are allowed!");
+            return false;
+        }
+    }
+    window.addEventListener("submit", function (e) {
+        var form = e.target;
+        e.preventDefault();
+        var valid = true;
+        if ($("#UserName").val() == "" || $("#Email").val() == "" || $("#Password").val() == "" || $("#ConfirmPassword").val() == "" || $("#FullName").val() == "" || $("#skills").val().join() == "" || $('#ProfileDescription').val() == "") {
+            Swal.fire({
+                position: 'top-center',
+                type: 'warning',
+                title: "Please fill mandatory fields!",
+                showConfirmButton: false,
+                timer: 3000
+            });
+            valid = false;
+            return false;
+        }
+        if ($('#profileimage').val() == "") {
+            alert("Please Select Profile Picture!");
+            valid = false;
+            return false;
+        }
+        if ($("#Password").val() != $("#ConfirmPassword").val()) {
+            Swal.fire({
+                position: 'top-center',
+                type: 'warning',
+                title: "Passwords Mismatched",
+                showConfirmButton: false,
+                timer: 3000
+            });
+            valid = false;
+            return false;
+        }
+        if (valid) {
+            ShowLoader();
+            if (form.getAttribute("enctype") === "multipart/form-data") {
+                if (form.dataset.ajax) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    var xhr = new XMLHttpRequest();
+                    xhr.open(form.method, form.action);
+                    xhr.onreadystatechange = function (data) {
+                        HideLoader();
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            var response = JSON.parse(xhr.responseText);
+                        if (response == 0) {
+                                LoadPartialView('@Url.Action("SuccessFulRegistration", "Users")', "divuser", {});
+                            }
+                            else {
+                                Swal.fire({
+                                    position: 'top-center',
+                                    type: 'info',
+                                    title: "Email aready being used",
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+                            }
+                        }
+                        else {
+                            console.log(data);
+                        }
+                    }
+                };
+                xhr.send(new FormData(form));
+            }
+        }
+
+    }, true);
     function UploadImage(file) {
         var url = "@Url.Action("UploadFile", "SummerNoteEx")";
         formData = new FormData();
@@ -180,7 +265,7 @@
             });
             return false;
         }
-        if ($("#Password").val() != "" && $("#FullName").val() != "" && $("#Email").val() != "" && $("#Contact").val() != "" && $("#UserName").val() != "") {
+        if ($("#Password").val() != "" && $("#FullName").val() != "" && $("#Email").val() != "" && $("#Contact").val() != "" && $("#UserName").val() != "" ) {
             var promises = GetAjaxDataPromise('@Url.Action("Registerations", "Users")', { Name: $("#FullName").val(), Email: $("#Email").val(), Contact: $("#Contact").val(), Password: $("#Password").val(), Username: $("#UserName").val(), ProfileDescription: $('#summernote').val(), Skills: $('#skills').val().join() });
             promises.done(function (response) {
                 if (response == 0) {
@@ -196,6 +281,29 @@
                     });
                 }
             });
+        }
+    }
+
+    var Validate = function () {
+        if ($("#UserName").val() == "" || $("#Email").val() == "" || $("#Password").val() == "" || $("#ConfirmPassword").val() == "" || $("#FullName").val() == "" || $("#Skills").val().join() == "" || $('#ProfileDescription').val()=="") {
+            Swal.fire({
+                position: 'top-center',
+                type: 'warning',
+                title: "Please fill mandatory fields!",
+                showConfirmButton: false,
+                timer: 3000
+            });
+            return false;
+        }
+        if ($("#Password").val() != $("#ConfirmPassword").val()) {
+            Swal.fire({
+                position: 'top-center',
+                type: 'warning',
+                title: "Passwords Mismatched",
+                showConfirmButton: false,
+                timer: 3000
+            });
+            return false;
         }
     }
 </script>

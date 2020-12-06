@@ -105,6 +105,7 @@ namespace Code2Night.DAL.Repository
             DynamicParameter.Add("@IsActive", user.IsActive);
             DynamicParameter.Add("@ProfileDescription", user.ProfileDescription);
             DynamicParameter.Add("@Skills", user.Skills);
+            DynamicParameter.Add("@ProfileImage", user.ProfileImage);
             if (exists < 1)
             {
                 SendVerificationLinkEmail(user.Email, activationcode);
