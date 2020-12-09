@@ -5,6 +5,7 @@ using Code2Night.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Linq;
+using ColorCode;
 
 namespace Code2Night.Controllers
 {
@@ -52,8 +53,9 @@ namespace Code2Night.Controllers
             var getArticle = _tutorial.Article(id);
             if (getArticle.BlogId != 0)
             {
-                using (StreamReader reader = new StreamReader(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + getArticle.BlogId + ".txt"))
+                 using (StreamReader reader = new StreamReader(CurrentDirectoryHelpers.GetServerPath() + "/BlogFiles/Blog_" + getArticle.BlogId + ".txt"))
                 {
+
                     getArticle.ArticleBody = reader.ReadToEnd();
                 }
             }

@@ -1,7 +1,17 @@
 ﻿@model Code2Night.DAL.Common.Article
-  
+
 <h1 class="page-title">@Model.articletitle</h1>
 <hr>
+<style>
 <!-- page-title end -->
-
+pre[class*="language-"] > code {
+	position: relative;
+	display: block;
+}
+</style>
 <p> @Html.Raw(Model.ArticleBody)</p>
+
+
+
+
+

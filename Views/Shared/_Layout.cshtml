@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script data-ad-client="ca-pub-2622840091485569" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   
+    <link href="~/prism.css" rel="stylesheet" />
         <script async custom-element="amp-auto-ads"
                 src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
         </script>
@@ -78,9 +80,11 @@
     <script asp-append-version="true" src="~/layoutTop.js"></script>
 </head>
 <body>
+
+
     <amp-auto-ads type="adsense"
-                      data-ad-client="ca-pub-2622840091485569">
-        </amp-auto-ads>
+                  data-ad-client="ca-pub-2622840091485569">
+    </amp-auto-ads>
     <div class="header-top">
         <div class="container">
             <div class="row">
@@ -347,7 +351,8 @@
     <script asp-append-version="true" src="/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
     <script asp-append-version="true" src="/js/template.js"></script>
     <script asp-append-version="true" src="~/js/BlogIndex.min.js"></script>
-    <script src="~/adminplugins/select2/js/select2.min.js"></script>
+    <script asp-append-version="true" src="~/adminplugins/select2/js/select2.min.js"></script>
+    <script asp-append-version="true" src="~/prism (1).js"></script>
     @*<script>
             $(document).ready(function () {
                 $.ajax({
@@ -365,5 +370,6 @@
             })
         </script>*@
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

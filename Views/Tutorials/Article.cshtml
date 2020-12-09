@@ -3,12 +3,16 @@
     ViewData["Title"] = "Article";
 
 }
+<link href="https://myCDN.com/prism@v1.x/themes/prism.css" rel="stylesheet" />
+<script src="https://prismjs.com/prism.js"></script>
+<script src="https://myCDN.com/prism@v1.x/plugins/autoloader/prism-autoloader.min.js"></script>
+
 <style>
     .articleactive {
         background-color: #efefef !important;
     }
 
-    pre {
+    /*  pre {
         padding: 10px 16px;
         border-radius: 2px;
     }
@@ -26,7 +30,7 @@
                 padding: 0 .5em;
                 margin-right: .5em;
                 color: #888
-            }
+            }*/
 </style>
 <div class="page-intro">
     <div class="container">
@@ -108,31 +112,33 @@
         $('.articleactive').removeClass('articleactive');
         $(elem).addClass('articleactive');
         var promise = LoadPartialViewPromise('@Url.Action("ArticleDetail", "Tutorials")', "Articlespartialid", { id: id });
-        promise.done(function (data) { 
+        promise.done(function (data) {
             $('#Articlespartialid').html(data);
-        $('pre').each(function (index, elem) {
-            debugger;
-            var d = $(this)[0];
-            for (var i = 0; i < d.childNodes.length; i++) {
-                if (d.childNodes[i].nodeType === 3 &&
-                    d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")) {
-                    wrapNode(d.childNodes[i]);
-                }
-            }
+        //$('pre').each(function (index, elem) {
+        //   var d = $(this)[0];
+        //    for (var i = 0; i < d.childNodes.length; i++) {
+        //        if (d.childNodes[i].nodeType === 3 &&
+        //            d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")) {
+        //            if (d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")!="")
+        //            wrapNode(d.childNodes[i]);
+        //        }
+        //    }
 
-            var lines = $(this).text().split('\n');
-            var paras = '';
-            $.each(lines, function (i, line) {
-                // $(line).wrap('<p></p>');
-                if (line && line.indexOf('<input') == -1) {
-                    paras += '<p>' + line + '</p>';
-                }
-            });
-            paras.replace(/[\r\n]+/g, '\n');
-            // $(this).html('');
-            // $(this).append(paras);
-            $(this).html(paras);
-        });
+        //    var lines = $(this).text().split('\n');
+        //    var paras = '';
+        //    $.each(lines, function (i, line) {
+        //        // $(line).wrap('<p></p>');
+        //        if (line != "") {
+        //            if (line && line.indexOf('<input') == -1) {
+        //                paras += '<p>' + line + '</p>';
+        //            }
+        //        }
+        //    });
+        //    paras.replace(/[\r\n]+/g, '\n');
+        //    // $(this).html('');
+        //    // $(this).append(paras);
+        //    $(this).html(paras);
+        //});
         })
     }
     function wrapNode(node) {
