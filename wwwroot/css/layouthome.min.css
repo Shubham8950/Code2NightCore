@@ -15504,7 +15504,7 @@ body {
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
     line-height: 1.5;
-    color: #666;
+    color: #181717;
     background-color: #fff
 }
 
@@ -16608,8 +16608,8 @@ tbody {
     width: 30px;
     height: 5px;
     margin: 15px 0 20px;
-    background-color: #666;
-    border-color: #666
+    background-color: #181717;
+    border-color: #181717
 }
 
     .sidebar .separator:after {
@@ -16731,7 +16731,7 @@ tbody {
 .light .footer h4,
 .light .footer h5,
 .light .footer h6 {
-    color: #666
+    color: #181717
 }
 
 .subfooter {
@@ -16880,7 +16880,7 @@ tbody {
         }
 
             .blogpost ul.links li a {
-                color: #666;
+                color: #181717;
                 display: inline-block
             }
 
@@ -17269,7 +17269,7 @@ tbody {
 }
 
     .comment-meta a {
-        color: #666
+        color: #181717
     }
 
         .comment-meta a:hover {
@@ -17861,14 +17861,14 @@ tbody {
     .btn-dark.active,
     .open .dropdown-toggle.btn-dark {
         color: #fff;
-        background-color: #666;
-        border-color: #666
+        background-color: #181717;
+        border-color: #181717
     }
 
 .btn-gray {
     color: #fff;
-    background-color: #666;
-    border-color: #666
+    background-color: #181717;
+    border-color: #181717
 }
 
     .btn-gray:hover,
@@ -18002,7 +18002,7 @@ fieldset[disabled] .btn-default {
 }
 
 .btn-default .badge {
-    color: #666;
+    color: #181717;
     background-color: #fff;
     border: none
 }
@@ -18104,7 +18104,7 @@ textarea {
     height: 40px;
     padding-right: 30px;
     border-color: #acacac;
-    color: #666;
+    color: #181717;
     position: relative;
     -webkit-appearance: none;
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075);
@@ -18112,7 +18112,7 @@ textarea {
 }
 
     .form-control:focus {
-        border-color: #666;
+        border-color: #181717;
         -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075);
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075)
     }
@@ -18185,7 +18185,7 @@ fieldset {
     border-radius: 2px;
     background-color: transparent;
     color: inherit;
-    border: 1px solid #666
+    border: 1px solid #181717
 }
 
 .dropdown .badge {
@@ -18297,7 +18297,7 @@ fieldset {
 
 .default-bg select.form-control,
 .dark-bg select.form-control {
-    color: #666
+    color: #181717
 }
 
 footer:not(.light) .footer-content .form-control {
@@ -18427,7 +18427,7 @@ ul.pager {
             -webkit-border-radius: 0;
             -moz-border-radius: 0;
             border-radius: 0;
-            color: #666
+            color: #181717
         }
 
             ul.pagination li > a:hover {
@@ -18472,7 +18472,7 @@ ul.pager {
         border-radius: 0;
         padding: 12px 25px;
         position: relative;
-        color: #666
+        color: #181717
     }
 
         .nav-tabs > li > a:hover {
@@ -18483,7 +18483,7 @@ ul.pager {
     .nav-tabs > li.active > a,
     .nav-tabs > li.active > a:hover,
     .nav-tabs > li.active > a:focus {
-        color: #666;
+        color: #181717;
         background-color: #fafafa;
         border: 1px solid #f0f0f0;
         -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, .04);
@@ -18564,7 +18564,7 @@ ul.pager {
             }
 
             .nav-tabs > li > a:hover {
-                color: #666
+                color: #181717
             }
 
                 .nav-tabs > li > a:hover:after {
@@ -18656,7 +18656,7 @@ ul.pager {
             .vertical .nav-tabs > li > a:hover {
                 border-color: #f0f0f0 #f0f0f0 #ebebeb;
                 border-right-color: transparent;
-                color: #666;
+                color: #181717;
                 z-index: 2
             }
 
@@ -18677,7 +18677,7 @@ ul.pager {
                 box-shadow: -1px 0 1px rgba(0, 0, 0, .04);
                 border-right-color: transparent;
                 border-bottom-color: #f0f0f0;
-                color: #666;
+                color: #181717;
                 z-index: 2;
                 width: 101%
             }
@@ -18730,7 +18730,7 @@ ul.pager {
     border-radius: 0;
     padding: 10px 15px;
     border: 1px solid transparent;
-    color: #666;
+    color: #181717;
     font-size: 13px;
     text-transform: uppercase;
     font-weight: 700
@@ -18819,7 +18819,7 @@ ul.pager {
 .light .footer-content .nav-pills > li.active > a,
 .light .footer-content .nav-pills > li.active > a:focus,
 .light .footer-content .nav-pills > li > a:focus {
-    color: #666
+    color: #181717
 }
 
     .light .footer-content .nav-pills > li.active > a:hover,
@@ -18833,7 +18833,7 @@ ul.pager {
         .light .footer-content .nav-pills > li.active > a:focus:after,
         .light .footer-content .nav-pills > li > a:hover:after,
         .light .footer-content .nav-pills > li > a:focus:after {
-            color: #666
+            color: #181717
         }
 
 .nav-pills > .active > a > .badge {
@@ -19404,7 +19404,7 @@ a.overlay.small i {
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #666;
+    color: #181717;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
@@ -19436,7 +19436,7 @@ a.overlay.small i {
 .main-navigation .navbar-nav > .open > a,
 .main-navigation .navbar-nav > .open > a:hover,
 .main-navigation .navbar-nav > .open > a:focus {
-    color: #666;
+    color: #181717;
     background-color: #fafafa;
     border: 1px solid #f1f1f1;
     border-bottom: 1px solid transparent;
@@ -19477,7 +19477,7 @@ a.overlay.small i {
     .dropdown-menu > li > a {
         padding: 12px 20px;
         font-size: 15px;
-        color: #666;
+        color: #181717;
         border-bottom: 1px solid #f1f1f1;
         -webkit-transition: none;
         -o-transition: none;
@@ -19559,7 +19559,7 @@ a.overlay.small i {
 .mega-menu .menu > li > a {
     padding: 5px 0;
     font-size: 15px;
-    color: #666;
+    color: #181717;
     border-bottom: 1px solid #f1f1f1;
     display: block;
     -webkit-transition: none;
@@ -19605,7 +19605,7 @@ a.overlay.small i {
 }
 
 .transparent.header:not(.dark) .dropdown > a:before {
-    color: #666
+    color: #181717
 }
 
 .navbar-default .navbar-nav > .active.dropdown > a:before {
@@ -19622,7 +19622,7 @@ a.overlay.small i {
     top: 15px;
     margin-left: 0;
     visibility: visible;
-    color: #666
+    color: #181717
 }
 
 .dropdown .dropdown.open > a:before,
@@ -19741,7 +19741,7 @@ a.overlay.small i {
 }
 
 .dark.header .navbar-default .navbar-nav > .dropdown.open > a:before {
-    color: #666
+    color: #181717
 }
 
 .dark.header .dropdown .dropdown > a:before {
@@ -19749,7 +19749,7 @@ a.overlay.small i {
 }
 
 .dark.header .navbar-default .navbar-toggle {
-    border-color: #666
+    border-color: #181717
 }
 
     .dark.header .navbar-default .navbar-toggle:hover,
@@ -19759,7 +19759,7 @@ a.overlay.small i {
     }
 
     .dark.header .navbar-default .navbar-toggle .icon-bar {
-        background-color: #666
+        background-color: #181717
     }
 
     .dark.header .navbar-default .navbar-toggle:hover .icon-bar,
@@ -19915,7 +19915,7 @@ a.overlay.small i {
         .navbar-default .navbar-nav .open .dropdown-menu > li > a,
         .navbar-default .navbar-nav .open .dropdown-menu .dropdown-header {
             padding: 12px 15px 12px 40px;
-            color: #666;
+            color: #181717;
             border-color: #fafafa
         }
 
@@ -20459,11 +20459,11 @@ a.overlay.small i {
 
     .box.dark-bg:hover {
         background-color: #fff;
-        border: 1px solid #666
+        border: 1px solid #181717
     }
 
         .box.dark-bg:hover * {
-            color: #666
+            color: #181717
         }
 
 .box-style-1 {
@@ -20524,7 +20524,7 @@ a.overlay.small i {
     }
 
     .box-style-2:hover .icon-container {
-        border: 1px solid #666
+        border: 1px solid #181717
     }
 
     .box-style-2:hover .default-bg {
@@ -20538,11 +20538,11 @@ a.overlay.small i {
 
     .box-style-2:hover .dark-bg {
         background-color: #fff;
-        border: 1px solid #666
+        border: 1px solid #181717
     }
 
         .box-style-2:hover .dark-bg * {
-            color: #666
+            color: #181717
         }
 
     .box-style-2:hover .white-bg * {
@@ -20579,7 +20579,7 @@ a.overlay.small i {
     }
 
     .box-style-3:hover .icon-container {
-        border: 1px solid #666
+        border: 1px solid #181717
     }
 
     .box-style-3:hover .default-bg {
@@ -20593,11 +20593,11 @@ a.overlay.small i {
 
     .box-style-3:hover .dark-bg {
         background-color: #fff;
-        border: 1px solid #666
+        border: 1px solid #181717
     }
 
         .box-style-3:hover .dark-bg * {
-            color: #666
+            color: #181717
         }
 
     .box-style-3:hover .white-bg * {
@@ -20823,15 +20823,15 @@ footer:not(.light) .footer-content .tag a,
     }
 
         .footer-content .social-links li a {
-            color: #666;
+            color: #181717;
             background-color: transparent;
-            border-color: #666
+            border-color: #181717
         }
 
             .footer-content .social-links li a:hover {
                 color: #fff;
-                background-color: #666;
-                border-color: #666
+                background-color: #181717;
+                border-color: #181717
             }
 
 .social-links li.twitter a:hover,
@@ -21395,7 +21395,7 @@ ul.tweets {
             width: 25px;
             height: 25px;
             text-align: center;
-            color: #666
+            color: #181717
         }
 
         ul.tweets li p {
@@ -21404,7 +21404,7 @@ ul.tweets {
 
         ul.tweets li span {
             font-size: 12px;
-            color: #666
+            color: #181717
         }
 
 .testimonial {
@@ -21700,7 +21700,7 @@ ul.tweets {
     .stripped .plan ul li {
         border: 1px solid #ececec;
         border-top: none;
-        color: #666
+        color: #181717
     }
 
         .stripped .plan ul li:nth-child(even) {
@@ -21804,7 +21804,7 @@ ul.tweets {
 
 .tp-loader.spinner4 .dot1,
 .tp-loader.spinner4 .dot2 {
-    background-color: #666;
+    background-color: #181717;
     -webkit-box-shadow: 0 0 20px 0 rgba(255, 255, 255, .8);
     box-shadow: 0 0 20px 0 rgba(255, 255, 255, .8)
 }
@@ -21843,7 +21843,7 @@ ul.tweets {
 }
 
 .dark_gray_bg {
-    background-color: #666;
+    background-color: #181717;
     color: #fff
 }
 
@@ -25648,7 +25648,7 @@ body .ui-tooltip {
     padding: .625em;
     overflow: hidden;
     background: #f0f0f0;
-    color: #666;
+    color: #181717;
     font-size: 1em;
     font-weight: 300
 }
@@ -26654,7 +26654,7 @@ body.swal2-toast-column .swal2-toast {
     line-height: 31px;
     /*text-align: justify;*/
     font-family: Verdana,sans-serif,Geneva !important;
-    color: #000 !important;
+    
     background:transparent;
 }
 

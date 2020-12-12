@@ -24,6 +24,15 @@
 }
 <script data-ad-client="ca-pub-2622840091485569" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script id="dsq-count-scr" src="//codetonight.disqus.com/count.js"></script>
+
+
+<style>
+    <!-- page-title end -->
+    pre[class*="language-"] > code {
+        position: relative;
+        display: block;
+    }
+</style>
 <script type="application/ld+json">
     {
     "@@context" : "http://schema.org",
@@ -75,13 +84,49 @@
     }
 </style>
 
+<style>
+    /*  .articleactive {
+        background-color: #efefef !important;
+    }
 
+    .code-panel {
+        padding: 1.1rem 1.25rem 0 1.25rem;
+        background-color: #fff;
+        border: 1px solid #2590e3;
+        border-radius: 0;
+        margin-bottom: 1.25rem;
+    }*/
+
+    pre {
+        background-color: white !important;
+        border: 0px;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    /*.articlefont {
+        font-size: 16px !important;
+        line-height: 31px;*/
+    /* text-align: justify; */
+    /*font-family: Verdana,sans-serif,Geneva !important;
+        color: #000 !important;
+        background: transparent;
+    }
+
+    h1, h2, h3 {
+        font-family: "Segoe UI",Verdana,sans-serif !important;
+        font-weight: 400 !important;
+        line-height: 1.2 !important;
+        color: #181717 !important;
+    }*/
+
+</style>
 <div class="page-intro">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <ol class="breadcrumb">
-                    <li><i class="fa fa-home pr-10"></i><a href="index.html">Home</a></li>
+                    <li><i class="fa fa-home pr-10"></i><a href="@Url.Action("index","User")">Home</a></li>
                     <li class="active">Blogpost</li>
                 </ol>
             </div>
@@ -194,30 +239,37 @@
                     </div>
                 }
             </div>
-           
+
         </div>
     </div>
 </aside>
 </div>
 </div>
-    <div class="col-md-12" style="overflow:hidden">
-        <div>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- DETAIL -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2622840091485569"
-                 data-ad-slot="3445995263"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
+<div class="col-md-12" style="overflow:hidden">
+    <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- DETAIL -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-2622840091485569"
+             data-ad-slot="3445995263"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
+</div>
 <script id="dsq-count-scr" src="//codetonight.disqus.com/count.js" async></script>
 <script>
-
+    $(document).ready(function () {
+        //$('pre').each(function (index, elem) {
+        //          $(elem).wrap("<div class='code-panel'></div>")
+        //      });
+        //      $('#Articlespartialid').find('p,div,li,span').each(function (index, elem) {
+        //          $(elem).addClass("articlefont")
+        //      });
+    });
     //function wrapNode(node) {
     //    $(node).replaceWith("<p>" + node.textContent + "</p>");
     //}

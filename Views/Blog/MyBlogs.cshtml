@@ -69,7 +69,7 @@
                                     <footer class="clearfix">
                                         <ul class="links pull-left" style="display:block;width:100%">
                                             <li><i class="fa fa-comment-o pr-5"></i> <a href="~/Blog/MyBlog/@item.BlogUrl#disqus_thread"></a> |</li>
-                                            <li><i class="fa fa-tags pr-5"></i> <a href="#">@item.Tags.Replace("-"," ")</a></li>
+                                            <li><i class="fa fa-tags pr-5"></i> <a href="#">@(item.Tags?.Replace("-"," "))</a></li>
                                         </ul>
                                         <a class="pull-right link" href="~/Blog/MyBlog/@item.BlogUrl"><span>Read more</span></a>@Html.Raw(Html.EncodedActionLink("Edit", "EditBlog", "Blog",new {Id=item.Id },null,"fa fa-edit"))
                                     </footer>
