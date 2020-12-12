@@ -3,180 +3,185 @@
     ViewData["Title"] = "Article";
 
 }
-<link href="https://myCDN.com/prism@v1.x/themes/prism.css" rel="stylesheet" />
+@*<link href="https://myCDN.com/prism@v1.x/themes/prism.css" rel="stylesheet" />
 <script src="https://prismjs.com/prism.js"></script>
 <script src="https://myCDN.com/prism@v1.x/plugins/autoloader/prism-autoloader.min.js"></script>
 <link href="~/codemirror.css" rel="stylesheet" />
-<script src="~/codemirror.js"></script>
+    <script src="~/codemirror.js"></script>*@
 
-<style>
-    .articleactive {
-        background-color: #efefef !important;
-    }
-    .code-panel {
-        padding: 1.1rem 1.25rem 0 1.25rem;
-        background-color: #fff;
-        border: 1px solid #2590e3;
-        border-radius: 0;
-        margin-bottom: 1.25rem;
-    }
-    pre {
-        background-color: white !important;
-        border: 0px;
-        
-    }
-    .articlefont {
-        font-size: 16px !important;
-        line-height: 31px;
-        /* text-align: justify; */
-        font-family: Verdana,sans-serif,Geneva !important;
-        color: #000 !important;
-        background: transparent;
-    }
-    h1, h2, h3 {
-        font-family: "Segoe UI",Verdana,sans-serif !important;
-        font-weight: 400 !important;
-        line-height: 1.2 !important;
-        color:#181717 !important;
-    }
-    /*  pre {
-        padding: 10px 16px;
-        border-radius: 2px;
-    }
-
-        pre p {
-            display: block;
-            line-height: 1.5rem;
-            counter-increment: line;
+    <style>
+        .articleactive {
+            background-color: #efefef !important;
         }
 
-            pre p:before {
-                content: counter(line);
-                display: inline-block;
-                border-right: 1px solid #ddd;
-                padding: 0 .5em;
-                margin-right: .5em;
-                color: #888
-            }*/
-</style>
-<div class="page-intro">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ol class="breadcrumb">
-                    <li><i class="fa fa-home pr-10"></i><a href="@Url.Action("index","User")">Home</a></li>
-                    <li><a href="@Url.Action("index","Tutorials")">Tutorials</a></li>
-                    <li class="active">@ViewBag.Title</li>
-                </ol>
+        .code-panel {
+            margin:10px 0px;
+            background-color: #fff;
+            border: 1px solid #2590e3;
+            border-radius: 0;
+           
+        }
+
+        pre {
+            background-color: white !important;
+            border: 0px;
+        }
+        .footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6 {
+            color: #999 !important;
+        }
+        .articlefont {
+            font-size: 16px !important;
+            line-height: 31px;
+            /* text-align: justify; */
+            font-family: Verdana,sans-serif,Geneva !important;
+            color: #000 !important;
+            background: transparent;
+        }
+
+        h1, h2, h3 {
+            font-family: "Segoe UI",Verdana,sans-serif !important;
+            font-weight: 400 !important;
+            line-height: 1.2 !important;
+            color: #181717 !important;
+        }
+        /*  pre {
+            padding: 10px 16px;
+            border-radius: 2px;
+        }
+
+            pre p {
+                display: block;
+                line-height: 1.5rem;
+                counter-increment: line;
+            }
+
+                pre p:before {
+                    content: counter(line);
+                    display: inline-block;
+                    border-right: 1px solid #ddd;
+                    padding: 0 .5em;
+                    margin-right: .5em;
+                    color: #888
+                }*/
+    </style>
+    <div class="page-intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home pr-10"></i><a href="@Url.Action("index","User")">Home</a></li>
+                        <li><a href="@Url.Action("index","Tutorials")">Tutorials</a></li>
+                        <li class="active">@ViewBag.Title</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<section class="main-container" style="margin-top: 0px;">
+    <section class="main-container" style="margin-top: 0px;">
 
-    <div class="container">
-        <div class="row">
+        <div class="container">
+            <div class="row">
 
-            <!-- sidebar start -->
-            @if (Model.GetArticles.Count() > 0)
-            {
-                <aside class="col-md-3">
-                    <div class="sidebar">
-                        <div class="block clearfix">
-
-                            <h3 class="title">@Model.GetArticles.FirstOrDefault()?.Topictitle</h3>
-                            <div class="separator"></div>
-                            <nav>
-                                <ul class="nav nav-pills nav-stacked">
-                                    @foreach (var item in Model.GetArticles)
-                                    {
-                                        <li><a class='article @(Model.ArticleDetails?.articleurl==item.articleurl?"articleactive":"")' onclick="fetchArticle(@item.articleid,this)">@item.articletitle</a></li>
-                                    }
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </aside>
-            }
-            else
-            {
-                <h1 style="text-align:center">Sorry ! No Articles Found</h1>
-            }
-            <!-- sidebar end -->
-            <!-- main start -->
-            <!-- ================ -->
-            <div class="main col-md-8 col-md-offset-1" id="Articlespartialid">
-                @if (Model.ArticleDetails.articleid != 0)
+                <!-- sidebar start -->
+                @if (Model.GetArticles.Count() > 0)
                 {
-                    Html.RenderPartial("_Article", Model.ArticleDetails);
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="block clearfix">
+
+                                <h3 class="title">@Model.GetArticles.FirstOrDefault()?.Topictitle</h3>
+                                <div class="separator"></div>
+                                <nav>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        @foreach (var item in Model.GetArticles)
+                                        {
+                                            <li><a class='article @(Model.ArticleDetails?.articleurl==item.articleurl?"articleactive":"")' onclick="fetchArticle(@item.articleid,this)">@item.articletitle</a></li>
+                                        }
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </aside>
                 }
+                else
+                {
+                    <h1 style="text-align:center">Sorry ! No Articles Found</h1>
+                }
+                <!-- sidebar end -->
+                <!-- main start -->
+                <!-- ================ -->
+                <div class="main col-md-8 col-md-offset-1" id="Articlespartialid">
+                    @if (Model.ArticleDetails.articleid != 0)
+                    {
+                        Html.RenderPartial("_Article", Model.ArticleDetails);
+                    }
+                </div>
+                <!-- main end -->
+
             </div>
-            <!-- main end -->
-
         </div>
-    </div>
-</section>
-<script>
-    $(document).ready(function () {
-          @if (Model.ArticleDetails.articleid == 0)
-              {
-        @: $('.article').first().click();
-        @: $('.article:first').addClass('articleactive');
-              }
-    })
-    function LoadPartialViewPromise(url, elem, postData) {
-        ShowLoader();
-        var promise = $.post(url, postData, function (result, status) {
-
-            $("#" + elem).html('');
-            $("#" + elem).html(result);
-            HideLoader();
-
-        });
-        return promise;
-    }
-    var fetchArticle = function (id, elem) {
-        $('.articleactive').removeClass('articleactive');
-        $(elem).addClass('articleactive');
-        var promise = LoadPartialViewPromise('@Url.Action("ArticleDetail", "Tutorials")', "Articlespartialid", { id: id });
-        promise.done(function (data) {
-            $('#Articlespartialid').html(data);
-            $('pre').each(function (index, elem) {
-                $(elem).wrap("<div class='code-panel'></div>")
-            });
-            $('#Articlespartialid').find('p,div,li,span').each(function (index, elem) {
-                $(elem).addClass("articlefont")
-            }); 
-        //$('pre').each(function (index, elem) {
-        //   var d = $(this)[0];
-        //    for (var i = 0; i < d.childNodes.length; i++) {
-        //        if (d.childNodes[i].nodeType === 3 &&
-        //            d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")) {
-        //            if (d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")!="")
-        //            wrapNode(d.childNodes[i]);
-        //        }
-        //    }
-
-        //    var lines = $(this).text().split('\n');
-        //    var paras = '';
-        //    $.each(lines, function (i, line) {
-        //        // $(line).wrap('<p></p>');
-        //        if (line != "") {
-        //            if (line && line.indexOf('<input') == -1) {
-        //                paras += '<p>' + line + '</p>';
-        //            }
-        //        }
-        //    });
-        //    paras.replace(/[\r\n]+/g, '\n');
-        //    // $(this).html('');
-        //    // $(this).append(paras);
-        //    $(this).html(paras);
-        //});
+    </section>
+    <script>
+        $(document).ready(function () {
+              @if (Model.ArticleDetails.articleid == 0)
+                  {
+            @: $('.article').first().click();
+            @: $('.article:first').addClass('articleactive');
+                  }
         })
-    }
-    function wrapNode(node) {
-        $(node).replaceWith("<p>" + node.textContent + "</p>");
-    }
+        function LoadPartialViewPromise(url, elem, postData) {
+            ShowLoader();
+            var promise = $.post(url, postData, function (result, status) {
+
+                $("#" + elem).html('');
+                $("#" + elem).html(result);
+                HideLoader();
+
+            });
+            return promise;
+        }
+        var fetchArticle = function (id, elem) {
+            $('.articleactive').removeClass('articleactive');
+            $(elem).addClass('articleactive');
+            var promise = LoadPartialViewPromise('@Url.Action("ArticleDetail", "Tutorials")', "Articlespartialid", { id: id });
+            promise.done(function (data) {
+                $('#Articlespartialid').html(data);
+                $('pre').each(function (index, elem) {
+                    $(elem).wrap("<div class='code-panel'></div>")
+                });
+                $('#Articlespartialid').find('p,div,li,span').each(function (index, elem) {
+                    $(elem).addClass("articlefont")
+                });
+            //$('pre').each(function (index, elem) {
+            //   var d = $(this)[0];
+            //    for (var i = 0; i < d.childNodes.length; i++) {
+            //        if (d.childNodes[i].nodeType === 3 &&
+            //            d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")) {
+            //            if (d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")!="")
+            //            wrapNode(d.childNodes[i]);
+            //        }
+            //    }
+
+            //    var lines = $(this).text().split('\n');
+            //    var paras = '';
+            //    $.each(lines, function (i, line) {
+            //        // $(line).wrap('<p></p>');
+            //        if (line != "") {
+            //            if (line && line.indexOf('<input') == -1) {
+            //                paras += '<p>' + line + '</p>';
+            //            }
+            //        }
+            //    });
+            //    paras.replace(/[\r\n]+/g, '\n');
+            //    // $(this).html('');
+            //    // $(this).append(paras);
+            //    $(this).html(paras);
+            //});
+            })
+        }
+        function wrapNode(node) {
+            $(node).replaceWith("<p>" + node.textContent + "</p>");
+        }
 
 
-</script>
+    </script>

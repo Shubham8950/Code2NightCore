@@ -26,3 +26,4 @@
 <img src="/Uploads/Step-13YYYY09DD1109SS.PNG"></p>
 </p><p>Step-13: Congrats this time it will open perfectly and this is how we can solve Issue&nbsp;<span style="color: rgba(0, 0, 0, 0.87); font-family: Roboto, Noto, sans-serif; white-space: pre-wrap;">A non-fatal error occured during cluster initialisation in Postgre SQL.</span><br></p><p><img src="/Uploads/Save-14YYYY09DD1109SS.PNG"><br><p></p>
 <p>You can also have a look at our&nbsp; video tutorial available with step by step explanation</p><p><br></p><p><a href="https://youtu.be/XLmmrEAqTtc" target="_blank">A non-fatal error occured during cluster initialization video tutorial</a><br></p></p><p><br></p>
+
