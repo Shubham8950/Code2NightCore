@@ -7,7 +7,7 @@
     <script data-ad-client="ca-pub-2622840091485569" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     <link href="~/prism.css" rel="stylesheet" />
-    @*<script async custom-element="amp-auto-ads"
+    <script async custom-element="amp-auto-ads"
             src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114851264-8"></script>
@@ -16,7 +16,7 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-114851264-8');
-    </script>*@
+    </script>
     <title>@ViewBag.Title</title>
 
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.MetaDescription)))
@@ -79,13 +79,28 @@
     <link href="~/css/layouthome.min.css" asp-append-version="true" rel="stylesheet" />
     <script asp-append-version="true" src="~/layoutTop.js"></script>
     <link  asp-append-version="true" href="~/prism.css" rel="stylesheet" />
+    <style>
+        footer:not(.light) .footer-content .tag a, .dark-bg .tag a {
+            background-color: transparent;
+            border-color: #555;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            color: #999 !important;
+        }
+        pre[class*="language-"] {
+            padding: 0px 1em !important;
+            /* margin: .5em 0; */
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
 
 
-    @*<amp-auto-ads type="adsense"
+    <amp-auto-ads type="adsense"
                   data-ad-client="ca-pub-2622840091485569">
-    </amp-auto-ads>*@
+    </amp-auto-ads>
     <div class="header-top">
         <div class="container">
             <div class="row">
@@ -162,46 +177,46 @@
                                     </div>
                                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li class="active">
-                                                <a href="@Url.Action("index","Users")">Home</a>
+                                            <li class="Home">
+                                                <a class="links" href="/Users/Index">Home</a>
 
                                             </li>
-                                            <li>
-                                                <a href="@Url.Action("Index","Blog")">Blogs </a>
+                                            <li class="Blogs">
+                                                <a class="links" href="@Url.Action("Index","Blog")">Blogs </a>
                                             </li>
-                                            <li>
-                                                <a href="@Url.Action("index","Tutorials")">Tutorial</a>
+                                            <li class="Tutorial">
+                                                <a class="links" href="@Url.Action("index","Tutorials")">Tutorial</a>
                                             </li>
                                             <li>
                                                 @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
                                                 {
-                                                    <a href="@Url.Action("Login","Users")"> Post Blog </a>
+                                                    <a class="links" href="@Url.Action("Login","Users")"> Post Blog </a>
                                                 }
                                                 else
                                                 {
-                                                    <a href="/Blog/AddBlog"> Post Blog </a>
+                                                    <a class="links" href="/Blog/AddBlog"> Post Blog </a>
                                                 }
                                             </li>
                                             @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
                                             {
                                                 <li>
-                                                    <a href="@Url.Action("Register", "Users")">Register</a>
+                                                    <a class="links" href="@Url.Action("Register", "Users")">Register</a>
                                                 </li>
                                             }
 
                                             @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
                                             {
                                                 <li>
-                                                    <a href="@Url.Action("Login", "Users")">Login</a>
+                                                    <a class="links" href="@Url.Action("Login", "Users")">Login</a>
                                                 </li>
                                             }
                                             else
                                             {
                                                 <li>
-                                                    <a href="@Url.Action("MyBlogs", "Blog")">My Blogs</a>
+                                                    <a class="links" href="@Url.Action("MyBlogs", "Blog")">My Blogs</a>
                                                 </li>
                                                 <li>
-                                                    <a href="@Url.Action("Logout", "Blog")">Logout</a>
+                                                    <a class="links" href="@Url.Action("Logout", "Blog")">Logout</a>
                                                 </li>
                                             }
 
@@ -354,6 +369,18 @@
     <script asp-append-version="true" src="~/js/BlogIndex.min.js"></script>
     <script asp-append-version="true" src="~/adminplugins/select2/js/select2.min.js"></script>
     <script asp-append-version="true" src="~/prism (1).js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.links').each(function (val,elem) {
+                if (window.location.href.indexOf($(elem).attr("href")) != -1) {
+                    $(elem).parent().addClass("active");
+                }
+                else {
+                    $(elem).parent().removeClass("active");
+                }
+            });
+        })
+    </script>
     @*<script>
             $(document).ready(function () {
                 $.ajax({

@@ -1,0 +1,167 @@
+<h4>Step 1 : Paste the code in controller</h4>
+
+<pre>   public ActionResult Index()
+        {
+            string surl = ((Request.ServerVariables["HTTPS"] != "off" &amp;&amp; Request.ServerVariables["HTTP_HOST"] != "off") || Request.ServerVariables["SERVER_PORT"] == "443") ? "https://" : "http://";
+            surl += Request.ServerVariables["HTTP_HOST"] + Request.Url.AbsolutePath.Replace("ClientSlotBooking.aspx", "SuccessPayment.aspx");
+            string furl = ((Request.ServerVariables["HTTPS"] != "off" &amp;&amp; Request.ServerVariables["HTTP_HOST"] != "off") || Request.ServerVariables["SERVER_PORT"] == "443") ? "https://" : "http://";
+            furl += Request.ServerVariables["HTTP_HOST"] + Request.Url.AbsolutePath.Replace("ClientSlotBooking.aspx", "FailurePayment.aspx");
+            ViewBag.surl = surl;
+            ViewBag.furl = furl;
+
+            return View();
+        }
+
+        public ActionResult Hash(string txnid,string key,string salt,string amount,string pinfo,string fname,string email,string mobile,string udf5)
+        {
+            byte[] hash;
+         
+
+            string d = key + "|" + txnid + "|" + amount + "|" + pinfo + "|" + fname+ "|" + email + "|||||" + udf5 + "||||||" + salt;
+            var datab = Encoding.UTF8.GetBytes(d);
+            using (SHA512 shaM = new SHA512Managed())
+            {
+                hash = shaM.ComputeHash(datab);
+            }
+
+            return Json( GetStringFromHash(hash) , JsonRequestBehavior.AllowGet);
+           
+        }
+        private static string GetStringFromHash(byte[] hash)
+        {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i &lt; hash.Length; i++)
+            {
+                result.Append(hash[i].ToString("X2").ToLower());
+            }
+            return result.ToString();
+        }</pre>
+
+<h4>Step 2: Paste the code in Index.cs.html</h4>
+
+<pre> @{
+    ViewBag.Title = "Home Page";
+}
+
+&lt;div class="jumbotron"&gt;
+    &lt;h1&gt;ASP.NET&lt;/h1&gt;
+    &lt;p class="lead"&gt;ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.&lt;/p&gt;
+    &lt;p&gt;&lt;a href="https://asp.net" class="btn btn-primary btn-lg"&gt;Learn more &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="row"&gt;
+    &lt;a onclick="launchBOLT()" id="btnRetry"  class="btn btn-sm btn-warning btn-flat pull-right"&gt;Pay&lt;/a&gt;
+    &lt;input type="hidden" id="bookingId" clientidmode="Static" value="1"  /&gt;
+    &lt;input type="hidden" id="hash" /&gt;
+    &lt;input type="hidden"   id="Totalamount" value="5" /&gt;
+    &lt;input type="hidden"   value="abc" clientidmode="Static" id="firstname" /&gt;
+    &lt;input type="hidden"    id="Email" /&gt;
+    &lt;input type="hidden"   id="Responseurl" /&gt;
+    &lt;input type="hidden"   id="Failureurl" /&gt;
+    &lt;input type="hidden" id="saltcode" clientidmode="Static" name="saltcode"   value="LXOnGmUFcu" /&gt;
+    &lt;input type="hidden" id="key" clientidmode="Static" name="key"   value="98vPTkPH" /&gt;
+
+&lt;/div&gt;
+
+&lt;script&gt;
+    function launchBOLT() {
+        var promise = $.ajax({
+            url: '/Home/Hash',
+            type: 'post',
+            data: JSON.stringify({
+                txnid: $('#bookingId').val(),
+                key: $('#key').val(),
+                salt: $('#saltcode').val(),
+                amount: parseInt(5),
+                pinfo: 'abc',
+                fname: $('#firstname').val(),
+                email: $('#Email').val(),
+                mobile: '56457864898',
+                udf5: 'dss',
+
+            }),
+            contentType: "application/json",
+            dataType: 'json',
+            success: function (json) {
+
+
+
+            }
+        });
+        promise.done(function (json) {
+
+            $('#hash').val(json);
+
+
+            bolt.launch({
+                txnid: $('#bookingId').val(),
+                amount: parseInt(5),
+                productinfo: 'abc',
+                firstname: $('#firstname').val(),
+                email: $('#Email').val(),
+                phone: '56458664898',
+                udf5: 'dss',
+                hash: $('#hash').val(),
+                key: $('#key').val(),
+                surl: "@ViewBag.surl",
+                furl:"@ViewBag.furl"
+            }, {
+                responseHandler: function (BOLT) {
+                    var salt = $('#saltcode').val();
+                    if (BOLT.response.txnStatus != 'CANCEL') {
+
+                        //Salt is passd here for demo purpose only. For practical use keep salt at server side only.
+                        var fr = '&lt;form action=\"' + "@ViewBag.surl" + '\" method=\"post\"&gt;' +
+                            '&lt;input type=\"hidden\" name=\"key\" value=\"' + BOLT.response.key + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"salt\" value=\"' + salt + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"txnid\" value=\"' + BOLT.response.txnid + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"amount\" value=\"' + BOLT.response.amount + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"productinfo\" value=\"' + BOLT.response.productinfo + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"firstname\" value=\"' + BOLT.response.firstname + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"email\" value=\"' + BOLT.response.email + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"udf5\" value=\"' + BOLT.response.udf5 + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"mihpayid\" value=\"' + BOLT.response.mihpayid + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"status\" value=\"' + BOLT.response.status + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"hash\" value=\"' + BOLT.response.hash + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"furl\" value=\"' + BOLT.response.furl + '\" /&gt;' +
+                            '&lt;/form&gt;';
+                        var form = jQuery(fr);
+                        jQuery('body').append(form);
+                        form.submit();
+                        return false;
+                    } else if (BOLT.response.txnStatus != 'FAILED') {
+
+                        //Salt is passd here for demo purpose only. For practical use keep salt at server side only.
+                        var fr = '&lt;form action=\"' + "@ViewBag.furl" + '\" method=\"post\"&gt;' +
+                            '&lt;input type=\"hidden\" name=\"key\" value=\"' + $('#bookingId').val() + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"salt\" value=\"' + salt + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"txnid\" value=\"' + $('#bookingId').val() + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"amount\" value=\"' + BOLT.response.amount + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"productinfo\" value=\"' + BOLT.response.productinfo + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"firstname\" value=\"' + BOLT.response.firstname + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"email\" value=\"' + BOLT.response.email + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"udf5\" value=\"' + BOLT.response.udf5 + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"mihpayid\" value=\"' + BOLT.response.mihpayid + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"status\" value=\"' + BOLT.response.status + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"hash\" value=\"' + BOLT.response.hash + '\" /&gt;' +
+                            '&lt;input type=\"hidden\" name=\"furl\" value=\"' + BOLT.response.furl + '\" /&gt;' +
+                            '&lt;/form&gt;';
+                        var form = jQuery(fr);
+                        jQuery('body').append(form);
+                        form.submit();
+                        return false;
+                    }
+
+                },
+                catchException: function (BOLT) {
+                    console.log(BOLT);
+                    alert(BOLT.message);
+                }
+            });
+        });
+    }
+&lt;/script&gt;</pre>
+
+<h4>Final Output</h4><p><img src="/Uploads/image20201102101640.png"></p><p>Test Card Detail&nbsp;</p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);">Card Type:&nbsp;<strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;">Master</strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);"><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;"><br></strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);">Card Name:&nbsp;<strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;">Test&nbsp;</strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);"><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;"><br></strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);">Card Number:&nbsp;<strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;">5123456789012346</strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);"><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;"><br></strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);">Expiry Date:&nbsp;<strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;">05/21</strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);"><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;"><br></strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);">CVV:&nbsp;<strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;">123</strong></p><p style="margin-bottom: var(--s-prose-spacing); padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);"><strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;"><br></strong></p><p style="margin-bottom: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; vertical-align: baseline; box-sizing: inherit; clear: both; color: rgb(36, 39, 41);">OTP :&nbsp;<strong style="margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; box-sizing: inherit;">123456</strong></p>
+
+

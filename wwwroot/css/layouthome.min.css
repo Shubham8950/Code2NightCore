@@ -20811,7 +20811,7 @@ footer:not(.light) .footer-content .tag a,
     }
 
     .dark.header-top .social-links li a {
-        color: #999
+        color: #999 !important;
     }
 
 .footer-content .social-links {
@@ -20823,9 +20823,9 @@ footer:not(.light) .footer-content .tag a,
     }
 
         .footer-content .social-links li a {
-            color: #181717;
+          /*  color: #181717;*/
             background-color: transparent;
-            border-color: #181717
+          /*  border-color: #181717*/
         }
 
             .footer-content .social-links li a:hover {
