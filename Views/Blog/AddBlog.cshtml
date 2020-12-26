@@ -305,7 +305,7 @@
 
         }, true);
 
-       $(".summernote").summernote({
+        $(".summernote").summernote({
            callbacks: {
                onChange: function (contents, $editable) {
                    console.log('onChange:', contents, $editable);
@@ -315,8 +315,24 @@
 
                    }
                    else {
-                       $("#blog").html(contents);
-                       $('#BlogBody').val(contents);
+                       $('body').append('<div style="display:none;" id="testdiv"></div>');
+                       var string = "";
+                       $('div.note-editable').children().each((index, element) => {
+                           $('#testdiv').val('');
+                           if ($(element).is('pre')) {
+                               $('#testdiv').text($(element).find('code').html());
+                               string += '<pre><code class="line-numbers language-csharp">'+ $('#testdiv').html()+'</code></pre>';
+                           }
+                           else {
+                               string += $(element).html();
+                           }
+                       });
+                       $('#testdiv').remove();
+                       $('#BlogBody').val(string);
+                       $("#blog").html(string);
+                       $(".note-editable").html('');
+                       $(".note-editable").html(string);
+                     
                        $("#blog").show();
                        $("#blogbody").show();
                        $("#demoblog").hide();
@@ -332,7 +348,6 @@
 
            }
        });
-
 
 
    });

@@ -1,6 +1,6 @@
 ﻿@model List<Code2Night.DAL.Common.Blog>
 @using Code2Night.DAL.Common
-@using System.Web.Mvc 
+@using System.Web.Mvc
 @{
     ViewBag.Title = "MyBlogs | Code2Night.com";
     ViewBag.MetaDescription = "Welcome To Code2night, write your own blog and reach to the whole world.";
@@ -34,57 +34,57 @@
 
                             <div class="timeline-icon hidden-xs"><i class="fa fa-angle-double-up"></i></div>
 
-                      
+
                             <!-- timeline item end -->
-                           
-                              @foreach (var mnth in Model.OrderByDescending(x=>x.Date).GroupBy(x => x.BlogMonth).Select(x => x.Key).ToList())
-                              {
-                            <div class="timeline-date-label clearfix">@mnth</div>
-                                  foreach (var item in Model.Where(x=>x.BlogMonth==mnth).ToList().OrderByDescending(x=>x.Date))
-                                  {
-                                     
-                            <div class="timeline-item @(count%2==0?"pull-right":"")  object-non-visible myblog" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                                <!-- blogpost start -->
 
-                                <article class="clearfix blogpost">
-                                    @if (item.VideoEmbed != null)
-                                    {
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                      @Html.Raw(item.VideoEmbed)  @*<iframe class="embed-responsive-item" src="http://www.youtube.com/embed/91J8pLHdDB0"></iframe>*@
-                                    </div>
-                                    }
-                                    <div class="blogpost-body">
-                                        <div class="post-info">
-                                            <span class="day">@item.Date.ToString("dd")</span>
-                                            <span class="month">@item.Date.ToString("MMM yyyy")</span>
-                                        </div>
-                                        <div class="blogpost-content">
-                                            <header>
-                                                <h2 class="title"><a >@item.Title</a></h2>
-                                                <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">@item.AuthorName</a></div>
-                                            </header>
-                                            <div id="body">@Html.Raw(item.BlogIntroduction)</div>
-                                        </div>
-                                    </div>
-                                    <footer class="clearfix">
-                                        <ul class="links pull-left" style="display:block;width:100%">
-                                            <li><i class="fa fa-comment-o pr-5"></i> <a href="~/Blog/MyBlog/@item.BlogUrl#disqus_thread"></a> |</li>
-                                            <li><i class="fa fa-tags pr-5"></i> <a href="#">@(item.Tags?.Replace("-"," "))</a></li>
-                                        </ul>
-                                        <a class="pull-right link" href="~/Blog/MyBlog/@item.BlogUrl"><span>Read more</span></a>@Html.Raw(Html.EncodedActionLink("Edit", "EditBlog", "Blog",new {Id=item.Id },null,"fa fa-edit"))
-                                    </footer>
-                                </article>
-                                <!-- blogpost end -->
-                            </div>
+                            @foreach (var mnth in Model.OrderByDescending(x => x.Date).GroupBy(x => x.BlogMonth).Select(x => x.Key).ToList())
+                            {
+                                <div class="timeline-date-label clearfix">@mnth</div>
+                                foreach (var item in Model.Where(x => x.BlogMonth == mnth).ToList().OrderByDescending(x => x.Date))
+                                {
 
-                            
-                                      count++;
-                                  }
-                              }
+                                    <div class="timeline-item @(count%2==0?"pull-right":"")  object-non-visible myblog" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                                        <!-- blogpost start -->
+
+                                        <article class="clearfix blogpost">
+                                            @if (item.VideoEmbed != null)
+                                            {
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    @Html.Raw(item.VideoEmbed)  @*<iframe class="embed-responsive-item" src="http://www.youtube.com/embed/91J8pLHdDB0"></iframe>*@
+                                                </div>
+                                            }
+                                            <div class="blogpost-body">
+                                                <div class="post-info">
+                                                    <span class="day">@item.Date.ToString("dd")</span>
+                                                    <span class="month">@item.Date.ToString("MMM yyyy")</span>
+                                                </div>
+                                                <div class="blogpost-content">
+                                                    <header>
+                                                        <h2 class="title"><a>@item.Title</a></h2>
+                                                        <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">@item.AuthorName</a></div>
+                                                    </header>
+                                                    <div id="body">@Html.Raw(item.BlogIntroduction)</div>
+                                                </div>
+                                            </div>
+                                            <footer class="clearfix">
+                                                <ul class="links pull-left" style="display:block;width:100%">
+                                                    <li><i class="fa fa-comment-o pr-5"></i> <a href="~/Blog/MyBlog/@item.BlogUrl#disqus_thread"></a> |</li>
+                                                    <li><i class="fa fa-tags pr-5"></i> <a href="#">@(item.Tags?.Replace("-"," "))</a></li>
+                                                </ul>
+                                                <a class="pull-right link" href="~/Blog/MyBlog/@item.BlogUrl"><span>Read more</span></a>@Html.Raw(Html.EncodedActionLink("Edit", "EditBlog", "Blog", new { Id = item.Id }, null, "fa fa-edit"))
+                                            </footer>
+                                        </article>
+                                        <!-- blogpost end -->
+                                    </div>
+
+
+                                    count++;
+                                }
+                            }
                             <!-- timeline item start -->
 
-                         
-                       
+
+
                         </div>
                         <!-- timeline end -->
 
