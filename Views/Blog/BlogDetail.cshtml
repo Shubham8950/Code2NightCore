@@ -186,7 +186,7 @@
 }
 <div>
     <p itemprop="articleBody">
-        @(Html.Raw(Model.MyBlog.BlogBody.Replace("<script>", "&lt;script&gt;").Replace("</script>", "&lt;/script&gt;")))
+        @(Html.Raw(Model.MyBlog.BlogBody))
     </p>
 </div>
 </div>

@@ -1,0 +1,234 @@
+﻿
+@{
+    ViewData["Title"] = "Json Beautifier | Code2night";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.MetaDescription = "This JSON beautifier tool can help in formatting and beautifying JSON data along with minify as per your requirement. So that it can be easily read.";
+    ViewBag.MetaKeywords = "Code2Night,Code,Programming,Tutorials,Json Beautifier,Json Minifier";
+}
+<style>
+    .btn {
+        padding: 10px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        min-width: 140px !important;
+        text-align: center;
+        border-radius: 0;
+        text-transform: uppercase;
+        margin: 10px 0;
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+</style>
+@*<link href="~/codemirror.css" rel="stylesheet" />
+<script src="~/codemirror.js"></script>*@
+<link href="~/jquery.json-viewer.css" rel="stylesheet" />
+<script src="~/jquery.json-viewer.js"></script>
+<script src="~/jquery.json-editor.js"></script>
+@*<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+</link>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js">
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/javascript/javascript.min.js">
+</script>*@
+@*<script src="~/fold.js"></script>*@
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i><a href="@Url.Action("index","User")">Home</a></li>
+                    <li class="active">Json Beautifier</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section>
+    <div class="container" style="padding: 50px 10px;">
+        <div class="row">
+            <div class="col-md-5 col-sm-12">
+                <textarea id="json-input"  class="form-control json-editor-blackbord" placeholder="Enter json..." style="min-height:500px;" autocomplete="off"></textarea>
+            </div>
+            <div class="col-md-2 col-sm-12" style=" text-align: center;">
+                <div class="col-md-12 col-sm-6">
+                    <button id="translate" type="button" class="btn btn-primary">Beautify</button>
+                </div>
+                <div class="col-md-12 col-sm-6">
+                    <button id="Copy" type="button" onclick="copyDivToClipboard()" class="btn btn-success">Copy Output</button>
+                </div>
+                <div class="col-md-12 col-sm-6">
+                    <button id="Minify" type="button" onclick="Minify()" class="btn btn-warning">Minify</button>
+                </div>
+                <div class="col-md-12 col-sm-6">
+                    <button id="Reset" type="button" onclick="window.location.reload();" class="btn btn-danger">Reset</button>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-12">
+                @*<textarea id="json-display" class="form-control" autocomplete="off"></textarea>*@
+                <div id="json-display" class="form-control json-editor-blackbord" style="min-height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script type="text/javascript">
+    function getJson() {
+        try {
+           return JSON.parse($('#json-input').val());
+        } catch (ex) {
+            alert('Wrong JSON Format: ' + ex);
+        }
+    }
+    function copyDivToClipboard() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById("json-display"));
+        window.getSelection().removeAllRanges(); // clear current selection
+        window.getSelection().addRange(range); // to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();// to deselect
+    }
+    $(document).ready(function () {
+       
+       //var source= CodeMirror.fromTextArea($('#json-input')[0], {
+       //     matchBrackets: true,
+       //     autoCloseBrackets: true,
+       //     mode: { name: "javascript", json: true },
+       //     value: "",
+       //     matchTags: { bothTags: true },
+       //     lineNumbers: true
+       // });
+       // CodeMirror.fromTextArea($('#json-display')[0], {
+       //     matchBrackets: true,
+       //     autoCloseBrackets: true,
+       //     mode: { name: "javascript", json: true },
+       //     value: "",
+       //     matchTags: { bothTags: true },
+       //     lineNumbers: true
+       // });
+        $('#translate').on('click', function () {
+            var editor = new JsonEditor('#json-display', getJson());
+            editor.load(getJson());
+           
+        });
+    })
+    function Minify() {
+        var jsonObject = getJson();
+        var newString = JSON.stringify(jsonObject, null, 0);
+        $('#json-display').text(newString)
+      //  var editor = new JsonEditor('#json-display', newString);
+       // editor.load(newString);
+    }
+    
+</script>
+
+<script src="~/jquery.json-viewer.js"></script>
+
+@*<script id="script">
+    window.onload = function () {
+        var te = document.getElementById("code");
+        var sc = document.getElementById("script");
+        te.value = (sc.textContent || sc.innerText || sc.innerHTML).replace(/^\s*/, "");
+        sc.innerHTML = "";
+        var te_html = document.getElementById("code-html");
+        te_html.value = "<html>\n  " + document.documentElement.innerHTML + "\n</html>";
+
+        var foldFunc = CodeMirror.newFoldFunction(CodeMirror.braceRangeFinder);
+        window.editor = CodeMirror.fromTextArea(te, {
+            mode: "javascript",
+            lineNumbers: true,
+            lineWrapping: true,
+            onGutterClick: foldFunc,
+            extraKeys: { "Ctrl-Q": function (cm) { foldFunc(cm, cm.getCursor().line); } }
+        });
+        foldFunc(editor, 9);
+        foldFunc(editor, 20);
+
+        var foldFunc_html = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder);
+        window.editor_html = CodeMirror.fromTextArea(te_html, {
+            mode: "text/html",
+            lineNumbers: true,
+            lineWrapping: true,
+            onGutterClick: foldFunc_html,
+            extraKeys: { "Ctrl-Q": function (cm) { foldFunc_html(cm, cm.getCursor().line); } }
+        })
+        foldFunc_html(editor_html, 1);
+        foldFunc_html(editor_html, 15);
+    };
+</script>*@
+
+
+@*<script>
+        var Beautify = function () {
+            //$('#json-viewer').jsonViewer($('#JsonTexts').val(), {
+            //    collapsed: true
+            //});
+            debugger;
+
+            //var sc = $('#JsonTexts')[0];
+            //var te = $("#output")[0];
+            var te = document.getElementById("JsonTexts");
+            var sc = document.getElementById("script");
+
+            te.value = (sc.textContent || sc.innerText || sc.innerHTML || sc.value).replace(/^\s*/, "");
+                sc.innerHTML = "";
+                //var te_html = document.getElementById("code-html");
+                //te_html.value = "<html>\n  " + document.documentElement.innerHTML + "\n</html>";
+
+                var foldFunc = CodeMirror.newFoldFunction(CodeMirror.braceRangeFinder);
+                window.editor = CodeMirror(te, {
+                    mode: "javascript",
+                    lineNumbers: true,
+                    lineWrapping: true,
+                    onGutterClick: foldFunc,
+                    extraKeys: { "Ctrl-Q": function (cm) { foldFunc(cm, cm.getCursor().line); } },
+                   // value: JSON.stringify(JSON.parse($('#JsonTexts').val()), null, 2)
+                });
+                foldFunc(editor, 9);
+                foldFunc(editor, 20);
+
+                //var foldFunc_html = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder);
+                //window.editor_html = CodeMirror.fromTextArea(te_html, {
+                //    mode: "text/html",
+                //    lineNumbers: true,
+                //    lineWrapping: true,
+                //    onGutterClick: foldFunc_html,
+                //    extraKeys: { "Ctrl-Q": function (cm) { foldFunc_html(cm, cm.getCursor().line); } }
+                //})
+                //foldFunc_html(editor_html, 1);
+                //foldFunc_html(editor_html, 15);
+
+            //CodeMirror(document.querySelector('#json-viewer'), {
+            //    matchBrackets: true,
+            //    autoCloseBrackets: true,
+            //    mode: { name: "javascript", json: true },
+            //    value: JSON.stringify(JSON.parse($('#JsonTexts').val()), null, 2),
+            //    gutter: true,
+            //    //onGutterClick: CollapseFunc,
+            //    matchTags: { bothTags: true },
+            //    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            //    lineNumbers: true
+            //})
+
+
+            //var editor = CodeMirror.fromTextArea(document.getElementById("JsonTexts"), {
+            //    matchBrackets: true,
+            //    autoCloseBrackets: true,
+            //    mode: "application/ld+json",
+            //    lineWrapping: true
+            //});
+            //  $('#output').html(editor.display.lineDiv.innerHTML);
+            //  CodeMirror.fromTextArea(document.getElementById('JsonTexts'), { beautify: { initialBeautify: false, autoBeautify: false }, mode: { name: 'javascript', json: true } });
+        }
+
+
+
+
+
+    </script>*@

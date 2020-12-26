@@ -305,7 +305,7 @@
 
         }, true);
 
-        $(".summernote").summernote({
+       $(".summernote").summernote({
            callbacks: {
                onChange: function (contents, $editable) {
                    console.log('onChange:', contents, $editable);
@@ -321,7 +321,7 @@
                            $('#testdiv').val('');
                            if ($(element).is('pre')) {
                                $('#testdiv').text($(element).find('code').html());
-                               string += '<pre><code class="line-numbers language-csharp">'+ $('#testdiv').html()+'</code></pre>';
+                               string +='<pre><code>'+ $('#testdiv').html()+'</code></pre>';
                            }
                            else {
                                string += $(element).html();
@@ -348,6 +348,7 @@
 
            }
        });
+
 
 
    });
