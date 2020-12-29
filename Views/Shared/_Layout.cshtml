@@ -198,22 +198,23 @@
                                                 }
                                             </li>
 
-
+                                            <li class="dropdown" style="">
+                                                <a class="dropdown-toggle" data-toggle="dropdown">Tools</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="@Url.Action("Index", "JsonBeautifier")">Json Beautifier</a></li>
+                                                    <li><a href="@Url.Action("Index", "HtmlBeautifier")">Html Beautifier</a></li>
+                                                </ul>
+                                            </li>
                                             @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
                                             {
                                                 <li class="dropdown" style="">
-                                                    <a  class="dropdown-toggle" data-toggle="dropdown">Members</a>
+                                                    <a class="dropdown-toggle" data-toggle="dropdown">Members</a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="@Url.Action("Register", "Users")">Register</a></li>
                                                         <li><a href="@Url.Action("Login", "Users")">Login</a></li>
                                                     </ul>
                                                 </li>
-                                                @*<li>
-                <a class="links" href="@Url.Action("Register", "Users")">Register</a>
-            </li>
-            <li>
-                <a class="links" href="@Url.Action("Login", "Users")">Login</a>
-            </li>*@
+
                                             }
                                             else
                                             {
@@ -224,16 +225,7 @@
                                                     <a class="links" href="@Url.Action("Logout", "Blog")">Logout</a>
                                                 </li>
                                             }
-                                            <li class="dropdown" style="">
-                                                <a  class="dropdown-toggle" data-toggle="dropdown">Tools</a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="@Url.Action("Index", "JsonBeautifier")">Json Beautifier</a></li>
-                                                </ul>
-                                            </li>
-                                            
-                                            @*<li>
-            <a href="@Url.Action("ContactUs","Users")">Contact Us</a>
-        </li>*@
+
                                         </ul>
                                     </div>
                                 </div>
@@ -297,21 +289,54 @@
                                 <h2>Links</h2>
                                 <nav>
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li>
-                                            <a href="@Url.Action("index","Users")">Home</a>
+                                        <li class="Home">
+                                            <a class="links" href="/Users/Index">Home</a>
+
                                         </li>
-                                        <li class="active">
-                                            <a href="@Url.Action("index","Blog")">Blog</a>
+                                        <li class="Blogs">
+                                            <a class="links" href="@Url.Action("Index","Blog")">Blogs </a>
                                         </li>
-                                        <li>
-                                            <a href="@Url.Action("Login","Users")">Login</a>
-                                        </li>
-                                        <li>
-                                            <a href="@Url.Action("Register","Users")">SignUp</a>
+                                        <li class="Tutorial">
+                                            <a class="links" href="@Url.Action("index","Tutorials")">Tutorial</a>
                                         </li>
                                         <li>
-                                            <a href="@Url.Action("ContactUs","Users")">Contact</a>
+                                            @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
+                                            {
+                                                <a class="links" href="@Url.Action("Login","Users")"> Post Blog </a>
+                                            }
+                                            else
+                                            {
+                                                <a class="links" href="/Blog/AddBlog"> Post Blog </a>
+                                            }
                                         </li>
+
+                                        <li class="dropdown" style="">
+                                            <a class="dropdown-toggle" data-toggle="dropdown">Tools</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="@Url.Action("Index", "JsonBeautifier")">Json Beautifier</a></li>
+                                                <li><a href="@Url.Action("Index", "HtmlBeautifier")">Html Beautifier</a></li>
+                                            </ul>
+                                        </li>
+                                        @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
+                                        {
+                                            <li class="dropdown" style="">
+                                                <a class="dropdown-toggle" data-toggle="dropdown">Members</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="@Url.Action("Register", "Users")">Register</a></li>
+                                                    <li><a href="@Url.Action("Login", "Users")">Login</a></li>
+                                                </ul>
+                                            </li>
+
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a class="links" href="@Url.Action("MyBlogs", "Blog")">My Blogs</a>
+                                            </li>
+                                            <li>
+                                                <a class="links" href="@Url.Action("Logout", "Blog")">Logout</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </nav>
                             </div>
@@ -382,7 +407,7 @@
     <script asp-append-version="true" src="/js/template.js"></script>
     <script asp-append-version="true" src="~/js/BlogIndex.min.js"></script>
     <script asp-append-version="true" src="~/adminplugins/select2/js/select2.min.js"></script>
-    <script asp-append-version="true" src="~/prism (1).js"></script>
+    @*<script asp-append-version="true" src="~/prism (1).js"></script>*@
     <script>
         $(document).ready(function () {
             $('.links').each(function (val,elem) {

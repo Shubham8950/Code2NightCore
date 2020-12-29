@@ -68,16 +68,23 @@
     return removeChildren(parent).appendChild(e)
   }
 
-  function elt(tag, content, className, style) {
+    function elt(tag, content, className, style) {
+      
     var e = document.createElement(tag);
     if (className) { e.className = className; }
     if (style) { e.style.cssText = style; }
     if (typeof content == "string") { e.appendChild(document.createTextNode(content)); }
     else if (content) { for (var i = 0; i < content.length; ++i) { e.appendChild(content[i]); } }
+        if (tag == "pre")
+            console.log(e)
+        console.log("1");
     return e
   }
   // wrapper for elt, which removes the elt from the accessibility tree
-  function eltP(tag, content, className, style) {
+    function eltP(tag, content, className, style) {
+        if (tag == "pre")
+            console.log(e)
+        console.log("1");
     var e = elt(tag, content, className, style);
     e.setAttribute("role", "presentation");
     return e
@@ -1727,7 +1734,8 @@
     // The padding-right forces the element to have a 'border', which
     // is needed on Webkit to be able to get line-level bounding
     // rectangles for it (in measureChar).
-    var content = eltP("span", null, null, webkit ? "padding-right: .1px" : null);
+      var content = eltP("span", null, null, webkit ? "padding-right: .1px" : null);
+      console.log(content)
     var builder = {pre: eltP("pre", [content], "CodeMirror-line"), content: content,
                    col: 0, pos: 0, cm: cm,
                    trailingSpace: false,

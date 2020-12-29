@@ -19,6 +19,12 @@
     ViewBag.OpenGraphUrl = "https://www.code2night.com/Blog/MyBlog/" + Model.MyBlog.BlogUrl;
     ViewBag.OpenGraphDescription = Model.MyBlog.BlogIntroduction;
     ViewBag.OpenGraphTitle = Model.MyBlog.Title;
+    //var tags = Model.MyBlog.BlogBody.Split("<pre>").ToList().Select(x=>x.Split("</pre>"));
+    //List<string> list = new List<string>();
+    //foreach(var tag in tags)
+    //{
+    //    list.AddRange(tag);
+    //}
 
 
 }
@@ -28,9 +34,43 @@
 
 <style>
     <!-- page-title end -->
-    pre[class*="language-"] > code {
+    pre > code {
         position: relative;
-        display: block;
+        display: none;
+    }
+    .CodeArea {
+        border: 1px solid #e84c3d;
+        padding: 10px 12px 10px 0px;
+        border-radius: 7px;
+    }
+    pre > pre {
+        padding-left: 14%;
+    }
+   
+    .CodeMirror-selected {
+        background-color: #ffffff;
+        color: white !important
+    }
+
+    .CodeMirror pre.CodeMirror-line, .CodeMirror pre.CodeMirror-line-like {
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+        border-width: 0;
+        background: transparent;
+        font-family: inherit;
+        font-size: inherit;
+        margin: 0;
+        white-space: pre;
+        word-wrap: normal;
+        line-height: inherit;
+        color: inherit;
+        z-index: 2;
+        position: relative;
+        overflow: visible;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-font-variant-ligatures: contextual;
+        font-variant-ligatures: contextual;
     }
 </style>
 <script type="application/ld+json">
@@ -98,12 +138,29 @@
     }*/
 
     pre {
-        background-color: white !important;
+        background-color: transparent !important;
         border: 0px;
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        padding: 0px !important;
+        padding-left: 2% !important;
+        color: white !important;
+        min-height: 28px !important;
     }
 
+    .CodeMirror-linenumbers, .CodeMirror-linenumber {
+        background-color: #282a36 !important;
+        z-index: 99999;
+        color: white !important;
+       /* padding: 8px;*/
+    }
+    .CodeMirror {
+        border: 1px solid #eee;
+        height: auto !important;
+    }
+   /* pre, code {
+        white-space: pre-line;
+    }*/
     /*.articlefont {
         font-size: 16px !important;
         line-height: 31px;*/
@@ -121,6 +178,21 @@
     }*/
 
 </style>
+<link href="/codemirror.css" rel="stylesheet" />
+<script src="/codemirror.js"></script>
+<script src="~/JavaScript.js"></script>
+@*<link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+    </link>
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js">
+    </script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/javascript/javascript.min.js">
+    </script>*@
+
+<link href="~/draculla.css" rel="stylesheet" />
 <div class="page-intro">
     <div class="container">
         <div class="row">
@@ -186,7 +258,7 @@
 }
 <div>
     <p itemprop="articleBody">
-        @(Html.Raw(Model.MyBlog.BlogBody))
+        @Html.Raw(Model.MyBlog.BlogBody)
     </p>
 </div>
 </div>
@@ -261,14 +333,70 @@
     </div>
 </div>
 <script id="dsq-count-scr" src="//codetonight.disqus.com/count.js" async></script>
+<script src="~/JavaScript.js"></script>
 <script>
     $(document).ready(function () {
-        //$('pre').each(function (index, elem) {
-        //          $(elem).wrap("<div class='code-panel'></div>")
-        //      });
-        //      $('#Articlespartialid').find('p,div,li,span').each(function (index, elem) {
-        //          $(elem).addClass("articlefont")
-        //      });
+        $('pre').each(function (index, elem) {
+            $(elem).wrap('<div class="CodeArea"></div>');
+            var ce = $(elem).find('code').html().replace(/&gt;/g, ">").replace(/&lt;/g,'<').trim();
+            $(elem).find('code').remove();
+            //$(elem).html('');
+            // Probably needs more kludges to be portable... you get the idea
+            //var text = elem.textContent || elem.innerText;
+            //var editor = CodeMirror(function (node) { elem.parentNode.replaceChild(node, elem); }, {
+            //    value: text,
+            //    matchBrackets: true,
+            //    autoCloseBrackets: true,
+            //    mode: "javascript",
+            //    lineWrapping: true,
+            //    lineNumbers: true,
+            //    /* , your options */
+            //});
+            //var config, editor;
+
+            //config = {
+            //    lineNumbers: true,
+            //    mode: "text/javascript",
+            //    lineWrapping: true,
+            //    htmlMode: true,
+            //    matchClosing: true,
+            //    indentWithTabs: true,
+            //    readOnly: true
+            //};
+
+            var editor = CodeMirror(elem, {
+                matchBrackets: true,
+                autoCloseBrackets: true,
+                mode: "javascript",
+                lineWrapping: false,
+                lineNumbers: true,
+                value: ce,
+                styleActiveLine: true,
+                htmlMode: true,
+                indentWithTabs: true,
+                smartIndent: true,
+                viewportMargin: Infinity
+            });
+          
+        //    //editor.setSize("100%", "300");
+            editor.setOption("theme", "dracula");
+        //    //  var textArea = document.createElement('textarea');
+        //    // textArea.innerHTML = $(elem).find('.CodeMirror').text();
+        //   //html($(textArea).html());
+        //    //  $(elem).find('.CodeMirror').remove();
+        //    // $(elem).html('<code class="language-csharp">' + $(elem).html()+'</code>')
+        //    //$(elem).addClass('language-csharp');
+        //    //$('pre').each(function (index, elem) {
+        //    //    if ($(elem).text().replace(/ /g, '') == "")
+        //    //        $(elem).remove();
+        //    //});
+        //    //editor.refresh();
+
+        //    //var html = $(elem).find('.CodeMirror').html();
+        //    //$(elem).html(html);
+        //});
+
+
     });
     //function wrapNode(node) {
     //    $(node).replaceWith("<p>" + node.textContent + "</p>");
@@ -297,6 +425,6 @@
     //       //// $(this).append(paras);
     //       //$(this).html(paras);
     //    });
-    //});
+    });
 </script>
 </section>

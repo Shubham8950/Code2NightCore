@@ -43,7 +43,6 @@
         this.load(json);
     }
 
-
     JsonEditor.prototype = {
         constructor: JsonEditor,
         load: function (json) {
