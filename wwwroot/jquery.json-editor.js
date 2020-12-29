@@ -43,11 +43,12 @@
         this.load(json);
     }
 
+
     JsonEditor.prototype = {
         constructor: JsonEditor,
         load: function (json) {
             this.$container.jsonViewer(encodeJSON(json), {
-                collapsed: this.options.defaultCollapsed,
+                collapsed: true,
                 withQuotes: true
             })
             .addClass('json-editor-blackbord')

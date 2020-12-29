@@ -26669,3 +26669,6 @@ body.swal2-toast-column .swal2-toast {
 .navbar-default .navbar-nav > li > a {
     font-weight: 400;
 }
+div#json-display {
+    padding-left: 25px;
+}

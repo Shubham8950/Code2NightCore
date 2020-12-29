@@ -7,7 +7,7 @@
     <script data-ad-client="ca-pub-2622840091485569" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     <link href="~/prism.css" rel="stylesheet" />
-    @*<script async custom-element="amp-auto-ads"
+    <script async custom-element="amp-auto-ads"
             src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114851264-8"></script>
@@ -16,7 +16,7 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'UA-114851264-8');
-    </script>*@
+    </script>
     <title>@ViewBag.Title</title>
 
     @if (!string.IsNullOrEmpty(Convert.ToString(ViewBag.MetaDescription)))
@@ -202,7 +202,7 @@
                                             @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
                                             {
                                                 <li class="dropdown" style="">
-                                                    <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Members</a>
+                                                    <a  class="dropdown-toggle" data-toggle="dropdown">Members</a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="@Url.Action("Register", "Users")">Register</a></li>
                                                         <li><a href="@Url.Action("Login", "Users")">Login</a></li>
@@ -225,7 +225,7 @@
                                                 </li>
                                             }
                                             <li class="dropdown" style="">
-                                                <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Tools</a>
+                                                <a  class="dropdown-toggle" data-toggle="dropdown">Tools</a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="@Url.Action("Index", "JsonBeautifier")">Json Beautifier</a></li>
                                                 </ul>

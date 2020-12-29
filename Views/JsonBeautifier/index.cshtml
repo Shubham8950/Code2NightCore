@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-5 col-sm-12">
                 @*<textarea id="json-display" class="form-control" autocomplete="off"></textarea>*@
-                <div id="json-display" class="form-control json-editor-blackbord" style="min-height: 500px;"></div>
+                <div id="json-display" class="form-control json-editor-blackbord" style="min-height: 500px;overflow-y:scroll !important"></div>
             </div>
         </div>
     </div>
@@ -93,6 +93,7 @@
         window.getSelection().addRange(range); // to select text
         document.execCommand("copy");
         window.getSelection().removeAllRanges();// to deselect
+
     }
     $(document).ready(function () {
        
@@ -115,7 +116,8 @@
         $('#translate').on('click', function () {
             var editor = new JsonEditor('#json-display', getJson());
             editor.load(getJson());
-           
+            $('.collapsed').first().click();
+
         });
     })
     function Minify() {
