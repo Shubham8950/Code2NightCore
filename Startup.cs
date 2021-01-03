@@ -29,7 +29,7 @@ namespace Code2Night
         public Startup()
         {
         }
-       
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -41,7 +41,8 @@ namespace Code2Night
 
             services.AddMvc().AddSessionStateTempDataProvider();
             services.AddSession();
-            services.Configure<GzipCompressionProviderOptions>(options => {
+            services.Configure<GzipCompressionProviderOptions>(options =>
+            {
                 options.Level = CompressionLevel.Fastest;
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -66,55 +67,56 @@ namespace Code2Night
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-               app.UseExceptionHandler(a => a.Run(async context =>
-               {
-                    var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
-                    var exception = exceptionHandlerPathFeature.Error;
-                    if (!Directory.Exists(env.ContentRootPath + "\\App_Data\\log\\"))
-                    {
-                        Directory.CreateDirectory(env.ContentRootPath + "\\App_Data\\log\\");
-                    }
-                    var filename = env.ContentRootPath + "\\App_Data\\" + "log\\" + "Logerror.txt";
-                    var sw = new System.IO.StreamWriter(filename, true);
-                    sw.WriteLine(DateTime.Now.ToString() + " " + exception.Message + " " + exception.InnerException + " " + exception.StackTrace + " " + exception.Source);
-                    sw.Close();
-                    var result = JsonConvert.SerializeObject(new { error = exception.Message });
-                    context.Response.ContentType = "application/json";
-                    await context.Response.WriteAsync(result);
-               }));
-                app.UseHsts();
-                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-                app.UseSession();
-                app.UseHttpsRedirection();
-                app.UseStaticFiles(new StaticFileOptions
+            app.UseExceptionHandler(a => a.Run(async context =>
+            {
+                var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+                var exception = exceptionHandlerPathFeature.Error;
+                if (!Directory.Exists(env.ContentRootPath + "\\App_Data\\log\\"))
                 {
-                    OnPrepareResponse = ctx =>
-                    {
-                        const int durationInSeconds = 60 * 60 * 24 * 365;
-                        ctx.Context.Response.Headers[HeaderNames.CacheControl] =
-                            "public,max-age=" + durationInSeconds;
-                    }
-                });
-                if (!Directory.Exists(Path.Combine(CurrentDirectoryHelpers.GetServerPath(), "Uploads")))
-                    Directory.CreateDirectory(Path.Combine(CurrentDirectoryHelpers.GetServerPath(), "Uploads"));
-                app.UseStaticFiles(new StaticFileOptions
+                    Directory.CreateDirectory(env.ContentRootPath + "\\App_Data\\log\\");
+                }
+                var filename = env.ContentRootPath + "\\App_Data\\" + "log\\" + "Logerror.txt";
+                var sw = new System.IO.StreamWriter(filename, true);
+                sw.WriteLine(DateTime.Now.ToString() + " " + exception.Message + " " + exception.InnerException + " " + exception.StackTrace + " " + exception.Source);
+                sw.Close();
+                var result = JsonConvert.SerializeObject(new { error = exception.Message });
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(result);
+            }));
+            app.UseHsts();
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            app.UseSession();
+            app.UseStaticFiles();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
                 {
-                    FileProvider = new PhysicalFileProvider(Path.Combine(CurrentDirectoryHelpers.GetServerPath(), "Uploads")),
-                    RequestPath = "/Uploads",
-                    OnPrepareResponse = ctx =>
-                    {
-                        const int durationInSeconds = 60 * 60 * 24*365;
-                        ctx.Context.Response.Headers[HeaderNames.CacheControl] =
-                            "public,max-age=" + durationInSeconds;
-                    }
-                });
-                app.UseCookiePolicy();
-                app.UseMvc(routes =>
+                    const int durationInSeconds = 60 * 60 * 24 * 365;
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=" + durationInSeconds;
+                }
+            });
+            if (!Directory.Exists(Path.Combine(CurrentDirectoryHelpers.GetServerPath(), "Uploads")))
+                Directory.CreateDirectory(Path.Combine(CurrentDirectoryHelpers.GetServerPath(), "Uploads"));
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(CurrentDirectoryHelpers.GetServerPath(), "Uploads")),
+                RequestPath = "/Uploads",
+                OnPrepareResponse = ctx =>
                 {
-                    routes.MapRoute(
-                        name: "default",
-                        template: "{controller=Users}/{action=index}/{id?}");
-                });        
+                    const int durationInSeconds = 60 * 60 * 24 * 365;
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=" + durationInSeconds;
+                }
+            });
+            app.UseCookiePolicy();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Users}/{action=index}/{id?}");
+            });
         }
     }
 }
