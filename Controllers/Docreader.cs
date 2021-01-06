@@ -10,6 +10,7 @@ using GroupDocs.Viewer.Results;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Code2Night.DAL.Common;
 
 namespace Code2Night.Controllers
 {
@@ -25,7 +26,7 @@ namespace Code2Night.Controllers
         static string filePath;
         public IActionResult Index()
         {
-
+            
             string path = Path.Combine(this.Environment.WebRootPath, "output");
             string path2 = Path.Combine(this.Environment.WebRootPath, "storage");
             System.IO.DirectoryInfo output = new DirectoryInfo(path);
@@ -102,32 +103,45 @@ namespace Code2Night.Controllers
         {
             string wwwPath = this.Environment.WebRootPath;
             string contentPath = this.Environment.ContentRootPath;
-            var fileName = "";
-            string path = Path.Combine(this.Environment.WebRootPath, "output");
-            if (!Directory.Exists(path))
+            EnvironmentPath env = new EnvironmentPath
             {
-                Directory.CreateDirectory(path);
-            }
-            string path2 = Path.Combine(this.Environment.WebRootPath, "storage");
-            if (!Directory.Exists(path2))
+                webroot = this.Environment.WebRootPath,
+                contentroot = this.Environment.ContentRootPath,
+            };
+            var value = "";
+            try
             {
-                Directory.CreateDirectory(path2);
-            }
-            if (fileData != null && fileData.Length > 0)
-            {
-                System.Random random = new System.Random();
-                int rnd = random.Next();
-                fileName = Path.GetFileName(fileData.FileName);
-                fileName = path2.Replace("\\", "/") + "/" + rnd + fileName;
-                filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                var fileName = "";
+                string path = Path.Combine(this.Environment.WebRootPath, "output");
+                if (!Directory.Exists(path))
                 {
-                    fileData.CopyToAsync(fileStream);
+                    Directory.CreateDirectory(path);
                 }
-            }
+                string path2 = Path.Combine(this.Environment.WebRootPath, "storage");
+                if (!Directory.Exists(path2))
+                {
+                    Directory.CreateDirectory(path2);
+                }
+                if (fileData != null && fileData.Length > 0)
+                {
+                    System.Random random = new System.Random();
+                    int rnd = random.Next();
+                    fileName = Path.GetFileName(fileData.FileName);
+                    fileName = path2.Replace("\\", "/") + "/" + rnd + fileName;
+                    filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        fileData.CopyToAsync(fileStream);
+                    }
+                }
 
-            GetDocumentInfo(fileName);
-            var value = GetDocumentInfo(fileName);
+                GetDocumentInfo(fileName);
+                 value = GetDocumentInfo(fileName);
+            }
+            catch(Exception ex)
+            {
+                value = ex.Message;
+            }
             return Json(value);
         }
     }

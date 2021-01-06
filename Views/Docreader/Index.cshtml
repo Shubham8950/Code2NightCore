@@ -224,7 +224,7 @@
                     <div id="showFileUpload">
                         <h4>
 
-                            <img border="0" title="Page navigation" src="~/fileuploadimage/file-upload.png">Upload Your File (Max 25mb)
+                            <img border="0" title="Page navigation" src="/Content/images/file-upload.png">Upload Your File (Max 25mb)
                         </h4>
                         <input type="file" id="FileUpload1" class="choose_files" />
                         <input type="button" id="btnUpload" value="Upload And View" class="upload_btn" />
@@ -280,7 +280,7 @@
                         <i class="fa fa-search" aria-hidden="true"></i>
                         <i class="fa fa-print" aria-hidden="true"></i>
                         <i class="fa fa-download" id="download" onclick="Remove()" aria-hidden="true" download></i>
-                        <a href="#" data-href='file:///C:/Users/hp/OneDrive/Documents/img1.png' download="Image.jpg" onclick='forceDownload(this)'>Download Image</a>
+                       
                     </div>
 
                 </div> <!-- titlebar_controls -->
@@ -361,6 +361,7 @@
                     $('#secondpage').show();
                 },
                 error: function (err) {
+                    console.log(err);
                     alert(err.statusText);
                 }
             });
