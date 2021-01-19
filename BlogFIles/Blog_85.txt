@@ -1,16 +1,14 @@
 <h5>Step 1 : Create a project</h5>
-<pre> Add two DLL File in your project from Nuget.org</pre><p><img src="/Uploads/e120201003101010.PNG"><br></p>
-
+<pre> <code class="line-numbers language-csharp">Add two DLL File in your project from Nuget.org</code></pre><p><img src="/Uploads/e120201003101010.PNG"><br></p>
 <h5>Step 2 :Add Appsettings into webconfig file&nbsp;</h5>
-<pre> &lt;appSettings&gt;
+<pre><code class="line-numbers language-csharp"> &lt;appSettings&gt;
 		&lt;add key="Host" value="smtp.gmail.com" /&gt;
 		&lt;add key="EnableSsl" value="true" /&gt;
 		&lt;add key="UserName" value="Enteryouremail@gmail.com" /&gt;
 		&lt;add key="Password" value="Enteryourpassword" /&gt;
 		&lt;add key="Port" value="587" /&gt;
-&lt;/appSettings&gt;</pre>
-
-<h5>Step : 3 add a namespace into email.aspx.cs</h5><pre>using System.Web;
+&lt;/appSettings&gt;</code></pre>
+<h5>Step : 3 add a namespace into email.aspx.cs</h5><pre><code class="line-numbers language-csharp">using System.Web;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.IO;
@@ -28,10 +26,9 @@ using iTextSharp.tool.xml.pipeline.css;
 using iTextSharp.tool.xml.parser;
 using iTextSharp.tool.xml.pipeline.html;
 using iTextSharp.tool.xml.pipeline.end;
-using iTextSharp.tool.xml.html;</pre>
-
+using iTextSharp.tool.xml.html;</code></pre>
 <h5>Step : 4 Complete code of email with html template and attachment of pdf&nbsp;&nbsp;</h5>
-<pre> protected void Page_Load(object sender, EventArgs e)
+<pre><code class="line-numbers language-csharp"> protected void Page_Load(object sender, EventArgs e)
     {
 
         //string emailaddress = "shubhambatra1994@gmail.com"; string ZipCode,
@@ -155,10 +152,9 @@ using iTextSharp.tool.xml.html;</pre>
         {
 
         }
-    }</pre>
-
+    }</code></pre>
 <h5>Step 5 : Add new html file&nbsp;</h5>
-<pre> &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+<pre><code class="line-numbers language-csharp"> &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
 &lt;head&gt;
     &lt;title&gt;Appointment Confirmed&lt;/title&gt;
@@ -329,10 +325,9 @@ using iTextSharp.tool.xml.html;</pre>
 &lt;/body&gt;
    
 
-&lt;/html&gt;</pre>
-
+&lt;/html&gt;</code></pre>
 <h5>Step 6 : add new html file for send pdf&nbsp;</h5>
-<pre>&lt;html&gt;
+<pre><code class="line-numbers language-csharp">&lt;html&gt;
 
 &lt;body&gt;
     &lt;div class="body"&gt;
@@ -354,6 +349,6 @@ using iTextSharp.tool.xml.html;</pre>
         
     &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;<br></pre>
-
+&lt;/html&gt;<br></code></pre>
 <h5>Step : 7&nbsp; Final output&nbsp;</h5><p><img src="/Uploads/e220201003101927.PNG" style="width: 100%;"></p><p><img src="/Uploads/e320201003101927.PNG" style="width: 100%;"></p><p><img src="/Uploads/e420201003101928.PNG" style="width: 100%;"><br></p>
+

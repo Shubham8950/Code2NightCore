@@ -1,9 +1,9 @@
 
 <h3>Step-1 First of all add a nugget package for Microsoft Exchange Services which will let you connect to Outlook from within your web application. We will use this to get our Outlook Contacts and then for saving Contact also.</h3><h3><img src="/Uploads/Step-120201003040458.PNG"></h3>
-<h3>Step-2 Add these namespaces to your controller</h3><pre>using Microsoft.Exchange.WebServices.Data;
-using CalendarView = Microsoft.Exchange.WebServices.Data.CalendarView;</pre>
+<h3>Step-2 Add these namespaces to your controller</h3><pre><code class="line-numbers language-csharp">using Microsoft.Exchange.WebServices.Data;
+using CalendarView = Microsoft.Exchange.WebServices.Data.CalendarView;</code></pre>
 <h3>Step-3 we will use this to get contacts from our outlook account. You can replace your outlook username and password&nbsp; and then just run this piece of code.</h3>
-<pre>   public void GetContact()
+<pre><code class="line-numbers language-csharp">public void GetContact()
         {
             
             string ewsUrl = "https://outlook.office365.com/EWS/Exchange.asmx";
@@ -37,9 +37,9 @@ using CalendarView = Microsoft.Exchange.WebServices.Data.CalendarView;</pre>
                     Console.WriteLine(contact.DisplayName);
                 }
             }
-        }</pre>
+        }</code></pre>
 <h3>Step-4 After getting contacts now in this step we will see how to add new contacts. We will use same exchange service to Add contacts in our Microsoft Outlook account.</h3>
-<pre> public void AddContact()
+<pre><code class="line-numbers language-csharp"> public void AddContact()
         {
             string ewsUrl = "https://outlook.office365.com/EWS/Exchange.asmx";
             string userName = "outlookusername";
@@ -91,6 +91,6 @@ using CalendarView = Microsoft.Exchange.WebServices.Data.CalendarView;</pre>
 
             // Save the contact.
             contact.Save();
-        }</pre>
+        }</code></pre>
 <h3>Conclusion- So this is how you can integrate outlook contacts with your Asp.Net MVC web application</h3>
 

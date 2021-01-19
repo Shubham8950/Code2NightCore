@@ -33,10 +33,11 @@
         color: black !important;
         border-color: black !important;
     }
-    .tokenfield
-    {
-        height:auto !important;
+
+    .tokenfield {
+        height: auto !important;
     }
+
     .panel-heading a {
         font-weight: 400;
         padding: 12px 35px 12px 15px;
@@ -63,6 +64,7 @@
         word-break: break-all;
     }
 </style>
+<link href="~/adminplugins/select2/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
 <section class="main-container">
 
@@ -167,7 +169,7 @@
             <!-- sidebar start -->
             <aside class="col-md-5 col-md-offset-1">
                 <div class="sidebar">
-                    <form asp-action="AddBlog" asp-controller="Blog" enctype="multipart/form-data" data-ajax="true" data-ajax-method="POST" novalidate data-ajax-success="OnAddBlogSuccess" data-ajax-begin="return Validate()"  id="frmBlog">
+                    <form asp-action="AddBlog" asp-controller="Blog" enctype="multipart/form-data" data-ajax="true" data-ajax-method="POST" novalidate data-ajax-success="OnAddBlogSuccess" data-ajax-begin="return Validate()" id="frmBlog">
                         <div class="block clearfix">
                             <h3 class="title">Write New Blog</h3>
                             <div class="separator"></div>
@@ -203,14 +205,14 @@
                                         <label for="Visibility">Visibility</label>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="radio" style="float:left">
-                                                <label for="Visibility2" >
-                                                    <input type="radio" name="Visibility" @(Model.IsPrivate?"checked":"") id="Visibility2" value="Private">
+                                                <label for="Visibility2">
+                                                    <input type="radio" name="Visibility" @(Model.IsPrivate ? "checked" : "") id="Visibility2" value="Private">
                                                     Private
                                                 </label>
                                             </div>
                                             <div class="radio" style=" float: left; margin-top: 9px; margin-left: 10px; ">
                                                 <label for="Visibility1">
-                                                    <input type="radio" name="Visibility" @(!Model.IsPrivate?"checked":"") id="Visibility1" value="Public">
+                                                    <input type="radio" name="Visibility" @(!Model.IsPrivate ? "checked" : "") id="Visibility1" value="Public">
                                                     Public
                                                 </label>
                                             </div>
@@ -223,7 +225,7 @@
                             </nav>
                         </div>
                     </form>
-                       
+
                 </div>
             </aside>
         </div>
@@ -231,7 +233,7 @@
 </section>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
+<script asp-append-version="true" src="~/adminplugins/select2/js/select2.min.js"></script>
 <script>
     var Validate = function () {
         if ($('#title').val() == "") {
@@ -323,7 +325,7 @@
                        //    if ($(element).is('pre') && $(element).find('code.language-csharp').length==0) {
                        //        var textArea = document.createElement('textarea');
                        //        textArea.innerHTML = $(element).find('code').html();
-                         
+
                        //        $('#testdiv').text(textArea.value);
                        //        string +='<pre><code>'+ $('#testdiv').html()+'</code></pre>';
                        //    }
@@ -336,7 +338,7 @@
                        $("#blog").html(contents);
                       // $(".note-editable").html('');
                       // $(".note-editable").html(string);
-                     
+
                        $("#blog").show();
                        $("#blogbody").show();
                        $("#demoblog").hide();

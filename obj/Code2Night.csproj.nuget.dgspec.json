@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Code2NightCore\\Code2Night\\Code2NightCore\\Code2Night.csproj": {}
+    "F:\\code2night18012021\\Code2Night.csproj": {}
   },
   "projects": {
-    "F:\\Code2NightCore\\Code2Night\\Code2NightCore\\Code2Night.csproj": {
+    "F:\\code2night18012021\\Code2Night.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Code2NightCore\\Code2Night\\Code2NightCore\\Code2Night.csproj",
+        "projectUniqueName": "F:\\code2night18012021\\Code2Night.csproj",
         "projectName": "Code2Night",
-        "projectPath": "F:\\Code2NightCore\\Code2Night\\Code2NightCore\\Code2Night.csproj",
+        "projectPath": "F:\\code2night18012021\\Code2Night.csproj",
         "packagesPath": "C:\\Users\\Shubham Saini\\.nuget\\packages\\",
-        "outputPath": "F:\\Code2NightCore\\Code2Night\\Code2NightCore\\obj\\",
+        "outputPath": "F:\\code2night18012021\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -56,6 +56,10 @@
             "Google.Apis.Calendar.v3": {
               "target": "Package",
               "version": "[1.49.0.2086, )"
+            },
+            "GroupDocs.Viewer": {
+              "target": "Package",
+              "version": "[20.12.0, )"
             },
             "Microsoft.AspNet.Mvc": {
               "target": "Package",
@@ -131,6 +135,26 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "System.Reflection": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Reflection.Emit": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "System.Reflection.Emit.ILGeneration": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "System.Reflection.Emit.Lightweight": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "System.Reflection.TypeExtensions": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             },
             "System.Text.Encoding.CodePages": {
               "target": "Package",

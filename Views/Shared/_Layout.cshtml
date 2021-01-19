@@ -75,7 +75,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/Content/images/favicon.ico">
-    <link href="~/adminplugins/select2/css/select2.min.css" rel="stylesheet" />
     <link href="~/css/layouthome.min.css" asp-append-version="true" rel="stylesheet" />
     <script asp-append-version="true" src="~/layoutTop.js"></script>
     <link  asp-append-version="true" href="~/prism.css" rel="stylesheet" />
@@ -93,11 +92,36 @@
             /* margin: .5em 0; */
             overflow: auto;
         }
+        .blogpost-body p, .blogpost-content span {
+            font-family: Verdana,sans-serif,Geneva !important;
+            color: black;
+            font-size: 17px;
+            text-align: justify;
+            margin: 1.5rem 0;
+            letter-spacing: .014em;
+        }
+        pre span {
+            font-family: Verdana,sans-serif,Geneva !important;
+           
+            font-size: 14px !important;
+           
+            text-align: justify;
+            margin: 1.5rem 0;
+            letter-spacing: .014em;
+        }
+        h1, h2, h3,h4,h5,h6 {
+            font-family: "Segoe UI",Verdana,sans-serif !important;
+            font-weight: 400;
+        }
+            h3 span {
+                font-size: 17px;
+                margin: 2rem 0 1.5rem 0 !important;
+                font-family: Verdana,sans-serif,Geneva !important;
+                color: black;
+            }
     </style>
 </head>
 <body>
-
-
     <amp-auto-ads type="adsense"
                   data-ad-client="ca-pub-2622840091485569">
     </amp-auto-ads>
@@ -106,29 +130,8 @@
             <div class="row">
                 <div class="col-xs-2  col-sm-6">
                     <div class="header-top-first clearfix">
-                        @*<ul class="social-links clearfix hidden-xs">
-                                <li class="twitter"><a target="_blank" href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                <li class="skype"><a target="_blank" href="http://www.skype.com/"><i class="fa fa-skype"></i></a></li>
-                                <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-                                <li class="googleplus"><a target="_blank" href="http://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
-                                <li class="youtube"><a target="_blank" href="http://www.youtube.com/"><i class="fa fa-youtube-play"></i></a></li>
-                                <li class="flickr"><a target="_blank" href="http://www.flickr.com/"><i class="fa fa-flickr"></i></a></li>
-                                <li class="facebook"><a target="_blank" href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                            </ul>*@
                         <div class="social-links hidden-lg hidden-md hidden-sm">
                             <div class="btn-group dropdown">
-                                @*<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></button>
-                                    <ul class="dropdown-menu dropdown-animation">
-                                        <li class="twitter"><a target="_blank" href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="skype"><a target="_blank" href="http://www.skype.com/"><i class="fa fa-skype"></i></a></li>
-                                        <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-                                        <li class="googleplus"><a target="_blank" href="http://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
-                                        <li class="youtube"><a target="_blank" href="http://www.youtube.com/"><i class="fa fa-youtube-play"></i></a></li>
-                                        <li class="flickr"><a target="_blank" href="http://www.flickr.com/"><i class="fa fa-flickr"></i></a></li>
-                                        <li class="facebook"><a target="_blank" href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                                    </ul>*@
                             </div>
                         </div>
                     </div>
@@ -311,34 +314,6 @@
                                             }
                                         </li>
 
-                                        <li class="dropdown" style="">
-                                            <a class="dropdown-toggle" data-toggle="dropdown">Tools</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="@Url.Action("Index", "JsonBeautifier")">Json Beautifier</a></li>
-                                                <li><a href="@Url.Action("Index", "HtmlBeautifier")">Html Beautifier</a></li>
-                                                <li><a href="@Url.Action("Index", "Docreader")">Document Viewer</a></li>
-                                            </ul>
-                                        </li>
-                                        @if (Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == null && string.IsNullOrEmpty(Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext)) || Encrypt.GetUserCookieValue("UserId", HttpContextAccessor.HttpContext) == "0")
-                                        {
-                                            <li class="dropdown" style="">
-                                                <a class="dropdown-toggle" data-toggle="dropdown">Members</a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="@Url.Action("Register", "Users")">Register</a></li>
-                                                    <li><a href="@Url.Action("Login", "Users")">Login</a></li>
-                                                </ul>
-                                            </li>
-
-                                        }
-                                        else
-                                        {
-                                            <li>
-                                                <a class="links" href="@Url.Action("MyBlogs", "Blog")">My Blogs</a>
-                                            </li>
-                                            <li>
-                                                <a class="links" href="@Url.Action("Logout", "Blog")">Logout</a>
-                                            </li>
-                                        }
                                     </ul>
                                 </nav>
                             </div>
@@ -404,12 +379,9 @@
     <script asp-append-version="true" src="~/js/code.min.js"></script>
     <script asp-append-version="true" src="/js/custom.js"></script>
     <script asp-append-version="true" src="~/LayoutFinal.min.js"></script>
-    <script asp-append-version="true" src="/plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-    <script asp-append-version="true" src="/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
     <script asp-append-version="true" src="/js/template.js"></script>
     <script asp-append-version="true" src="~/js/BlogIndex.min.js"></script>
-    <script asp-append-version="true" src="~/adminplugins/select2/js/select2.min.js"></script>
-    @*<script asp-append-version="true" src="~/prism (1).js"></script>*@
+    
     <script>
         $(document).ready(function () {
             $('.links').each(function (val,elem) {
@@ -422,22 +394,6 @@
             });
         })
     </script>
-    @*<script>
-            $(document).ready(function () {
-                $.ajax({
-                    url: "http://data.alexa.com/data?cli=10&url=www.code2night.com",
-                    dataType: 'json', /* CORS Method */
-                    contentType: "application/json; charset=utf-8;",
-                    cache: false,
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (xhr, status, errorThrown) {
-                        console.log(xhr);
-                    }
-                });
-            })
-        </script>*@
     @RenderSection("scripts", required: false)
 
 </body>

@@ -103,11 +103,11 @@ namespace Code2Night.Controllers
         {
             string wwwPath = this.Environment.WebRootPath;
             string contentPath = this.Environment.ContentRootPath;
-            EnvironmentPath env = new EnvironmentPath
-            {
-                webroot = this.Environment.WebRootPath,
-                contentroot = this.Environment.ContentRootPath,
-            };
+            //EnvironmentPath env = new EnvironmentPath
+            //{
+            //    webroot = this.Environment.WebRootPath,
+            //    contentroot = this.Environment.ContentRootPath,
+            //};
             var value = "";
             try
             {

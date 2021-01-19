@@ -31,48 +31,10 @@
 <script data-ad-client="ca-pub-2622840091485569" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script id="dsq-count-scr" src="//codetonight.disqus.com/count.js"></script>
 
+<link href="~/prism.css" rel="stylesheet" />
+<script src="~/prism (1).js"></script>
 
-<style>
-    <!-- page-title end -->
-    pre > code {
-        position: relative;
-        display: none;
-    }
-    .CodeArea {
-        border: 1px solid #e84c3d;
-        padding: 10px 12px 10px 0px;
-        border-radius: 7px;
-    }
-    pre > pre {
-        padding-left: 14%;
-    }
-   
-    .CodeMirror-selected {
-        background-color: #ffffff;
-        color: white !important
-    }
 
-    .CodeMirror pre.CodeMirror-line, .CodeMirror pre.CodeMirror-line-like {
-        -moz-border-radius: 0;
-        -webkit-border-radius: 0;
-        border-radius: 0;
-        border-width: 0;
-        background: transparent;
-        font-family: inherit;
-        font-size: inherit;
-        margin: 0;
-        white-space: pre;
-        word-wrap: normal;
-        line-height: inherit;
-        color: inherit;
-        z-index: 2;
-        position: relative;
-        overflow: visible;
-        -webkit-tap-highlight-color: transparent;
-        -webkit-font-variant-ligatures: contextual;
-        font-variant-ligatures: contextual;
-    }
-</style>
 <script type="application/ld+json">
     {
     "@@context" : "http://schema.org",
@@ -95,33 +57,66 @@
 </script>
 
 <style>
-    pre {
-        padding: 10px 16px;
-        border-radius: 2px;
+    .articleactive {
+        background-color: #efefef !important;
     }
 
-        pre p {
-            display: block;
-            line-height: 1.5rem;
-            counter-increment: line;
+    .code-panel {
+        margin: 10px 0px;
+        background-color: #fff;
+        border: 1px solid #2590e3;
+        border-radius: 0;
+        padding: 10px 0px !important;
+    }
+
+    pre {
+        background-color: white !important;
+        border: 0px;
+        padding:10px !important;
+    }
+
+    .footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6 {
+        color: #999 !important;
+    }
+
+    .articlefont {
+        font-size: 16px !important;
+        line-height: 31px;
+        /* text-align: justify; */
+        font-family: Verdana,sans-serif,Geneva !important;
+        color: #000 !important;
+        background: transparent;
+    }
+
+    h1, h2, h3 {
+        font-family: "Segoe UI",Verdana,sans-serif !important;
+        font-weight: 400 !important;
+        line-height: 1.2 !important;
+        color: #181717 !important;
+    }
+    h3 {
+        font-size: 24px;
+        margin: 2rem 0 1.5rem 0;
+    }
+    /*  pre {
+            padding: 10px 16px;
+            border-radius: 2px;
         }
 
-            pre p:before {
-                content: counter(line);
-                display: inline-block;
-                border-right: 1px solid #ddd;
-                padding: 0 .5em;
-                margin-right: .5em;
-                color: #888
+            pre p {
+                display: block;
+                line-height: 1.5rem;
+                counter-increment: line;
             }
 
-    #disqus_thread {
-        overflow: hidden;
-    }
-
-    iframe {
-        margin-bottom: -54px;
-    }
+                pre p:before {
+                    content: counter(line);
+                    display: inline-block;
+                    border-right: 1px solid #ddd;
+                    padding: 0 .5em;
+                    margin-right: .5em;
+                    color: #888
+                }*/
 </style>
 
 <style>
@@ -137,28 +132,20 @@
         margin-bottom: 1.25rem;
     }*/
 
-    pre {
-        background-color: transparent !important;
-        border: 0px;
-        margin-top: 0px !important;
-        margin-bottom: 0px !important;
-        padding: 0px !important;
-        padding-left: 2% !important;
-        color: white !important;
-        min-height: 28px !important;
-    }
+  
 
     .CodeMirror-linenumbers, .CodeMirror-linenumber {
         background-color: #282a36 !important;
         z-index: 99999;
         color: white !important;
-       /* padding: 8px;*/
+        /* padding: 8px;*/
     }
+
     .CodeMirror {
         border: 1px solid #eee;
         height: auto !important;
     }
-   /* pre, code {
+    /* pre, code {
         white-space: pre-line;
     }*/
     /*.articlefont {
@@ -335,96 +322,17 @@
 <script id="dsq-count-scr" src="//codetonight.disqus.com/count.js" async></script>
 <script src="~/JavaScript.js"></script>
 <script>
+
     $(document).ready(function () {
         $('pre').each(function (index, elem) {
-            $(elem).wrap('<div class="CodeArea"></div>');
-            var ce = $(elem).find('code').html().replace(/&gt;/g, ">").replace(/&lt;/g,'<').trim();
-            $(elem).find('code').remove();
-            //$(elem).html('');
-            // Probably needs more kludges to be portable... you get the idea
-            //var text = elem.textContent || elem.innerText;
-            //var editor = CodeMirror(function (node) { elem.parentNode.replaceChild(node, elem); }, {
-            //    value: text,
-            //    matchBrackets: true,
-            //    autoCloseBrackets: true,
-            //    mode: "javascript",
-            //    lineWrapping: true,
-            //    lineNumbers: true,
-            //    /* , your options */
-            //});
-            //var config, editor;
-
-            //config = {
-            //    lineNumbers: true,
-            //    mode: "text/javascript",
-            //    lineWrapping: true,
-            //    htmlMode: true,
-            //    matchClosing: true,
-            //    indentWithTabs: true,
-            //    readOnly: true
-            //};
-
-            var editor = CodeMirror(elem, {
-                matchBrackets: true,
-                autoCloseBrackets: true,
-                mode: "javascript",
-                lineWrapping: false,
-                lineNumbers: true,
-                value: ce,
-                styleActiveLine: true,
-                htmlMode: true,
-                indentWithTabs: true,
-                smartIndent: true,
-                viewportMargin: Infinity
-            });
-          
-        //    //editor.setSize("100%", "300");
-            editor.setOption("theme", "dracula");
-        //    //  var textArea = document.createElement('textarea');
-        //    // textArea.innerHTML = $(elem).find('.CodeMirror').text();
-        //   //html($(textArea).html());
-        //    //  $(elem).find('.CodeMirror').remove();
-        //    // $(elem).html('<code class="language-csharp">' + $(elem).html()+'</code>')
-        //    //$(elem).addClass('language-csharp');
-        //    //$('pre').each(function (index, elem) {
-        //    //    if ($(elem).text().replace(/ /g, '') == "")
-        //    //        $(elem).remove();
-        //    //});
-        //    //editor.refresh();
-
-        //    //var html = $(elem).find('.CodeMirror').html();
-        //    //$(elem).html(html);
-        //});
-
-
-    });
-    //function wrapNode(node) {
-    //    $(node).replaceWith("<p>" + node.textContent + "</p>");
-    //}
-    //document.addEventListener('DOMContentLoaded', (event) => {
-
-    //    $('pre').each(function (index, elem) {
-    //        var d = $(this)[0];
-    //        for (var i = 0; i < d.childNodes.length; i++) {
-    //            if (d.childNodes[i].nodeType === 3 &&
-    //                d.childNodes[i].textContent.replace(/^\s+|\s+$/g, "")) {
-    //                wrapNode(d.childNodes[i]);
-    //            }
-    //        }
-
-    //       // var lines = $(this).text().split('\n');
-    //       // var paras = '';
-    //       // $.each(lines, function (i, line) {
-    //       //     // $(line).wrap('<p></p>');
-    //       //     if (line && line.indexOf('<input')==-1) {
-    //       //         paras += '<p>' + line + '</p>';
-    //       //     }
-    //       // });
-    //       // paras.replace(/[\r\n]+/g, '\n');
-    //       //// $(this).html('');
-    //       //// $(this).append(paras);
-    //       //$(this).html(paras);
-    //    });
+            $(elem).wrap("<div class='code-panel'></div>");
+            if ($(elem).find('.language-csharp').length == 0) {
+                $(elem).wrapInner("<code class='line-numbers language-csharp'></code>");
+            }
+        });
+        $('#Articlespartialid').find('p,div,li,span').each(function (index, elem) {
+            $(elem).addClass("articlefont")
+        });
     });
 </script>
 </section>

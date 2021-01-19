@@ -1,10 +1,10 @@
 <h4>Step 1: Online Cdn of Jquery and Slick</h4>
-<pre>    &lt;script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"&gt;&lt;/script&gt;
+<pre><code class="line-numbers language-csharp">&lt;script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"&gt;&lt;/script&gt;
     &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"&gt;&lt;/script&gt;
     &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" /&gt;
-    &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" /&gt;</pre>
+    &lt;link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" /&gt;</code></pre>
 <h4>Step 2: Script For Slick Slider</h4>
-<pre>&lt;script&gt;
+<pre><code class="line-numbers language-csharp">&lt;script&gt;
         $(document).ready(function () {
             $('.slider').slick({
                 slidesToShow: 3,
@@ -15,10 +15,9 @@
                 arrow: true
             });
         });
-    &lt;/script&gt;</pre>
-
+    &lt;/script&gt;</code></pre>
 <h4>Step 3: Html Code&nbsp;</h4>
-<pre>&lt;div class="slider"&gt;
+<pre><code class="line-numbers language-csharp">&lt;div class="slider"&gt;
             &lt;div&gt;
                 &lt;img src="http://kenwheeler.github.io/slick/img/fonz1.png" /&gt;
             &lt;/div&gt;
@@ -37,10 +36,9 @@
             &lt;div&gt;
                 &lt;img src="http://kenwheeler.github.io/slick/img/fonz3.png" /&gt;
             &lt;/div&gt;
-        &lt;/div&gt;</pre>
-
+        &lt;/div&gt;</code></pre>
 <h4>Step 4: Complete Code Of Html And Script&nbsp;</h4>
-<pre>@{
+<pre><code class="line-numbers language-csharp">@{
     ViewBag.Title = "Home Page";
 }
 &lt;html&gt;
@@ -113,10 +111,6 @@
 
 &lt;/body&gt;
 &lt;/html&gt;
-</pre><div><br></div>
-
+</code></pre><div><br></div>
 <h4>Step 5: Run The Program To Press Ctrl + F5 And See The Output&nbsp;<p></p><p><img src="/Uploads/slick20200929090115.png"><br></p></h4>
-
-
-
 

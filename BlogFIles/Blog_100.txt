@@ -1,4 +1,4 @@
-<p>Step1 :</p><pre><code class="line-numbers language-csharp">   
+<p>Step1 :</p><pre><code>
 &lt;!-- include libraries(jQuery, bootstrap) --&gt;
     &lt;link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"&gt;
     &lt;script src="https://code.jquery.com/jquery-3.5.1.min.js"&gt;&lt;/script&gt;
@@ -12,7 +12,8 @@
     &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"&gt;&lt;/script&gt;
     &lt;script src="~/Scripts/summernote.js"&gt;&lt;/script&gt;
     &lt;link href="~/Scripts/summernote.css" rel="stylesheet"&gt;
-</code></pre><p>Step2 :</p><pre><code>  
+    
+    </code></pre><p>Step2 :</p><pre><code>  
     $('.summernote').summernote({
         height: 150,   //set editable area's height
         codemirror: { // codemirror options
@@ -35,4 +36,3 @@ script<pre><code>
     &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"&gt;&lt;/script&gt;
     &lt;script src="~/Scripts/summernote.js"&gt;&lt;/script&gt;
     &lt;link href="~/Scripts/summernote.css" rel="stylesheet"&gt;</code></pre>
-
